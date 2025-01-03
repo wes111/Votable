@@ -48,7 +48,7 @@ extension FilterPostsViewModel {
     }
     
     var selectedTags: [SelectableCommunityTag] {
-        postFilters.tagsFilter.map{ SelectableCommunityTag(communityTag: $0) }
+        postFilters.tagsFilter.map{ SelectableCommunityTag($0) }
     }
 }
 
@@ -64,7 +64,7 @@ extension FilterPostsViewModel  {
     }
     
     func toggleTag(_ tag: SelectableCommunityTag) {
-        if postFilters.tagsFilter.map({ SelectableCommunityTag(communityTag: $0) }).contains(tag) {
+        if postFilters.tagsFilter.map({ SelectableCommunityTag($0) }).contains(tag) {
             postFilters.tagsFilter.removeAll(where: { $0 == tag.communityTag })
         } else {
             postFilters.tagsFilter.append(tag.communityTag)

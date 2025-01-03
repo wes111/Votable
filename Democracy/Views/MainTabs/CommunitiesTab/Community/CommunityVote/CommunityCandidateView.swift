@@ -12,7 +12,7 @@ import SharedSwiftUI
 
 @Observable @MainActor
 final class CommunityCandidateViewModel {
-    let candidateTags: [CandidateTag] = CandidateTag.previewArray
+    let candidateTags: [SelectableCandidateTag] = CandidateTag.previewArray.map { SelectableCandidateTag($0) }
     let candidate: Candidate = .preview
     
     var supportButtonString: String = "Support"

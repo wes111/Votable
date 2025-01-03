@@ -12,7 +12,7 @@ import SharedResourcesClientAndServer
 extension FilterPostsViewModel {
     static var preview: FilterPostsViewModel {
         .init(
-            communityTags: Community.preview.tags.map { SelectableCommunityTag(communityTag: $0) },
+            communityTags: Community.preview.tags.map { SelectableCommunityTag($0) },
             postFilters: .preview, onUpdateFilters: { _ in }
         )
     }

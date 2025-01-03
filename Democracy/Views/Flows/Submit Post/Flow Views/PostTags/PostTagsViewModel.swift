@@ -15,7 +15,7 @@ final class PostTagsViewModel: InputFlowViewModel {
     @ObservationIgnored @Injected(\.postService) private var postService
     let flowCoordinator: PostInputFlowViewModel
     let skipAction: SkipAction = .nonSkippable
-    var selectedTags: [CommunityTag] = []
+    var selectedTags: [SelectableCommunityTag] = []
     
     init(flowCoordinator: PostInputFlowViewModel) {
         self.flowCoordinator = flowCoordinator
@@ -26,7 +26,7 @@ final class PostTagsViewModel: InputFlowViewModel {
     }
     
     func nextButtonAction() async {
-        flowCoordinator.input.setTags(selectedTags)
+        flowCoordinator.input.setTags(selectedTags.map { $0.communityTag })
         do {
             _ = try await postService.createPost(from: flowCoordinator.input)
             flowCoordinator.next()
@@ -36,14 +36,14 @@ final class PostTagsViewModel: InputFlowViewModel {
     }
     
     func setUserInput() {
-        selectedTags = flowCoordinator.input.tags
+        selectedTags = flowCoordinator.input.tags.map { SelectableCommunityTag($0) }
     }
     
-    var communityTags: [CommunityTag] {
-        flowCoordinator.input.community.tags
+    var communityTags: [SelectableCommunityTag] {
+        flowCoordinator.input.community.tags.map{ SelectableCommunityTag($0) }
     }
     
-    func toggleTag(_ tag: CommunityTag) {
+    func toggleTag(_ tag: SelectableCommunityTag) {
         if selectedTags.contains(tag) {
             selectedTags.removeAll(where: { $0 == tag })
         } else {

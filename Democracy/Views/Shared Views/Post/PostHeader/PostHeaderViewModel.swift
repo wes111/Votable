@@ -44,7 +44,7 @@ extension PostHeaderViewModel {
     }
     
     var selectableCommunityTags: [SelectableCommunityTag] {
-        post.tags.map { SelectableCommunityTag(communityTag: $0) }
+        post.tags.map { SelectableCommunityTag($0) }
     }
 }
 

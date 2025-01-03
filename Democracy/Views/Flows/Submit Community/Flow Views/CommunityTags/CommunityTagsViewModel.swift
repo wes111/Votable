@@ -8,6 +8,7 @@
 import DemocracySwiftUI
 import Foundation
 import SharedResourcesClientAndServer
+import SharedSwift
 
 @MainActor @Observable
 final class CommunityTagsViewModel: TextInputFlowViewModel {
@@ -35,12 +36,12 @@ final class CommunityTagsViewModel: TextInputFlowViewModel {
         return
     }
     
-    var tags: [CommunityTagInput] {
-        flowCoordinator.input.tags
+    var tags: [SelectableCommunityTagInput] {
+        flowCoordinator.input.tags.map { .init($0) }
     }
     
-    func removeTag(_ tag: CommunityTagInput) {
-        flowCoordinator.input.removeTag(tag)
+    func removeTag(_ tag: SelectableCommunityTagInput) {
+        flowCoordinator.input.removeTag(tag.tagInput)
     }
     
     func onSubmit() async {

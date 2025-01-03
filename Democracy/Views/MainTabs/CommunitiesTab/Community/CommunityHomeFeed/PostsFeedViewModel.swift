@@ -49,7 +49,7 @@ extension PostsFeedViewModel {
     
     var filterPostsViewModel: FilterPostsViewModel {
         .init(
-            communityTags: community.tags.map { SelectableCommunityTag(communityTag: $0) },
+            communityTags: community.tags.map { SelectableCommunityTag($0) },
             postFilters: postFilters,
             onUpdateFilters: onUpdatePostFilters(_:)
         )

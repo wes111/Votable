@@ -13,7 +13,7 @@ import SharedResourcesClientAndServer
 final class PostCategoryViewModel: InputFlowViewModel {
     let flowCoordinator: PostInputFlowViewModel
     let skipAction: SkipAction = .nonSkippable
-    var selectedCategory: PostCategory?
+    var selectedCategory: SelectablePostCategory?
     
     init(flowCoordinator: PostInputFlowViewModel) {
         self.flowCoordinator = flowCoordinator
@@ -27,19 +27,23 @@ final class PostCategoryViewModel: InputFlowViewModel {
         guard let selectedCategory else {
             return flowCoordinator.handleError(.itemMissing(.category))
         }
-        flowCoordinator.input.setCategory(selectedCategory)
+        flowCoordinator.input.setCategory(selectedCategory.postCategory)
         flowCoordinator.next()
     }
     
     func setUserInput() {
-        selectedCategory = flowCoordinator.input.category
+        selectedCategory = if let category = flowCoordinator.input.category {
+            SelectablePostCategory(category)
+        } else {
+            nil
+        }
     }
     
-    var postCategories: [PostCategory] {
-        flowCoordinator.input.community.categories
+    var postCategories: [SelectablePostCategory] {
+        flowCoordinator.input.community.categories.map{ SelectablePostCategory($0) }
     }
     
-    func toggleCategory(_ category: PostCategory) {
+    func toggleCategory(_ category: SelectablePostCategory) {
         selectedCategory = (selectedCategory == category) ? nil : category
     }
 }

@@ -35,12 +35,12 @@ final class CommunityCategoriesViewModel: TextInputFlowViewModel {
         return
     }
     
-    var categories: [CommunityCategory] {
-        flowCoordinator.input.categories
+    var categories: [SelectableCommunityCategoryInput] {
+        flowCoordinator.input.categories.map { .init($0) }
     }
     
-    func removeCategory(_ category: CommunityCategory) {
-        flowCoordinator.input.removeCategory(category)
+    func removeCategory(_ category: SelectableCommunityCategoryInput) {
+        flowCoordinator.input.removeCategory(category.categoryInput)
     }
     
     // Add category

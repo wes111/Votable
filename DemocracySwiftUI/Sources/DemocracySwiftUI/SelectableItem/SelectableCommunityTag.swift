@@ -12,7 +12,7 @@ import SharedSwiftUI
 public struct SelectableCommunityTag: SelectableItem {
     public let communityTag: CommunityTag
     
-    public init(communityTag: CommunityTag) {
+    public init(_ communityTag: CommunityTag) {
         self.communityTag = communityTag
     }
     
