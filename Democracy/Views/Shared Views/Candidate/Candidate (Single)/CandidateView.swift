@@ -10,8 +10,8 @@ import SwiftUI
 import SharedResourcesClientAndServer
 
 struct CandidateView: View {
-    
     @StateObject private var viewModel: CandidateViewModel
+    @Environment(\.theme) var theme: Theme
     
     init(viewModel: CandidateViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -30,7 +30,7 @@ struct CandidateView: View {
                 
                 Text("Posts")
                     .font(.title2)
-                    .foregroundColor(.tertiaryText)
+                    .foregroundColor(theme.primaryColorScheme.tertiaryText)
                 
                 LazyVStack(alignment: .leading, spacing: 10) {
 //                    ForEach(viewModel.candidatePosts) { post in
@@ -43,7 +43,7 @@ struct CandidateView: View {
 }
 
 struct CandidateCard: View {
-    
+    @Environment(\.theme) var theme: Theme
     let imageName: String?
     let badges: [CandidateBadge]
     let dateString: String
@@ -69,7 +69,7 @@ struct CandidateCard: View {
                                 .padding(4)
                                 .background {
                                     Circle()
-                                        .foregroundColor(.otherRed)
+                                        .foregroundColor(theme.primaryColorScheme.primaryAccent)
                                 }
                         }
                     }
@@ -82,7 +82,7 @@ struct CandidateCard: View {
                     
                     Text("Title")
                         .font(.footnote)
-                        .foregroundColor(.tertiaryText)
+                        .foregroundColor(theme.primaryColorScheme.tertiaryText)
                 }
             }
             
@@ -95,7 +95,7 @@ struct CandidateCard: View {
                         
                     Text("Contributions")
                         .font(.caption2)
-                        .foregroundColor(.tertiaryText)
+                        .foregroundColor(theme.primaryColorScheme.tertiaryText)
                 }
                 
                 CustomDivider()
@@ -106,7 +106,7 @@ struct CandidateCard: View {
                     
                     Text("Upvotes")
                         .font(.caption2)
-                        .foregroundColor(.tertiaryText)
+                        .foregroundColor(theme.primaryColorScheme.tertiaryText)
                 }
 
                 CustomDivider()
@@ -117,21 +117,22 @@ struct CandidateCard: View {
                     
                     Text("Member Since")
                         .font(.caption2)
-                        .foregroundColor(.tertiaryText)
+                        .foregroundColor(theme.primaryColorScheme.tertiaryText)
                 }
             }
             Spacer()
         }
-        .foregroundColor(.primaryText)
+        .foregroundColor(theme.primaryColorScheme.primaryText)
         .padding(25)
-        .background(Color.secondaryBackground, in: RoundedRectangle(cornerRadius: 10))
+        .background(theme.primaryColorScheme.secondaryBackground, in: RoundedRectangle(cornerRadius: 10))
     }
 }
 
 // MARK: - Preview
 #Preview {
+    @Previewable @Environment(\.theme) var theme: Theme
     ZStack {
-        Color.primaryBackground.ignoresSafeArea()
+        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
         CandidateView(viewModel: CandidateViewModel.preview)
     }
 }

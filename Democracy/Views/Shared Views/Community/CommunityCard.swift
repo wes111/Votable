@@ -11,6 +11,7 @@ import SwiftUI
 @MainActor
 struct CommunityCard: View {
     @State private var viewModel: CommunityCardViewModel
+    @Environment(\.theme) var theme: Theme
     
     init(viewModel: CommunityCardViewModel) {
         self.viewModel = viewModel
@@ -37,7 +38,7 @@ private extension CommunityCard {
         HStack(alignment: .top) {
             communityImage
             
-            VStack(alignment: .leading, spacing: ViewConstants.extraSmallElementSpacing) {
+            VStack(alignment: .leading, spacing: theme.sizeConstants.extraSmallElementSpacing) {
                 communityName
                 communityTagline
             }
@@ -50,19 +51,19 @@ private extension CommunityCard {
     var communityImage: some View {
         Circle()
             .frame(width: 40, height: 40)
-            .foregroundStyle(Color.secondaryText)
+            .foregroundStyle(theme.primaryColorScheme.secondaryText)
     }
     
     var communityName: some View {
         Text(viewModel.name)
-            .foregroundStyle(Color.secondaryText)
+            .foregroundStyle(theme.primaryColorScheme.secondaryText)
             .font(.subheadline)
             .fontWeight(.bold)
     }
     
     var communityTagline: some View {
         Text(viewModel.tagline)
-            .foregroundStyle(Color.secondaryText)
+            .foregroundStyle(theme.primaryColorScheme.secondaryText)
             .font(.caption2)
             .multilineTextAlignment(.leading)
             .lineLimit(2)
@@ -80,8 +81,9 @@ private extension CommunityCard {
 
 // MARK: - Preview
 #Preview {
+    @Previewable @Environment(\.theme) var theme: Theme
     ZStack {
-        Color.primaryBackground.ignoresSafeArea()
+        theme.primaryColorScheme.primaryBackground.ignoresSafeArea(.all)
         CommunityCard(viewModel: CommunityCardViewModel.preview)
     }
 }

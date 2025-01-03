@@ -12,9 +12,10 @@ import SharedResourcesClientAndServer
 
 struct CommunitySettingsView: View {
     @State var viewModel: CommunitySettingsViewModel
+    @Environment(\.theme) var theme: Theme
     
     var body: some View {
-        VStack(alignment: .leading, spacing: ViewConstants.elementSpacing) {
+        VStack(alignment: .leading, spacing: theme.sizeConstants.elementSpacing) {
             settingsView
             Spacer()
             SubmittableNextButton(viewModel: viewModel)
@@ -30,7 +31,7 @@ private extension CommunitySettingsView {
     
     var settingsView: some View {
         ScrollView(.vertical) {
-            VStack(alignment: .leading, spacing: ViewConstants.largeElementSpacing) {
+            VStack(alignment: .leading, spacing: theme.sizeConstants.largeElementSpacing) {
                 SelectableSheetPickerView(
                     selection: Binding(
                         get: { SelectableCommunityGovernment(viewModel.settings.government) },
@@ -73,7 +74,7 @@ private extension CommunitySettingsView {
                     )
                 )
             }
-            .padding(ViewConstants.smallInnerBorder)
+            .padding(theme.sizeConstants.smallInnerBorder)
         }
     }
 }

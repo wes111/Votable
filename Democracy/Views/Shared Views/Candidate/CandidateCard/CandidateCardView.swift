@@ -7,10 +7,11 @@
 
 import SwiftUI
 import SharedResourcesClientAndServer
+import SharedSwiftUI
 
 struct CandidateCardView: View {
-    
     @StateObject private var viewModel: CandidateCardViewModel
+    @Environment(\.theme) var theme: Theme
     
     init(candidate: Candidate) {
         _viewModel = StateObject(wrappedValue: CandidateCardViewModel(candidate: candidate))
@@ -33,7 +34,7 @@ struct CandidateCardView: View {
             }
             .background(
                 Rectangle()
-                    .foregroundColor(Color.secondaryBackground)
+                    .foregroundColor(theme.primaryColorScheme.secondaryBackground)
             )
         }
         .background(Color.blue)

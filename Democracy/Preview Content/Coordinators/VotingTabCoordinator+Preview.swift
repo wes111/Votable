@@ -8,7 +8,7 @@
 import Foundation
 
 extension VotingTabCoordinator {
-    @MainActor static let preview = VotingTabCoordinator(viewModel: VotingTabCoordinatorViewModel.preview)
+    static let preview = VotingTabCoordinator(viewModel: VotingTabCoordinatorViewModel.preview)
 }
 
 extension VotingTabCoordinatorViewModel {

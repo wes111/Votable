@@ -11,6 +11,7 @@ import SwiftUI
 
 @MainActor
 struct CommunitiesTabMainView: View {
+    @Environment(\.theme) var theme: Theme
     @Bindable var viewModel: CommunitiesTabMainViewModel
     
     init(viewModel: CommunitiesTabMainViewModel) {
@@ -20,7 +21,7 @@ struct CommunitiesTabMainView: View {
     var body: some View {
         content
             .toolbarNavigation(leadingContent: leadingButtons, trailingContent: trailingButtons)
-            .background(Color.primaryBackground, ignoresSafeAreaEdges: .all)
+            .background(theme.primaryColorScheme.primaryBackground, ignoresSafeAreaEdges: .all)
             .progressModifier(isShowingProgess: $viewModel.isShowingProgress)
             .onChange(of: viewModel.category) { _, category in
                 viewModel.fetchCommunitiesByCategory(category)
@@ -50,7 +51,7 @@ private extension CommunitiesTabMainView {
     }
     
     var content: some View {
-        VStack(alignment: .leading, spacing: ViewConstants.elementSpacing) {
+        VStack(alignment: .leading, spacing: theme.sizeConstants.elementSpacing) {
             HorizontalSelectableList(
                 selection: Binding(
                     get: { SelectableCommunitiesCategory(viewModel.category) },
@@ -59,7 +60,7 @@ private extension CommunitiesTabMainView {
             )
             communityList
         }
-        .padding(.horizontal, ViewConstants.screenPadding)
+        .padding(.horizontal, theme.sizeConstants.screenPadding)
     }
     
     var communityList: some View {

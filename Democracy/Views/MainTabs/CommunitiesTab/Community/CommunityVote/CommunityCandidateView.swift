@@ -21,6 +21,7 @@ final class CommunityCandidateViewModel {
 // To get to this view, tap on the candidate card from CommunityView.
 @MainActor
 struct CommunityCandidateView: View {
+    @Environment(\.theme) var theme: Theme
     @Environment(\.openURL) var openURL
     @State private var viewModel: CommunityCandidateViewModel
     
@@ -42,30 +43,30 @@ private extension CommunityCandidateView {
     
     var primaryContent: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: ViewConstants.smallElementSpacing) {
+            VStack(alignment: .leading, spacing: theme.sizeConstants.smallElementSpacing) {
                 Group {
                     header
                     tags
                     CustomDivider()
                 }
-                .padding(.horizontal, ViewConstants.screenPadding)
+                .padding(.horizontal, theme.sizeConstants.screenPadding)
                 
                 summary
-                    .padding(.vertical, ViewConstants.sectionSpacing)
+                    .padding(.vertical, theme.sizeConstants.sectionSpacing)
             }
-            .foregroundStyle(Color.primaryText)
+            .foregroundStyle(theme.primaryColorScheme.primaryText)
         }
         .clipped()
         .scrollBounceBehavior(.basedOnSize, axes: [.vertical])
-        .background(Color.primaryBackground, ignoresSafeAreaEdges: .all)
+        .background(theme.primaryColorScheme.primaryBackground, ignoresSafeAreaEdges: .all)
     }
     
     var summary: some View {
         Text(viewModel.candidate.summary)
             .font(.callout)
             .fontWeight(.regular)
-            .foregroundStyle(Color.primaryText)
-            .padding(.horizontal, ViewConstants.screenPadding)
+            .foregroundStyle(theme.primaryColorScheme.primaryText)
+            .padding(.horizontal, theme.sizeConstants.screenPadding)
     }
     
     var topBarLeadingContent: [TopBarContent] {
@@ -86,7 +87,7 @@ private extension CommunityCandidateView {
     
     var header: some View {
         VStack {
-            HStack(alignment: .center, spacing: ViewConstants.elementSpacing) {
+            HStack(alignment: .center, spacing: theme.sizeConstants.elementSpacing) {
                 Circle()
                     .frame(height: 75)
                 
@@ -99,7 +100,7 @@ private extension CommunityCandidateView {
                     Text(viewModel.candidate.campaignSlogan)
                         .font(.subheadline)
                         .fontWeight(.medium)
-                        .foregroundStyle(Color.primaryText)
+                        .foregroundStyle(theme.primaryColorScheme.primaryText)
                         
                     if let link = viewModel.candidate.externalLink {
                         Button {
@@ -147,6 +148,7 @@ private extension CommunityCandidateView {
 }
 
 struct InfoTile: View {
+    @Environment(\.theme) var theme: Theme
     let title: String
     let subtitle: String
     let action: () -> Void
@@ -163,8 +165,8 @@ struct InfoTile: View {
                     .font(.caption2)
             }
             .fontWeight(.medium)
-            .padding(ViewConstants.smallInnerBorder)
-            .foregroundStyle(Color.primaryText)
+            .padding(theme.sizeConstants.smallInnerBorder)
+            .foregroundStyle(theme.primaryColorScheme.primaryText)
         }
     }
 }

@@ -19,6 +19,7 @@ enum AddResourceField: Hashable {
 struct AddResourceView: View {
     @Bindable var viewModel: CommunityResourcesViewModel
     @FocusState private var focusedField: AddResourceField?
+    @Environment(\.theme) var theme: Theme
     
     var body: some View {
         primaryContent
@@ -37,9 +38,9 @@ private extension AddResourceView {
     }
     
     var userInputStack: some View {
-        VStack(spacing: ViewConstants.elementSpacing) {
+        VStack(spacing: theme.sizeConstants.elementSpacing) {
             ScrollView {
-                VStack(alignment: .leading, spacing: ViewConstants.extraLargeElementSpacing) {
+                VStack(alignment: .leading, spacing: theme.sizeConstants.extraLargeElementSpacing) {
                     HorizontalSelectableList(
                         selection: Binding(
                             get: { SelectableResourceCategory(viewModel.category) },

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GenericError: Error {
+public enum GenericError: Error {
     case defaultError
     case missingUser
 }

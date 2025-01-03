@@ -17,6 +17,7 @@ enum AddRuleField: Hashable {
 struct AddRuleView: View {
     @Bindable var viewModel: CommunityRulesViewModel
     @FocusState private var focusedField: AddRuleField?
+    @Environment(\.theme) var theme: Theme
     
     var body: some View {
         primaryContent
@@ -33,9 +34,9 @@ extension AddRuleView {
     }
     
     var userInputStack: some View {
-        VStack(spacing: ViewConstants.elementSpacing) {
+        VStack(spacing: theme.sizeConstants.elementSpacing) {
             ScrollView {
-                VStack(alignment: .leading, spacing: ViewConstants.extraLargeElementSpacing) {
+                VStack(alignment: .leading, spacing: theme.sizeConstants.extraLargeElementSpacing) {
                     titleField
                     descriptionField
                 }

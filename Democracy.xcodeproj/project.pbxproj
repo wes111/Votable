@@ -26,7 +26,6 @@
 		EE2A89252CC9D54500198479 /* Appwrite.User+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2A89242CC9D54500198479 /* Appwrite.User+Extensions.swift */; };
 		EE2A89272CC9E10000198479 /* Appwrite.Session+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2A89262CC9E0FD00198479 /* Appwrite.Session+Extensions.swift */; };
 		EE2A894F2CD688E700198479 /* SystemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2A894D2CD688E700198479 /* SystemImage.swift */; };
-		EE2B15B42B43592E0046D5FC /* GenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2B15B32B43592E0046D5FC /* GenericError.swift */; };
 		EE2B15BA2B4594540046D5FC /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2B15B92B4594540046D5FC /* PostService.swift */; };
 		EE2B15C72B4C3C7D0046D5FC /* PostSuccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2B15C62B4C3C7D0046D5FC /* PostSuccessViewModel.swift */; };
 		EE2B15C92B4C3EA30046D5FC /* CreateAccountCoordinator+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2B15C82B4C3EA30046D5FC /* CreateAccountCoordinator+Preview.swift */; };
@@ -51,7 +50,6 @@
 		EE412B9F2B9F3D7B0007632B /* CreateAccountFlow+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE412B9E2B9F3D7B0007632B /* CreateAccountFlow+Preview.swift */; };
 		EE412BA12B9F3DD40007632B /* AccountInputFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE412BA02B9F3DD40007632B /* AccountInputFlowView.swift */; };
 		EE412BB02BB0E7970007632B /* MembershipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE412BAF2BB0E7970007632B /* MembershipService.swift */; };
-		EE4987CC2B2F5ED200AB7522 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4987CB2B2F5ED200AB7522 /* ViewConstants.swift */; };
 		EE4987CF2B2F823300AB7522 /* SubmitPostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4987CE2B2F823300AB7522 /* SubmitPostCoordinator.swift */; };
 		EE4987D12B2F829200AB7522 /* SubmitPostCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4987D02B2F829200AB7522 /* SubmitPostCoordinatorView.swift */; };
 		EE4987D32B2F82A500AB7522 /* SubmitPostPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4987D22B2F82A500AB7522 /* SubmitPostPath.swift */; };
@@ -84,10 +82,9 @@
 		EE5A8C922D26D15B005C6277 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5A8C902D26D15B005C6277 /* CommentView.swift */; };
 		EE5A8C932D26D15B005C6277 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5A8C912D26D15B005C6277 /* CommentViewModel.swift */; };
 		EE5A8C952D26D17A005C6277 /* AddCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5A8C942D26D17A005C6277 /* AddCommentView.swift */; };
-		EE5A8C972D26D1FB005C6277 /* CommentViewModel +Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5A8C962D26D1FB005C6277 /* CommentViewModel +Preview.swift */; };
+		EE5A8C972D26D1FB005C6277 /* CommentViewModel+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5A8C962D26D1FB005C6277 /* CommentViewModel+Preview.swift */; };
 		EE5A8C992D2771F0005C6277 /* Email+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5A8C982D2771ED005C6277 /* Email+Extensions.swift */; };
 		EE5A8C9B2D277218005C6277 /* Username+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5A8C9A2D277211005C6277 /* Username+Extensions.swift */; };
-		EE5B93A52A088E7B00B43381 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5B93A42A088E7B00B43381 /* Color+Extensions.swift */; };
 		EE5D39F12A2BB5DC00D0E312 /* RichLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5D39F02A2BB5DC00D0E312 /* RichLinkService.swift */; };
 		EE5D3A012A2EE0ED00D0E312 /* CommunitiesCoordinator+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5D3A002A2EE0ED00D0E312 /* CommunitiesCoordinator+Preview.swift */; };
 		EE5D3A032A30204D00D0E312 /* CommunitiesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5D3A022A30204D00D0E312 /* CommunitiesCoordinator.swift */; };
@@ -258,7 +255,6 @@
 		EE2A89242CC9D54500198479 /* Appwrite.User+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appwrite.User+Extensions.swift"; sourceTree = "<group>"; };
 		EE2A89262CC9E0FD00198479 /* Appwrite.Session+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appwrite.Session+Extensions.swift"; sourceTree = "<group>"; };
 		EE2A894D2CD688E700198479 /* SystemImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImage.swift; sourceTree = "<group>"; };
-		EE2B15B32B43592E0046D5FC /* GenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
 		EE2B15B92B4594540046D5FC /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		EE2B15C62B4C3C7D0046D5FC /* PostSuccessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSuccessViewModel.swift; sourceTree = "<group>"; };
 		EE2B15C82B4C3EA30046D5FC /* CreateAccountCoordinator+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateAccountCoordinator+Preview.swift"; sourceTree = "<group>"; };
@@ -282,7 +278,6 @@
 		EE412B9E2B9F3D7B0007632B /* CreateAccountFlow+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateAccountFlow+Preview.swift"; sourceTree = "<group>"; };
 		EE412BA02B9F3DD40007632B /* AccountInputFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInputFlowView.swift; sourceTree = "<group>"; };
 		EE412BAF2BB0E7970007632B /* MembershipService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipService.swift; sourceTree = "<group>"; };
-		EE4987CB2B2F5ED200AB7522 /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
 		EE4987CE2B2F823300AB7522 /* SubmitPostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPostCoordinator.swift; sourceTree = "<group>"; };
 		EE4987D02B2F829200AB7522 /* SubmitPostCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPostCoordinatorView.swift; sourceTree = "<group>"; };
 		EE4987D22B2F82A500AB7522 /* SubmitPostPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPostPath.swift; sourceTree = "<group>"; };
@@ -315,10 +310,9 @@
 		EE5A8C902D26D15B005C6277 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		EE5A8C912D26D15B005C6277 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		EE5A8C942D26D17A005C6277 /* AddCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentView.swift; sourceTree = "<group>"; };
-		EE5A8C962D26D1FB005C6277 /* CommentViewModel +Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommentViewModel +Preview.swift"; sourceTree = "<group>"; };
+		EE5A8C962D26D1FB005C6277 /* CommentViewModel+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommentViewModel+Preview.swift"; sourceTree = "<group>"; };
 		EE5A8C982D2771ED005C6277 /* Email+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Email+Extensions.swift"; sourceTree = "<group>"; };
 		EE5A8C9A2D277211005C6277 /* Username+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Username+Extensions.swift"; sourceTree = "<group>"; };
-		EE5B93A42A088E7B00B43381 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		EE5D39F02A2BB5DC00D0E312 /* RichLinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichLinkService.swift; sourceTree = "<group>"; };
 		EE5D3A002A2EE0ED00D0E312 /* CommunitiesCoordinator+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommunitiesCoordinator+Preview.swift"; sourceTree = "<group>"; };
 		EE5D3A022A30204D00D0E312 /* CommunitiesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesCoordinator.swift; sourceTree = "<group>"; };
@@ -546,10 +540,7 @@
 		EE2A894E2CD688E700198479 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EE80D8EA29BD15640000F8EF /* ProjectNotes.swift */,
-				EE4987CB2B2F5ED200AB7522 /* ViewConstants.swift */,
 				EE2A894D2CD688E700198479 /* SystemImage.swift */,
-				EE5B93A42A088E7B00B43381 /* Color+Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -767,6 +758,15 @@
 			path = Comment;
 			sourceTree = "<group>";
 		};
+		EE5A8C9C2D277378005C6277 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EE80D8EA29BD15640000F8EF /* ProjectNotes.swift */,
+				EEF83464299C6827001EEA5E /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		EE5B93932A0864BE00B43381 /* FilterablePostsFeedView */ = {
 			isa = PBXGroup;
 			children = (
@@ -848,11 +848,11 @@
 		EE80D8B829BC0EFA0000F8EF /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				EE5A8C722D26CC70005C6277 /* StorageActor.swift */,
 				EEB5AF972B0320D400310408 /* KeyChainStorage.swift */,
 				EEFFC8D32CE2B24800F3D579 /* UserDefaults */,
 				EEFFC8CB2CD9A5D000F3D579 /* BackendDataServices */,
 				EE2A891D2CC86E4F00198479 /* AsyncStreamManager */,
-				EE5A8C722D26CC70005C6277 /* StorageActor.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -909,7 +909,7 @@
 			path = "Submit Post";
 			sourceTree = "<group>";
 		};
-		EE80D90629C926490000F8EF /* Candidates (Plural) */ = {
+		EE80D90629C926490000F8EF /* Candidate */ = {
 			isa = PBXGroup;
 			children = (
 				EE80D93129D285F60000F8EF /* CreateCandidate */,
@@ -918,7 +918,7 @@
 				EE80D91629C92F1F0000F8EF /* Candidate (Single) */,
 				EE80D90B29C92B340000F8EF /* CandidateCard */,
 			);
-			path = "Candidates (Plural)";
+			path = Candidate;
 			sourceTree = "<group>";
 		};
 		EE80D90B29C92B340000F8EF /* CandidateCard */ = {
@@ -956,14 +956,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		EE80D92E29D0D7780000F8EF /* App Setup */ = {
+		EE80D92E29D0D7780000F8EF /* Root */ = {
 			isa = PBXGroup;
 			children = (
 				EEF83462299C6824001EEA5E /* ContentView.swift */,
 				EEF83460299C6824001EEA5E /* DemocracyApp.swift */,
 				EE80D92F29D0D7970000F8EF /* AppDelegate.swift */,
+				EE97601C2AD767D2003069CF /* Navigation */,
 			);
-			path = "App Setup";
+			path = Root;
 			sourceTree = "<group>";
 		};
 		EE80D93129D285F60000F8EF /* CreateCandidate */ = {
@@ -1103,14 +1104,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		EED4A4ED29AA7E7A00DDCCDA /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				EE97601C2AD767D2003069CF /* Navigation */,
-			);
-			path = Root;
-			sourceTree = "<group>";
-		};
 		EED4A4F229AA7FC600DDCCDA /* MainTabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1179,11 +1172,11 @@
 		EED4A51629ABC1C800DDCCDA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EED4A52729B8185600DDCCDA /* Shared Views */,
-				EED4A4ED29AA7E7A00DDCCDA /* Root */,
-				EE7EC2602B6145C900F62E90 /* Flows */,
-				EE4DB8922AC89ECB00A6DC90 /* Onboarding */,
+				EE80D92E29D0D7780000F8EF /* Root */,
 				EED4A4F229AA7FC600DDCCDA /* MainTabs */,
+				EED4A52729B8185600DDCCDA /* Shared Views */,
+				EE4DB8922AC89ECB00A6DC90 /* Onboarding */,
+				EE2A894E2CD688E700198479 /* Resources */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1204,10 +1197,9 @@
 		EED4A52429B80F7700DDCCDA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EE2B15B32B43592E0046D5FC /* GenericError.swift */,
+				EE80D92A29D0D48D0000F8EF /* Services */,
 				EE2477D02BBCD8B200661A0A /* SwiftData */,
 				EE80D8B829BC0EFA0000F8EF /* Repositories */,
-				EE80D92A29D0D48D0000F8EF /* Services */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1215,10 +1207,11 @@
 		EED4A52729B8185600DDCCDA /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
+				EE7EC2602B6145C900F62E90 /* Flows */,
 				EE5A8C8F2D26D150005C6277 /* Comment */,
 				EE5A8C7F2D26D0AC005C6277 /* Post */,
 				EECA51582C35F62000BD8F59 /* Community */,
-				EE80D90629C926490000F8EF /* Candidates (Plural) */,
+				EE80D90629C926490000F8EF /* Candidate */,
 			);
 			path = "Shared Views";
 			sourceTree = "<group>";
@@ -1287,13 +1280,11 @@
 		EEF8345F299C6824001EEA5E /* Democracy */ = {
 			isa = PBXGroup;
 			children = (
-				EE2A894E2CD688E700198479 /* Resources */,
 				EE80D93E29D9C7060000F8EF /* Info.plist */,
-				EE80D92E29D0D7780000F8EF /* App Setup */,
-				EED4A54129BAB5F400DDCCDA /* Extensions */,
 				EED4A52429B80F7700DDCCDA /* Models */,
 				EED4A51629ABC1C800DDCCDA /* Views */,
-				EEF83464299C6827001EEA5E /* Assets.xcassets */,
+				EE5A8C9C2D277378005C6277 /* Resources */,
+				EED4A54129BAB5F400DDCCDA /* Extensions */,
 				EEF83466299C6827001EEA5E /* Preview Content */,
 			);
 			path = Democracy;
@@ -1302,7 +1293,7 @@
 		EEF83466299C6827001EEA5E /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				EE5A8C962D26D1FB005C6277 /* CommentViewModel +Preview.swift */,
+				EE5A8C962D26D1FB005C6277 /* CommentViewModel+Preview.swift */,
 				EE5A8C8A2D26D0C6005C6277 /* PostHeaderViewModel+Preview.swift */,
 				EE5A8C8B2D26D0C6005C6277 /* PostViewModel+Preview.swift */,
 				EECA51912C4C44EF00BD8F59 /* PreviewService.swift */,
@@ -1712,7 +1703,7 @@
 				EE80D90429C923960000F8EF /* CommunityInfoViewModel.swift in Sources */,
 				EE936CB12A78A01200D49271 /* HistoryTabCoordinatorViewModel.swift in Sources */,
 				EE80D8DA29BC176E0000F8EF /* CommunityViewModel+Preview.swift in Sources */,
-				EE5A8C972D26D1FB005C6277 /* CommentViewModel +Preview.swift in Sources */,
+				EE5A8C972D26D1FB005C6277 /* CommentViewModel+Preview.swift in Sources */,
 				EE80D91C29C930C40000F8EF /* CandidateViewModel+Preview.swift in Sources */,
 				EECA515A2C35F63900BD8F59 /* CommunityCardViewModel.swift in Sources */,
 				EEFFC91B2CFBA8F200F3D579 /* AccountPhoneViewModel.swift in Sources */,
@@ -1747,7 +1738,6 @@
 				EE7EC2982B61A4BA00F62E90 /* CreateCommunityCoordinator+Preview.swift in Sources */,
 				EEFFC8F12CE9133500F3D579 /* PhoneNumber+Extensions.swift in Sources */,
 				EEFFC8E62CE417D100F3D579 /* VotableBackendDataService.swift in Sources */,
-				EE4987CC2B2F5ED200AB7522 /* ViewConstants.swift in Sources */,
 				EEFFC9192CFBA8E900F3D579 /* AccountPasswordViewModel.swift in Sources */,
 				EED4A50F29AB1A5A00DDCCDA /* CommunitiesTabMainView.swift in Sources */,
 				EE936CAB2A789F8700D49271 /* VotingTabPath.swift in Sources */,
@@ -1778,7 +1768,6 @@
 				EE5D3A012A2EE0ED00D0E312 /* CommunitiesCoordinator+Preview.swift in Sources */,
 				EED4A50729AA8BAE00DDCCDA /* EventsTabMainView.swift in Sources */,
 				EE80D8ED29BD180E0000F8EF /* Container+Extensions.swift in Sources */,
-				EE2B15B42B43592E0046D5FC /* GenericError.swift in Sources */,
 				EED47EDF299F186D00FEFC6E /* SettingsViewModel.swift in Sources */,
 				EECA51702C45EE7100BD8F59 /* FilterablePostsFeedView.swift in Sources */,
 				EE80D92029C938320000F8EF /* CandidatesViewModel+Preview.swift in Sources */,
@@ -1786,7 +1775,6 @@
 				EE8AC21D2D20769C00D4D148 /* CommunityCreationRequestBuilder+Preview.swift in Sources */,
 				EE36FF922B1E16CB009E8F86 /* AccountPasswordView.swift in Sources */,
 				EE80D93329D286180000F8EF /* CreateCandidateView.swift in Sources */,
-				EE5B93A52A088E7B00B43381 /* Color+Extensions.swift in Sources */,
 				EED4A50129AA859500DDCCDA /* UpdatesTabCoordinator.swift in Sources */,
 				EE4987DF2B2F958800AB7522 /* SubmitPostCoordinator+Preview.swift in Sources */,
 				EE80D8D629BC16D90000F8EF /* UpdatesTabCoordinator+Preview.swift in Sources */,

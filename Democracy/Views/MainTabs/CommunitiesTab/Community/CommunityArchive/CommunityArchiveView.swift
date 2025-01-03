@@ -9,14 +9,16 @@ import SharedSwiftUI
 import SwiftUI
 import SharedResourcesClientAndServer
 
-@MainActor
 struct CommunityArchiveFeedView: View {
+    @Environment(\.theme) var theme: Theme
     @State private var viewModel: CommunityArchiveViewModel
     
-    private let gridItemLayout: [GridItem] = Array(
-        repeating: .init(.flexible(), spacing: ViewConstants.elementSpacing),
-        count: 2
-    )
+    private var gridItemLayout: [GridItem] {
+        Array(
+            repeating: .init(.flexible(), spacing: theme.sizeConstants.elementSpacing),
+            count: 2
+        )
+    }
     
     init(viewModel: CommunityArchiveViewModel) {
         self.viewModel = viewModel
@@ -24,7 +26,7 @@ struct CommunityArchiveFeedView: View {
     
     var body: some View {
         content
-            .padding(.top, ViewConstants.smallElementSpacing)
+            .padding(.top, theme.sizeConstants.smallElementSpacing)
     }
 }
 
@@ -32,7 +34,7 @@ struct CommunityArchiveFeedView: View {
 private extension CommunityArchiveFeedView {
     
     var content: some View {
-        LazyVGrid(columns: gridItemLayout, alignment: .center, spacing: ViewConstants.elementSpacing) {
+        LazyVGrid(columns: gridItemLayout, alignment: .center, spacing: theme.sizeConstants.elementSpacing) {
             GridRow {
                 communityCategory(nil)
             }
@@ -41,14 +43,14 @@ private extension CommunityArchiveFeedView {
                 communityCategory(category)
             }
         }
-        .padding(.horizontal, ViewConstants.screenPadding)
+        .padding(.horizontal, theme.sizeConstants.screenPadding)
     }
     
     func communityCategory(_ category: PostCategory?) -> some View {
         Button {
             viewModel.goToCommunityPostCategory(category: category)
         } label: {
-            VStack(alignment: .leading, spacing: ViewConstants.smallElementSpacing) {
+            VStack(alignment: .leading, spacing: theme.sizeConstants.smallElementSpacing) {
                 Image("BMW")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -59,26 +61,26 @@ private extension CommunityArchiveFeedView {
                 HStack(alignment: .center, spacing: 0) {
                     VStack(alignment: .leading, spacing: 0) {
                         Text(viewModel.nameForCategory(category))
-                            .foregroundStyle(Color.primaryText)
+                            .foregroundStyle(theme.primaryColorScheme.primaryText)
                             .font(.subheadline)
                             .fontWeight(.bold)
                         
                         Text(viewModel.postCountStringForCategory(category))
                             .font(.caption2)
-                            .foregroundColor(.tertiaryText)
+                            .foregroundColor(theme.primaryColorScheme.tertiaryText)
                     }
                     
                     Spacer()
                     
                     Image(systemName: SystemImage.chevronRight.rawValue)
                         .font(.subheadline)
-                        .foregroundColor(.tertiaryText)
+                        .foregroundColor(theme.primaryColorScheme.tertiaryText)
                 }
             }
-            .padding(ViewConstants.smallInnerBorder)
+            .padding(theme.sizeConstants.smallInnerBorder)
             .background(
-                Color.secondaryBackground,
-                in: RoundedRectangle(cornerRadius: ViewConstants.cornerRadius)
+                theme.primaryColorScheme.secondaryBackground,
+                in: RoundedRectangle(cornerRadius: theme.sizeConstants.cornerRadius)
             )
         }
     }
@@ -86,9 +88,10 @@ private extension CommunityArchiveFeedView {
 
 // MARK: - Preview
 #Preview {
+    @Previewable @Environment(\.theme) var theme: Theme
     // PreviewService.registerMocks()
     ZStack {
-        Color.primaryBackground.ignoresSafeArea(.all)
+        theme.primaryColorScheme.primaryBackground.ignoresSafeArea(.all)
         CommunityArchiveFeedView(viewModel: .preview)
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject private var viewModel: LoginViewModel
+    @Environment(\.theme) var theme: Theme
     @FocusState private var focusedField: LoginField?
     @State private var isKeyboardVisible = false
     @State private var keyboardVisibilityChangedTask: Task<Void, Error>?
@@ -42,7 +43,7 @@ extension LoginView {
     var mainContent: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
-                Color.primaryBackground.ignoresSafeArea()
+                theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
                 VStack(spacing: isKeyboardVisible ? 20 : 50) {
                     logoView
                     VStack(spacing: 20) {
@@ -84,7 +85,7 @@ extension LoginView {
         TextField(
             "Email",
             text: $viewModel.email,
-            prompt: Text("Email").foregroundColor(.tertiaryBackground)
+            prompt: Text("Email").foregroundColor(theme.primaryColorScheme.tertiaryBackground)
         )
         .emailTextFieldStyle(
             email: $viewModel.email,
@@ -139,7 +140,7 @@ extension LoginView {
         } label: {
             Text("Forgot Password?")
                 .font(.callout)
-                .foregroundStyle(Color.secondaryText)
+                .foregroundStyle(theme.primaryColorScheme.secondaryText)
         }
     }
     
@@ -175,12 +176,12 @@ private extension LoginView {
 
 // MARK: - Preview
 #Preview {
+    @Previewable @Environment(\.theme) var theme: Theme
     let coordinator = RootCoordinator()
     let viewModel = LoginViewModel(coordinator: coordinator)
     
-    return ZStack {
-        Color.primaryBackground
-            .ignoresSafeArea()
+    ZStack {
+        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
         LoginView(viewModel: viewModel)
     }
 }

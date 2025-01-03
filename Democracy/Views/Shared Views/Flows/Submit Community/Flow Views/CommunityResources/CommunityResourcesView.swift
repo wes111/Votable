@@ -12,6 +12,7 @@ import SwiftUI
 @MainActor
 struct CommunityResourcesView: View {
     @State var viewModel: CommunityResourcesViewModel
+    @Environment(\.theme) var theme: Theme
     
     var body: some View {
         primaryContent
@@ -30,7 +31,7 @@ struct CommunityResourcesView: View {
 private extension CommunityResourcesView {
     
     var primaryContent: some View {
-        VStack(alignment: .leading, spacing: ViewConstants.elementSpacing) {
+        VStack(alignment: .leading, spacing: theme.sizeConstants.elementSpacing) {
             addedResources
             Spacer()
             addResourceButton

@@ -12,6 +12,7 @@ import SwiftUI
 @MainActor
 struct CommunityRulesView: View {
     @State var viewModel: CommunityRulesViewModel
+    @Environment(\.theme) var theme: Theme
     
     var body: some View {
         primaryContent
@@ -30,7 +31,7 @@ struct CommunityRulesView: View {
 private extension CommunityRulesView {
     
     var primaryContent: some View {
-        VStack(alignment: .leading, spacing: ViewConstants.elementSpacing) {
+        VStack(alignment: .leading, spacing: theme.sizeConstants.elementSpacing) {
             addedRules()
             Spacer()
             addRuleButton

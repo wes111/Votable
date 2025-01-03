@@ -10,14 +10,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        let viewModel = RootCoordinator()
-        RootCoordinatorView(viewModel: viewModel)
+        RootCoordinatorView(viewModel: RootCoordinator())
             .onOpenURL { incomingURL in
                 print("App was opened via URL: \(incomingURL)")
             }
     }
 }
 
+// MARK: - Preview
 #Preview {
     ContentView()
 }

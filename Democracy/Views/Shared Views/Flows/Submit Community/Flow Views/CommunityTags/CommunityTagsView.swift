@@ -10,12 +10,13 @@ import SharedSwiftUI
 import DemocracySwiftUI
 
 struct CommunityTagsView: View {
+    @Environment(\.theme) var theme: Theme
     @State var viewModel: CommunityTagsViewModel
     @FocusState private var focusedField: CommunityFlow?
     
     var body: some View {
         SubmittableTextInputView(viewModel: viewModel, focusedField: $focusedField) {
-            VStack(alignment: .leading, spacing: ViewConstants.extraLargeElementSpacing) {
+            VStack(alignment: .leading, spacing: theme.sizeConstants.extraLargeElementSpacing) {
                 field
                 
                 TagsFlow(

@@ -11,6 +11,7 @@ import SwiftUI
 @MainActor
 struct AccountAcceptTermsView: View {
     @State var viewModel: AccountAcceptTermsViewModel
+    @Environment(\.theme) var theme: Theme
     
     var body: some View {
         primaryContent
@@ -25,7 +26,7 @@ extension AccountAcceptTermsView {
     
     var primaryContent: some View {
         ZStack {
-            Color.primaryBackground.ignoresSafeArea()
+            theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: 20) {
                 Spacer()
