@@ -45,8 +45,8 @@ private extension FilterPostsView {
     
     var title: some View {
         Text("Filter and Sort Posts")
+            .standardScreenTitle()
             .multilineTextAlignment(.leading)
-            .primaryTitle()
     }
     
     var selectablePickerViews: some View {
@@ -136,7 +136,12 @@ private extension FilterPostsView {
             )
             
         case .categoriesFilter:
-            TagsPickerNavigationView(viewModel: viewModel)
+            TagsPickerNavigationView(
+                backAction: viewModel.backAction,
+                toggleTagAction: viewModel.toggleTag,
+                availableTags: viewModel.communityTags,
+                selectedTags: viewModel.selectedTags
+            )
         }
     }
 }

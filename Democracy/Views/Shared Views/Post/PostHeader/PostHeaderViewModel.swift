@@ -5,15 +5,16 @@
 //  Created by Wesley Luntsford on 6/28/24.
 //
 
-import Factory
+import DemocracySwiftUI
 import Foundation
 import SharedResourcesClientAndServer
+import SharedSwift
+import SharedSwiftUI
 
 @MainActor @Observable
 final class PostHeaderViewModel {
     let post: ObservablePost
     var linkProviderViewModel: LinkProviderViewModel?
-    @ObservationIgnored @Injected(\.voteService) private var voteService
     
     init(post: Post) {
         self.post = post.toObservablePost()
@@ -41,6 +42,10 @@ extension PostHeaderViewModel {
     var commentsText: String {
         "\(post.commentCount) comments"
     }
+    
+    var selectableCommunityTags: [SelectableCommunityTag] {
+        post.tags.map { SelectableCommunityTag(communityTag: $0) }
+    }
 }
 
 // MARK: - Methods
@@ -50,13 +55,13 @@ extension PostHeaderViewModel {
     }
     
     func onTapVoteButton(_ vote: VoteType) {
-        Task {
-            do {
-                _ = try await voteService.voteOnObject(post, vote: vote)
-            } catch {
-                print(error)
-                print()
-            }
-        }
+//        Task {
+//            do {
+//                _ = try await voteService.voteOnObject(post, vote: vote)
+//            } catch {
+//                print(error)
+//                print()
+//            }
+//        }
     }
 }

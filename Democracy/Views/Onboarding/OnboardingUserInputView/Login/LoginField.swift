@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SharedSwiftUI
 
 enum LoginField {
     case email, password

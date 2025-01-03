@@ -6,5 +6,6 @@
 //
 
 import SharedResourcesClientAndServer
+import SharedSwiftUI
 
 extension CommunityTag: SelectableItem {}

@@ -10,9 +10,9 @@ import SwiftUI
 public struct SelectablePickerDetailNavigationView<Category: Selectable>: View {
     @Environment(\.theme) var theme: Theme
     @Binding var selectedCategory: Category
-    let backAction: @MainActor () -> Void
+    let backAction: () -> Void
     
-    public init(selectedCategory: Binding<Category>, backAction: @MainActor @escaping () -> Void) {
+    public init(selectedCategory: Binding<Category>, backAction: @escaping () -> Void) {
         self._selectedCategory = selectedCategory
         self.backAction = backAction
     }
@@ -77,7 +77,7 @@ private extension SelectablePickerDetailNavigationView {
 }
 
 // MARK: - Preview
-#Preview(traits: .mockPreviewData) {
+#Preview {
     @Previewable @State var mockSelectable: MockSelectable = .mockFour
     
     SelectablePickerDetailNavigationView(

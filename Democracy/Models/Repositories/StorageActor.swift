@@ -1,10 +1,13 @@
 //
 //  StorageActor.swift
-//  Democracy
+//  DemocracySwiftUI
 //
-//  Created by Wesley Luntsford on 10/20/24.
+//  Created by Wesley Luntsford on 1/1/25.
 //
 
-@globalActor actor StorageActor: GlobalActor {
-    static let shared = StorageActor()
+import Foundation
+
+@globalActor
+actor StorageActor: GlobalActor {
+    public static let shared = StorageActor()
 }

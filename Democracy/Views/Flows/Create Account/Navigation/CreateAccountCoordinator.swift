@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SharedSwiftUI
 
 @MainActor
 protocol CreateAccountCoordinatorParent: AnyObject {

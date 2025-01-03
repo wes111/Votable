@@ -5,6 +5,7 @@
 //  Created by Wesley Luntsford on 2/25/23.
 //
 
+import SharedSwiftUI
 import SwiftUI
 
 struct HistoryTabCoordinator: View {

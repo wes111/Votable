@@ -5,8 +5,10 @@
 //  Created by Wesley Luntsford on 6/6/23.
 //
 
+import DemocracySwiftUI
 import Foundation
 import SharedResourcesClientAndServer
+import SharedSwiftUI
 
 enum CommunityCoordinatorSheet: Identifiable {
     case webview
@@ -25,7 +27,7 @@ enum CommunityCoordinatorSheet: Identifiable {
 }
 
 @MainActor
-protocol CommunitiesCoordinatorDelegate: AnyObject {
+protocol CommunitiesCoordinatorDelegate: AnyObject, PostCardViewCoordinatorDelegate {
     func goToCommunity(community: Community)
     func showCreateCommunityView()
     func showCreateCandidateView()
@@ -125,7 +127,7 @@ extension CommunitiesCoordinator {
     }
     
     func postViewModel(post: Post) -> PostViewModel {
-        PostViewModel(coordinator: self, post: post)
+        PostViewModel(coordinator: self, post: post, commentsManager: CommentsManager(post: post))
     }
     
     func communityPostCategoryViewModel(

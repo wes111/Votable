@@ -78,9 +78,7 @@ private extension ToolbarNavigationModifier {
                         
                     case .large:
                         Text(title)
-                            //.primaryTitle()
-                            .font(.system(.title, weight: .semibold))
-                            .foregroundColor(theme.primaryColorScheme.primaryText)
+                            .standardScreenTitle()
                     }
                     
                 case .close(let action):
@@ -102,7 +100,7 @@ private extension ToolbarNavigationModifier {
 
 // MARK: Buttons
 private extension ToolbarNavigationModifier {
-    func backButton(action: @MainActor @escaping () -> Void) -> some View {
+    func backButton(action: @escaping () -> Void) -> some View {
         Button {
             action()
         } label: {
@@ -111,7 +109,7 @@ private extension ToolbarNavigationModifier {
         }
     }
     
-    func closeButton(action: @MainActor @escaping () -> Void) -> some View {
+    func closeButton(action: @escaping () -> Void) -> some View {
         Button {
             action()
         } label: {
@@ -120,7 +118,7 @@ private extension ToolbarNavigationModifier {
         }
     }
     
-    func searchButton(action: @MainActor @escaping () -> Void) -> some View {
+    func searchButton(action: @escaping () -> Void) -> some View {
         Button {
             action()
         } label: {
@@ -129,7 +127,7 @@ private extension ToolbarNavigationModifier {
         }
     }
     
-    func filterButton(action: @MainActor @escaping () -> Void) -> some View {
+    func filterButton(action: @escaping () -> Void) -> some View {
         Button {
             action()
         } label: {

@@ -5,11 +5,13 @@
 //  Created by Wesley Luntsford on 6/26/24.
 //
 
+import DemocracySwiftUI
 import SharedSwiftUI
 import SwiftUI
 
 @MainActor
 struct PostHeaderView: View {
+    @Environment(\.theme) var theme: Theme
     @State private var viewModel: PostHeaderViewModel
     
     init(viewModel: PostHeaderViewModel) {
@@ -24,8 +26,8 @@ struct PostHeaderView: View {
 // MARK: - Subviews
 private extension PostHeaderView {
     var content: some View {
-        VStack(spacing: ViewConstants.elementSpacing) {
-            VStack(alignment: .leading, spacing: ViewConstants.elementSpacing) {
+        VStack(spacing: theme.sizeConstants.elementSpacing) {
+            VStack(alignment: .leading, spacing: theme.sizeConstants.elementSpacing) {
                 topLineMetadata
                 title
                 bodyText
@@ -35,23 +37,22 @@ private extension PostHeaderView {
                 tags
                 bottomButtonsRow
             }
-            .padding(.horizontal, ViewConstants.screenPadding)
-            CustomDivider()
+            .padding(.horizontal, theme.sizeConstants.screenPadding)
         }
     }
     
     var topLineMetadata: some View {
-        HStack(spacing: ViewConstants.smallElementSpacing) {
+        HStack(spacing: theme.sizeConstants.smallElementSpacing) {
             Text(viewModel.post.categoryName)
-                .tagModifier(backgroundColor: .otherRed)
+                .tagModifier(backgroundColor: theme.primaryColorScheme.primaryAccent)
             
-            VStack(alignment: .leading, spacing: ViewConstants.extraSmallElementSpacing) {
+            VStack(alignment: .leading, spacing: theme.sizeConstants.extraSmallElementSpacing) {
                 Text(viewModel.post.userId)
-                    .foregroundStyle(Color.secondaryText)
+                    .foregroundStyle(theme.primaryColorScheme.secondaryText)
                     .font(.footnote)
                 
                 Text("\(viewModel.date)")
-                    .foregroundStyle(Color.secondaryText)
+                    .foregroundStyle(theme.primaryColorScheme.secondaryText)
                     .fontWeight(.light)
                     .font(.caption2)
             }
@@ -61,21 +62,21 @@ private extension PostHeaderView {
     var tags: some View {
         TagsFlow(
             selectedItems: [],
-            items: viewModel.post.tags,
+            items: viewModel.selectableCommunityTags,
             tagAction: .none
         )
     }
     
     var title: some View {
         Text(viewModel.post.title)
-            .foregroundStyle(Color.primaryText)
+            .foregroundStyle(theme.primaryColorScheme.primaryText)
             .font(.title3)
             .fontWeight(.bold)
     }
     
     var bodyText: some View {
         Text(viewModel.post.body)
-            .foregroundStyle(Color.secondaryText)
+            .foregroundStyle(theme.primaryColorScheme.secondaryText)
             .font(.footnote)
     }
     
@@ -100,15 +101,16 @@ private extension PostHeaderView {
     var commentsCount: some View {
         Label(viewModel.commentsText, systemImage: SystemImage.bubble.rawValue)
             .font(.footnote)
-            .foregroundStyle(Color.secondaryText)
+            .foregroundStyle(theme.primaryColorScheme.secondaryText)
             .labelStyle(TightLabelStyle())
     }
 }
 
 // MARK: - Preview
 #Preview {
+    @Previewable @Environment(\.theme) var theme: Theme
     ZStack {
-        Color.primaryBackground.ignoresSafeArea()
+        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
         PostHeaderView(viewModel: .preview)
     }
 }

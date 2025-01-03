@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import SharedSwift
+import SharedSwiftUI
 
 @MainActor
 final class CreateCommunitySuccessViewModel: SuccessViewModel, Hashable {
     let secondaryText: String = "The community was created successfully!"
-    let imageType: AppImage = .systemImage(.checkmarkDiamondFill)
+    let imageType: SystemImage = .checkmarkDiamondFill
     let secondaryButtonInfo: ButtonInfo? = nil
     let closeAction: () -> Void
     private let communityName: String

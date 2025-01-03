@@ -5,12 +5,11 @@
 //  Created by Wesley Luntsford on 7/20/24.
 //
 
+import DemocracySwiftUI
 import Foundation
 import SharedResourcesClientAndServer
 
-final class VoteServiceMock: VoteService {
-
-}
+final class VoteServiceMock: VoteService {}
 
 // MARK: - Methods
 extension VoteServiceMock {

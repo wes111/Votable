@@ -8,6 +8,8 @@
 import Factory
 import Foundation
 import SharedResourcesClientAndServer
+import SharedSwiftUI
+import DemocracySwiftUI
 
 // The InputFlowViewModel for creating new Post objects.
 @MainActor @Observable

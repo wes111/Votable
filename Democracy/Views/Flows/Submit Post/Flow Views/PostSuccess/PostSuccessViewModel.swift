@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import SharedSwift
+import SharedSwiftUI
 
 final class PostSuccessViewModel: SuccessViewModel, Hashable {
     let closeAction: () -> Void
-    let imageType: AppImage = .systemImage(.checkmarkDiamondFill)
+    let imageType = SystemImage.checkmarkDiamondFill
     let secondaryButtonInfo: ButtonInfo? = nil
     let primaryText: String = "Your post has been submitted!"
     let secondaryText: String =  """

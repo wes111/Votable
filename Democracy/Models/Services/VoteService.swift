@@ -7,28 +7,8 @@
 
 import Factory
 import Foundation
+import DemocracySwiftUI
 import SharedResourcesClientAndServer
-
-// An object that can be voted on, e.g. a `Comment` or a `Post`.
-protocol Votable: AnyObject {
-    associatedtype Vote: VoteProtocol
-    
-    var id: String { get }
-    var userVote: Vote? { get set }
-    var upVoteCount: Int { get set }
-    var downVoteCount: Int { get set }
-}
-
-// A vote on a `Votable` object.
-protocol VoteProtocol {
-    var id: String { get }
-    var creationDate: Date { get }
-    var itemId: String { get } // The id of the `Votable` object.
-    var userId: String { get }
-    var vote: VoteType? { get set }
-    
-    static func createTempVote() -> Self
-}
 
 enum VoteServiceError: Error {
     case unhandledVotable

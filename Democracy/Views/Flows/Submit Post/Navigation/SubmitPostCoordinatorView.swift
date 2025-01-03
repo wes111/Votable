@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SharedSwiftUI
 
 struct SubmitPostCoordinatorView: View {
     @State private var coordinator: SubmitPostCoordinator

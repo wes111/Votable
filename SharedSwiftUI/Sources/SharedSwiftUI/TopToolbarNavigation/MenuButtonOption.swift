@@ -9,9 +9,9 @@ import SwiftUI
 
 public struct MenuButtonOption: Identifiable {
     public let title: String
-    public let action: @MainActor () -> Void
+    public let action: () -> Void
     
-    public init(title: String, action: @MainActor @escaping () -> Void) {
+    public init(title: String, action: @escaping () -> Void) {
         self.title = title
         self.action = action
     }

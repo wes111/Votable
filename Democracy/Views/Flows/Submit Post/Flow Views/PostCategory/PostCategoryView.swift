@@ -5,7 +5,7 @@
 //  Created by Wesley Luntsford on 12/30/23.
 //
 
-import SharedResourcesClientAndServer
+import DemocracySwiftUI
 import SwiftUI
 
 struct PostCategoryView: View {

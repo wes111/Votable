@@ -5,9 +5,10 @@
 //  Created by Wesley Luntsford on 11/30/24.
 //
 
+import DemocracySwiftUI
 import Factory
 import Foundation
-import SharedResourcesClientAndServer
+import SharedSwift
 
 @MainActor @Observable
 final class AccountUsernameViewModel: TextInputFlowViewModel {

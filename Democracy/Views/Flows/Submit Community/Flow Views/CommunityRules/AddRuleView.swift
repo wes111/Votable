@@ -7,7 +7,7 @@
 
 import SharedSwiftUI
 import SwiftUI
-import SharedResourcesClientAndServer
+import DemocracySwiftUI
 
 // Text fields of the AddRuleView
 enum AddRuleField: Hashable {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 @MainActor
-struct TappableListItem: View {
+public struct TappableListItem: View {
     @Environment(\.theme) var theme: Theme
     @ScaledMetric(relativeTo: .title3) var imageSize = 25.0
     let title: String
@@ -16,14 +16,19 @@ struct TappableListItem: View {
     let image: SystemImage?
     let tapAction: () -> Void
     
-    init(title: String, subtitle: String, image: SystemImage? = nil, tapAction: @escaping () -> Void) {
+    public init(
+        title: String,
+        subtitle: String,
+        image: SystemImage? = nil,
+        tapAction: @escaping () -> Void
+    ) {
         self.title = title
         self.subtitle = subtitle
         self.image = image
         self.tapAction = tapAction
     }
     
-    var body: some View {
+    public var body: some View {
         Button {
             tapAction()
         } label: {

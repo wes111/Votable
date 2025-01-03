@@ -5,8 +5,9 @@
 //  Created by Wesley Luntsford on 12/17/23.
 //
 
+import DemocracySwiftUI
 import SwiftUI
-import SharedResourcesClientAndServer
+import SharedSwiftUI
 
 @MainActor
 struct PostPrimaryLinkView: View {

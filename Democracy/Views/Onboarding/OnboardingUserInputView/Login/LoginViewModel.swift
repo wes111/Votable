@@ -8,6 +8,7 @@
 import Factory
 import Foundation
 import SharedResourcesClientAndServer
+import SharedSwiftUI
 
 enum LoginAlert: AlertModelProtocol {
     case loginError

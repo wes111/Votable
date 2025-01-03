@@ -5,8 +5,10 @@
 //  Created by Wesley Luntsford on 12/4/23.
 //
 
+import DemocracySwiftUI
 import SwiftUI
-import SharedResourcesClientAndServer
+import SharedSwiftUI
+import SharedSwift
 
 @MainActor
 struct AccountPasswordView: View {

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SharedResourcesClientAndServer
+import DemocracySwiftUI
 
 @MainActor
 struct PostBodyView: View {

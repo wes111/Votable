@@ -7,6 +7,7 @@
 
 import Foundation
 import SharedResourcesClientAndServer
+import SharedSwiftUI
 
 @MainActor
 protocol SubmitPostCoordinatorParent: AnyObject {

@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-import SharedResourcesClientAndServer
+import DemocracySwiftUI
+import SharedSwiftUI
 
-@MainActor
 struct AccountUsernameView: View {
     @State var viewModel: AccountUsernameViewModel
     @FocusState private var focusedField: AccountFlow?

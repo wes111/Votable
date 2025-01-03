@@ -5,8 +5,9 @@
 //  Created by Wesley Luntsford on 3/10/24.
 //
 
+import DemocracySwiftUI
 import Foundation
-import SharedResourcesClientAndServer
+import SharedSwiftUI
 
 enum AccountFlow: Int, UserInputFlow {
     case username = 0

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SharedSwiftUI
 
 @MainActor @Observable
 final class EventsTabCoordinatorViewModel {

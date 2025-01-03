@@ -6,5 +6,6 @@
 //
 
 import SharedResourcesClientAndServer
+import SharedSwiftUI
 
 extension CandidateTag: SelectableItem {}

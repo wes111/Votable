@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import SharedSwift
+import SharedSwiftUI
 
 final class CreateAccountSuccessViewModel: SuccessViewModel {
     
     let secondaryText: String = "Your account was created successfully!"
-    let imageType: AppImage = .customImage(.bmw)
+    let imageType: SystemImage = .arrowRight
     let closeAction: () -> Void
     let continueAction: () -> Void
     let username: String

@@ -5,6 +5,7 @@
 //  Created by Wesley Luntsford on 8/16/24.
 //
 
+import DemocracySwiftUI
 import SwiftUI
 import SharedResourcesClientAndServer
 import SharedSwiftUI

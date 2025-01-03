@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-import SharedResourcesClientAndServer
+import SharedSwiftUI
+import DemocracySwiftUI
 
 struct CommunityTagsView: View {
     @State var viewModel: CommunityTagsViewModel
