@@ -24,7 +24,8 @@ struct PostView: View {
             .toolbarNavigation(
                 leadingContent: viewModel.leadingContent,
                 centerContent: viewModel.centerContent,
-                trailingContent: viewModel.trailingContent
+                trailingContent: viewModel.trailingContent,
+                theme: theme
             )
             .alertableModifier(alertModel: $viewModel.alertModel)
             .onChange(of: viewModel.replyingToComment) { _, newValue in

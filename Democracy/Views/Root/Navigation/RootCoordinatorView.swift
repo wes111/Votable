@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SharedSwiftUI
 
 struct RootCoordinatorView: View {
     @State private var viewModel: RootCoordinator
+    @Environment(\.theme) var theme: Theme
     
     init(viewModel: RootCoordinator) {
         self.viewModel = viewModel
@@ -19,7 +21,7 @@ struct RootCoordinatorView: View {
             if viewModel.loginStatus == .loggedOut {
                 LoginView(viewModel: viewModel.loginViewModel())
             } else {
-                MainTabView(viewModel: viewModel.mainTabViewModel)
+                MainTabView(viewModel: viewModel.mainTabViewModel, theme: theme)
             }
         }
         .popover(isPresented: $viewModel.isShowingOnboardingFlow) {

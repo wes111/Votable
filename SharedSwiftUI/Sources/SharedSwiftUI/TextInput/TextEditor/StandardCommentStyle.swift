@@ -33,7 +33,7 @@ public extension TextEditor {
                 TextEditor(text: .constant(placeHolder))
                     .font(.system(.body, weight: .regular))
                     .foregroundStyle(theme.primaryColorScheme.primaryText)
-                    .padding(TextInputPadding.smallTextInput.value)
+                    .padding(theme.sizeConstants.textInputPadding(.smallTextInput))
                     .clipShape(RoundedRectangle(cornerRadius: theme.sizeConstants.cornerRadius, style: .circular))
                     .disabled(true)
                     .standardCommentTextEditor()

@@ -10,7 +10,7 @@ import Foundation
 @Observable
 open class Node<Value> {
     public var value: Value
-    public var children: [Node]? // This needs to be optional for SwiftUI's `OutlineGroup`.
+    public var children: [Node]? // Note: This needs to be optional for SwiftUI's `OutlineGroup`.
     public weak var parent: Node?
     
     public init(value: Value) {

@@ -12,7 +12,7 @@ import SharedResourcesClientAndServer
 extension Appwrite.User {
     
     func toUser() -> SharedResourcesClientAndServer.User {
-        let formatter = ISO8601DateFormatter.sharedWithFractionalSeconds
+        let formatter = DateFormatter.sharedWithFractionalSeconds
         
         return .init(
             accessedAt: formatter.date(from: accessedAt),

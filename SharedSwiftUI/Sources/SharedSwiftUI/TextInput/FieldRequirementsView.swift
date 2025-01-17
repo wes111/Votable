@@ -22,7 +22,10 @@ public struct FieldRequirementsView<Validator: InputValidator>: View {
         VStack(alignment: .leading, spacing: theme.sizeConstants.extraSmallElementSpacing) {
             ForEach(Validator.validationRules, id: \.self) { rule in
                 let status = status(for: rule)
-                requirementLabel(text: rule.description, color: status.color, systemImage: status.systemImage.rawValue)
+                requirementLabel(
+                    text: rule.description,
+                    color: theme.primaryColorScheme.inputValidationStatusColor(status),
+                    systemImage: status.systemImage.rawValue)
             }
             .foregroundColor(theme.primaryColorScheme.tertiaryText)
         }

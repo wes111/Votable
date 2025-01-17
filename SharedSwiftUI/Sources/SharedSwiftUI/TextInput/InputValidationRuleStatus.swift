@@ -23,14 +23,4 @@ public enum InputValidationRuleStatus {
         case .satisfied: .checkmarkCircleFill
         }
     }
-    
-    var color: Color {
-        @Environment(\.theme) var theme: Theme
-        
-        return switch self {
-        case .incomplete: theme.primaryColorScheme.primaryText
-        case .error: .yellow
-        case .satisfied: .green
-        }
-    }
 }

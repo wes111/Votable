@@ -33,7 +33,8 @@ struct CommunityCandidateView: View {
         primaryContent
             .toolbarNavigation(
                 leadingContent: topBarLeadingContent,
-                centerContent: topBarCenterContent
+                centerContent: topBarCenterContent,
+                theme: theme
             )
     }
 }

@@ -47,7 +47,7 @@ private extension AddResourceView {
                             set: { viewModel.category = $0.resourceCategory }
                         )
                     )
-                    .titledElement(title: "Category")
+                    .titledElement(title: "Category", theme: theme)
                     
                     titleField
                     linkField
@@ -92,7 +92,7 @@ private extension AddResourceView {
             .onSubmit {
                 focusedField = .link
             }
-            .titledElement(title: "Add a Title for the Resource")
+            .titledElement(title: "Add a Title for the Resource", theme: theme)
     }
     
     var linkField: some View {
@@ -105,7 +105,7 @@ private extension AddResourceView {
             .onSubmit {
                 focusedField = .description
             }
-            .titledElement(title: "Add a Link for the Resource")
+            .titledElement(title: "Add a Link for the Resource", theme: theme)
     }
     
     var descriptionField: some View {
@@ -120,7 +120,7 @@ private extension AddResourceView {
                 focusedField = nil
                 viewModel.addResource()
             }
-            .titledElement(title: "Add a Description for the Resource")
+            .titledElement(title: "Add a Description for the Resource", theme: theme)
     }
     
     var viewTitle: String {

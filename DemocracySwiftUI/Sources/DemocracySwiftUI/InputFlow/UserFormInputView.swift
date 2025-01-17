@@ -33,7 +33,8 @@ public struct UserFormInputView<FormContent: View>: View {
         NavigationView { // Remove if this view needs navigation beyond closing.
             primaryContent
                 .toolbarNavigation(
-                    trailingContent: [.close(closeAction)]
+                    trailingContent: [.close(closeAction)],
+                    theme: theme
                 )
                 .background(theme.primaryColorScheme.primaryBackground.ignoresSafeArea())
                 .alert(item: $alertModel) { alert in

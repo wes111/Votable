@@ -35,7 +35,7 @@ public struct SuccessView<ViewModel: SuccessViewModel>: View {
         }
         .padding(theme.sizeConstants.screenPadding)
         .background(theme.primaryColorScheme.primaryBackground, ignoresSafeAreaEdges: .all)
-        .toolbarNavigation(trailingContent: [.close(viewModel.closeAction)])
+        .toolbarNavigation(trailingContent: [.close(viewModel.closeAction)], theme: theme)
     }
     
     // MARK: - Subviews

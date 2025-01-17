@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SharedResourcesClientAndServer
 
 public struct ExpandableTextView: View {
     @Environment(\.theme) var theme: Theme
@@ -47,8 +46,8 @@ public struct ExpandableTextView: View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    ExpandableTextView(text: Candidate.preview.summary)
-        .background(theme.primaryColorScheme.primaryBackground, ignoresSafeAreaEdges: .all)
-}
+//#Preview {
+//    @Previewable @Environment(\.theme) var theme: Theme
+//    ExpandableTextView(text: Candidate.preview.summary)
+//        .background(theme.primaryColorScheme.primaryBackground, ignoresSafeAreaEdges: .all)
+//}

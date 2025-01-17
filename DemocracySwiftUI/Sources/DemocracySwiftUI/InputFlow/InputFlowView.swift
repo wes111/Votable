@@ -24,7 +24,8 @@ public struct InputFlowView<ViewModel:  InputFlowCoordinatorViewModel, FlowConte
         primaryContent
             .toolbarNavigation(
                 leadingContent: viewModel.leadingButtons,
-                trailingContent: viewModel.trailingButtons
+                trailingContent: viewModel.trailingButtons,
+                theme: theme
             )
             //.task { viewModel.setUserInput() }
     }
@@ -50,7 +51,7 @@ private extension InputFlowView {
                         .standardScreenTitle()
                     
                     content
-                        .titledElement(title: viewModel.viewSubtitle)
+                        .titledElement(title: viewModel.viewSubtitle, theme: theme)
                 }
                 .padding(theme.sizeConstants.screenPadding)
             }

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SharedResourcesClientAndServer
 
 public struct SnappingHorizontalScrollView<T: Hashable, Content: View>: View {
     @Environment(\.theme) var theme: Theme
@@ -49,20 +48,20 @@ public struct SnappingHorizontalScrollView<T: Hashable, Content: View>: View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        SnappingHorizontalScrollView(scrollContent: Community.preview.rules) { rule in
-            Text(rule.title)
-//            MenuCard(
-//                title: rule.title,
-//                description: rule.description
-//            ) {
-//                Button("Delete") { }
-//                Button("Edit") { }
-//            }
-        }
-    }
-}
+//#Preview {
+//    @Previewable @Environment(\.theme) var theme: Theme
+//    
+//    ZStack {
+//        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
+//        SnappingHorizontalScrollView(scrollContent: Community.preview.rules) { rule in
+//            Text(rule.title)
+////            MenuCard(
+////                title: rule.title,
+////                description: rule.description
+////            ) {
+////                Button("Delete") { }
+////                Button("Edit") { }
+////            }
+//        }
+//    }
+//}

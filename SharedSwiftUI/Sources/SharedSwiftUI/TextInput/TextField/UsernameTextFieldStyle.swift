@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SharedResourcesClientAndServer
 
 struct UsernameTextFieldStyle<T: Hashable>: ViewModifier {
     @Binding var username: String

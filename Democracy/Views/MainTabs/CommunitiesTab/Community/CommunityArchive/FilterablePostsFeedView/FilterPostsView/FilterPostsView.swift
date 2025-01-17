@@ -40,7 +40,8 @@ private extension FilterPostsView {
         .background(theme.primaryColorScheme.secondaryBackground, ignoresSafeAreaEdges: .all)
         .toolbarNavigation(
             leadingContent: leadingToolbarContent,
-            trailingContent: trailingToolbarContent
+            trailingContent: trailingToolbarContent,
+            theme: theme
         )
     }
     

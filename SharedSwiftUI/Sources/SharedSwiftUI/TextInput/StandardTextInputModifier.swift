@@ -7,22 +7,6 @@
 
 import SwiftUI
 
-public enum TextInputPadding {
-    case standardTextEditor
-    case standardTextField
-    case smallTextInput
-    
-    public var value: CGFloat {
-        @Environment(\.theme) var theme: Theme
-        
-        return switch self {
-        case .standardTextEditor: theme.sizeConstants.textEditorPadding
-        case .standardTextField: theme.sizeConstants.textFieldPadding
-        case .smallTextInput: theme.sizeConstants.smallTextInputPadding
-        }
-    }
-}
-
 /// Standard shared appearance of TextFields and TextEditors.
 struct StandardTextInputModifier<FocusedField: Hashable, Field: InputField>: ViewModifier {
     @Environment(\.theme) var theme: Theme
@@ -55,7 +39,7 @@ struct StandardTextInputModifier<FocusedField: Hashable, Field: InputField>: Vie
             .textInputAutocapitalization(.never)
             .autocorrectionDisabled()
             .foregroundStyle(theme.primaryColorScheme.primaryText)
-            .padding(fieldPadding.value)
+            .padding(theme.sizeConstants.textInputPadding(fieldPadding))
             .background(theme.primaryColorScheme.secondaryBackground)
             .clipShape(RoundedRectangle(cornerRadius: theme.sizeConstants.cornerRadius, style: .circular))
             .requirements(text: $text, validatorType: Field.Validator.self)

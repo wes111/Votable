@@ -23,7 +23,8 @@ struct FilterablePostsFeedView: View {
             .toolbarNavigation(
                 leadingContent: leadingBarContent,
                 centerContent: centerToolbarContent,
-                trailingContent: trailingToolbarContent
+                trailingContent: trailingToolbarContent,
+                theme: theme
             )
             .dynamicHeightSheet(isShowingSheet: $viewModel.isShowingFilters) {
                 FilterPostsView(viewModel: viewModel.filterPostsViewModel)

@@ -23,7 +23,8 @@ public struct SelectablePickerDetailNavigationView<Category: Selectable>: View {
             .background(theme.primaryColorScheme.secondaryBackground, ignoresSafeAreaEdges: .all)
             .toolbarNavigation(
                 leadingContent: leadingToolbarContent,
-                centerContent: centerToolbarContent
+                centerContent: centerToolbarContent,
+                theme: theme
             )
     }
 }

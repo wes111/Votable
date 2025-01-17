@@ -23,7 +23,7 @@ public struct Theme: Sendable {
     }
 }
 
-extension Theme {
+public extension Theme {
     static let defaultTheme: Theme = {
         let sizeConstants: SizeConstants = {
             .init(

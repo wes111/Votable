@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-public struct AlertableModifier: ViewModifier {
+fileprivate struct AlertableModifier: ViewModifier {
     @Binding var alertModel: NewAlertModel?
     
-    public init(alertModel: Binding<NewAlertModel?>) {
+    init(alertModel: Binding<NewAlertModel?>) {
         self._alertModel = alertModel
     }
     
-    public func body(content: Content) -> some View {
+    func body(content: Content) -> some View {
         content
             .alert(item: $alertModel) { alert in
                 Alert(
@@ -30,5 +30,14 @@ public struct AlertableModifier: ViewModifier {
 public extension View {
     func alertableModifier(alertModel: Binding<NewAlertModel?>) -> some View {
         modifier(AlertableModifier(alertModel: alertModel))
+    }
+}
+
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    Button {
+        print("sdff")
+    } label: {
+        Text("Press Me!")
     }
 }

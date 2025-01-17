@@ -33,6 +33,7 @@ struct StandardPreviewModifier: PreviewModifier {
             
             content
                 .padding(theme.sizeConstants.screenPadding)
+                .foregroundStyle(theme.primaryColorScheme.primaryText)
         }
     }
 }

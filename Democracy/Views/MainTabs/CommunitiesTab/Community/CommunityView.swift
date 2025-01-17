@@ -24,7 +24,8 @@ struct CommunityView: View {
             .toolbarNavigation(
                 leadingContent: viewModel.leadingContent,
                 centerContent: viewModel.centerContent,
-                trailingContent: viewModel.trailingContent
+                trailingContent: viewModel.trailingContent,
+                theme: theme
             )
     }
 }

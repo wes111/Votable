@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-@MainActor
 public struct ToolbarNavigationModifier: ViewModifier {
-    @Environment(\.theme) var theme: Theme
+    private let theme: Theme
     let leadingContent: [TopBarContent]
     let centerContent: [TopBarContent]
     let trailingContent: [TopBarContent]
@@ -17,11 +16,13 @@ public struct ToolbarNavigationModifier: ViewModifier {
     public init(
         leadingContent: [TopBarContent],
         centerContent: [TopBarContent],
-        trailingContent: [TopBarContent]
+        trailingContent: [TopBarContent],
+        theme: Theme
     ) {
         self.leadingContent = leadingContent
         self.centerContent = centerContent
         self.trailingContent = trailingContent
+        self.theme = theme
         
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
@@ -153,12 +154,14 @@ public extension View {
     func toolbarNavigation(
         leadingContent: [TopBarContent] = [],
         centerContent: [TopBarContent] = [],
-        trailingContent: [TopBarContent] = []
+        trailingContent: [TopBarContent] = [],
+        theme: Theme
     ) -> some View {
-        modifier(ToolbarNavigationModifier(
+        return modifier(ToolbarNavigationModifier(
             leadingContent: leadingContent,
             centerContent: centerContent,
-            trailingContent: trailingContent
+            trailingContent: trailingContent,
+            theme: theme
         ))
     }
 }

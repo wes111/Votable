@@ -9,6 +9,7 @@ import DemocracySwiftUI
 import Factory
 import Foundation
 import SharedResourcesClientAndServer
+import SharedSwift
 
 struct AccountCreationRequest {
     let username: Username

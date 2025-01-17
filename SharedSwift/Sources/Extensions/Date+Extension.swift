@@ -12,9 +12,14 @@ public extension Date {
         case ddMMMyyyy = "dd MMM yyyy"
     }
     
+    private static let sharedDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        return formatter
+    }()
+    
     func getFormattedDate(format: Date.Format) -> String {
-        let dateformat = DateFormatter() // TODO: This should be a static shared DateFormatter....
-        dateformat.dateFormat = format.rawValue
-        return dateformat.string(from: self)
+        Date.sharedDateFormatter.dateFormat = format.rawValue
+        return Date.sharedDateFormatter.string(from: self)
     }
 }

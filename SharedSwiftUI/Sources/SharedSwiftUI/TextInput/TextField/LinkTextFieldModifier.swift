@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SharedResourcesClientAndServer
 
 struct LinkTextFieldModifier<FocusedField: Hashable>: ViewModifier {
     @Binding var link: String

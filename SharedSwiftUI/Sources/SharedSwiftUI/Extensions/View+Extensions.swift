@@ -54,8 +54,7 @@ public extension View {
 }
 
 public extension View { // TODO: This should be a view modifier, not an extension of view...
-    func titledElement(title: String) -> some View {
-        @Environment(\.theme) var theme: Theme
+    func titledElement(title: String, theme: Theme) -> some View {
         return VStack(alignment: .leading, spacing: theme.sizeConstants.smallElementSpacing) {
             Text(title)
                 .font(.system(.body, weight: .light))

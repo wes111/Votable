@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Combine
-import SharedResourcesClientAndServer
+import SharedSwift
 
 struct PhoneTextFieldStyle<FocusedField: Hashable>: ViewModifier {
     @Binding var phone: String

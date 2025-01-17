@@ -62,7 +62,7 @@ extension AddRuleView {
             .onSubmit {
                 focusedField = .description
             }
-            .titledElement(title: "Add a Title for the Rule")
+            .titledElement(title: "Add a Title for the Rule", theme: theme)
     }
     
     var descriptionField: some View {
@@ -77,7 +77,7 @@ extension AddRuleView {
                 focusedField = nil
                 viewModel.addRule()
             }
-            .titledElement(title: "Add a Description for the Rule")
+            .titledElement(title: "Add a Description for the Rule", theme: theme)
     }
     
     var addRuleButton: some View {

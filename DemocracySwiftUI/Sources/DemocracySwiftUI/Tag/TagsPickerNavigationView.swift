@@ -35,7 +35,8 @@ public struct TagsPickerNavigationView: View {
             .background(theme.primaryColorScheme.secondaryBackground, ignoresSafeAreaEdges: .all)
             .toolbarNavigation(
                 leadingContent: leadingToolbarContent,
-                centerContent: centerToolbarContent
+                centerContent: centerToolbarContent,
+                theme: theme
             )
     }
 }

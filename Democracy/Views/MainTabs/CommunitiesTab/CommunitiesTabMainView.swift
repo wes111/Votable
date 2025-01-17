@@ -20,7 +20,11 @@ struct CommunitiesTabMainView: View {
     
     var body: some View {
         content
-            .toolbarNavigation(leadingContent: leadingButtons, trailingContent: trailingButtons)
+            .toolbarNavigation(
+                leadingContent: leadingButtons,
+                trailingContent: trailingButtons,
+                theme: theme
+            )
             .background(theme.primaryColorScheme.primaryBackground, ignoresSafeAreaEdges: .all)
             .progressModifier(isShowingProgess: $viewModel.isShowingProgress)
             .onChange(of: viewModel.category) { _, category in

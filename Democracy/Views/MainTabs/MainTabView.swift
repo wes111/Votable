@@ -24,10 +24,11 @@ final class MainTabViewModel: ObservableObject {
 
 struct MainTabView: View {
     @StateObject private var viewModel: MainTabViewModel
-    @Environment(\.theme) var theme: Theme
+    private let theme: Theme
     
-    init(viewModel: MainTabViewModel) {
+    init(viewModel: MainTabViewModel, theme: Theme) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.theme = theme
         
         // TODO: Below has been moved to ToolBarNavigationModifier, but the same logic is needed
         // for the bottom bar. Move out of this view and abstract away...
@@ -93,5 +94,5 @@ struct MainTabView: View {
 // MARK: - Preview
 #Preview {
     let viewModel = MainTabViewModel()
-    return MainTabView(viewModel: viewModel)
+    MainTabView(viewModel: viewModel, theme: Theme.defaultTheme)
 }
