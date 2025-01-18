@@ -66,7 +66,7 @@ private extension SelectablePickerDetailView {
 }
 
 // MARK: - Preview
-#Preview {
+#Preview(traits: .standardPreviewModifier) {
     @Previewable @State var mockSelectable: MockSelectable = .mockTwo
     
     SelectablePickerDetailView(

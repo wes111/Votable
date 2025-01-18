@@ -48,16 +48,13 @@ private extension AddCommentView {
     }
     
     var sendButton: some View {
-        AsyncButton(
-            action: {
-                await viewModel.submitComment()
-            },
-            label: {
-                Image(systemName: SystemImage.paperPlane.rawValue)
-                    .font(.title2)
-                    .foregroundStyle(theme.primaryColorScheme.secondaryText)
-            },
-            showProgressView: $viewModel.isLoading)
+        AsyncButton(showProgressView: $viewModel.isLoading) {
+            await viewModel.submitComment()
+        } label: {
+            Image(systemName: SystemImage.paperPlane.rawValue)
+                .font(.title2)
+                .foregroundStyle(theme.primaryColorScheme.secondaryText)
+        }
     }
     
     var header: some View {

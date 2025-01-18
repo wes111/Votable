@@ -76,18 +76,12 @@ public struct MenuCard<MenuContent: View>: View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        MenuCard(
-            title: "Menu Card Title",
-            description: "Menu Card Description"
-        ) {
-            EmptyView()
-        }
-        .frame(height: 250)
-        .padding()
+#Preview(traits: .standardPreviewModifier) {
+    MenuCard(
+        title: "Menu Card Title",
+        description: "Menu Card Description"
+    ) {
+        Button("Delete") {}
+        Button("Edit") {}
     }
 }

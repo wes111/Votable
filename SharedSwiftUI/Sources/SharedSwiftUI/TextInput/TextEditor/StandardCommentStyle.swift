@@ -20,6 +20,7 @@ public extension TextEditor {
         
         return ZStack(alignment: .topLeading) {
             self
+                .standardCommentTextEditor()
                 .standardTextInputAppearance(
                     text: text,
                     focusedField: focusedField,
@@ -27,7 +28,6 @@ public extension TextEditor {
                     fieldPadding: .smallTextInput,
                     fieldType: DefaultField.self // TODO: Is this correct?
                 )
-                .standardCommentTextEditor()
             
             if text.wrappedValue.isEmpty {
                 TextEditor(text: .constant(placeHolder))
@@ -43,7 +43,7 @@ public extension TextEditor {
 }
 
 // MARK: - Helper Modifier
-private struct StandardCommentTextEditorModifier: ViewModifier {
+fileprivate struct StandardCommentTextEditorModifier: ViewModifier {
     @Environment(\.theme) var theme: Theme
     func body(content: Content) -> some View {
         content
@@ -54,8 +54,22 @@ private struct StandardCommentTextEditorModifier: ViewModifier {
     }
 }
 
-private extension View {
+fileprivate extension View {
     func standardCommentTextEditor() -> some View {
         modifier(StandardCommentTextEditorModifier())
     }
+}
+
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = ""
+    @Previewable @FocusState var focusedField: MockSelectable?
+    
+    TextEditor(text: $text)
+        .standarCommentStyle(
+            focusedFieldValue: MockSelectable.mockTwo,
+            text: $text,
+            focusedField: $focusedField,
+            placeHolder: "Placeholder Text"
+        )
 }

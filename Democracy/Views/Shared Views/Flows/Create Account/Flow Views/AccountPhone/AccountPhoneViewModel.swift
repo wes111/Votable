@@ -14,6 +14,7 @@ final class AccountPhoneViewModel: TextInputFlowViewModel {
     let flowCoordinator: AccountInputFlowViewModel
     var text: String = ""
     let focusedField = AccountFlow.phone
+    var shouldPerformOnSubmit: Bool = false
     
     init(flowCoordinator: AccountInputFlowViewModel) {
         self.flowCoordinator = flowCoordinator

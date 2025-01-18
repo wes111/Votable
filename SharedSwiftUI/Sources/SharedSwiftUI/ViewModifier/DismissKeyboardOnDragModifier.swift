@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DismissKeyboardOnDragModifier: ViewModifier {
+fileprivate struct DismissKeyboardOnDragModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .gesture(DragGesture().onChanged { _ in
@@ -21,6 +21,7 @@ struct DismissKeyboardOnDragModifier: ViewModifier {
     }
 }
 
+// MARK: - View Extension
 public extension View {
     func dismissKeyboardOnDrag() -> some View {
         self.modifier(DismissKeyboardOnDragModifier())

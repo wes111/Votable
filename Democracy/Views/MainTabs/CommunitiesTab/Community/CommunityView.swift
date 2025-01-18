@@ -61,15 +61,11 @@ private extension CommunityView {
     }
     
     var joinLeaveButton: some View {
-        AsyncButton(
-            action: {
-                await viewModel.toggleCommunityMembership()
-            },
-            label: {
-                Text(viewModel.membershipButtonTitle)
-            },
-            showProgressView: $viewModel.isShowingProgress
-        )
+        AsyncButton(showProgressView: $viewModel.isShowingProgress) {
+            await viewModel.toggleCommunityMembership()
+        } label: {
+            Text(viewModel.membershipButtonTitle)
+        }
         .buttonStyle(SmallSecondaryButtonStyle())
         .disabled(false)
     }

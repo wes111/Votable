@@ -16,6 +16,7 @@ final class PostBodyViewModel: SubmittableTextEditorInputViewModelProtocol {
     let skipAction: SkipAction = .nonSkippable
     let focusedField = PostFlow.body
     var selectedTab: PostBodyTab = .editor
+    var shouldPerformOnSubmit: Bool = false
     
     init(flowViewModel: PostInputFlowViewModel) {
         self.flowCoordinator = flowViewModel

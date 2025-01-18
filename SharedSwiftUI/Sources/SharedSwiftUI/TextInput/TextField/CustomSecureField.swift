@@ -142,19 +142,14 @@ private extension CustomSecureField {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = "Password1234"
     @Previewable @FocusState var focusedField: MockSelectable?
     
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        
-        CustomSecureField(
-            secureText: .constant("Hello World"),
-            loginField: $focusedField,
-            isNewPassword: false,
-            field: .mockOne
-        )
-        .padding()
-    }
+    CustomSecureField(
+        secureText: $text,
+        loginField: $focusedField,
+        isNewPassword: false,
+        field: .mockOne
+    )
 }

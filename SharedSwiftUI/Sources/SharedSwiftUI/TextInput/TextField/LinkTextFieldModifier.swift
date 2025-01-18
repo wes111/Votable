@@ -42,21 +42,14 @@ public extension View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = "https://www.google.com"
     @Previewable @FocusState var focusedField: MockSelectable?
     
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        
-        TextField("Link", text: .constant("Link"),
-                  prompt: Text("Link").foregroundColor(theme.primaryColorScheme.tertiaryBackground)
-        )
+    TextField("Link", text: $text)
         .linkTextFieldStyle(
-            link: .constant("Link"),
+            link: $text,
             focusedField: $focusedField,
             focusedFieldValue: .mockFour
         )
-        .padding()
-    }
 }

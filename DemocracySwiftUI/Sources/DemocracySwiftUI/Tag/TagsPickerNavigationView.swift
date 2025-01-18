@@ -79,21 +79,16 @@ private extension TagsPickerNavigationView {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        NavigationStack {
-            TagsPickerNavigationView(
-                backAction: {
-                    return
-                },
-                toggleTagAction: { _ in
-                    return
-                },
-                availableTags: [],
-                selectedTags: [])
-        }
+#Preview(traits: .standardPreviewModifier) {
+    NavigationStack {
+        TagsPickerNavigationView(
+            backAction: {
+                return
+            },
+            toggleTagAction: { _ in
+                return
+            },
+            availableTags: [],
+            selectedTags: [])
     }
 }

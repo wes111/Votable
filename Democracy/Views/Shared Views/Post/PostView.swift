@@ -103,11 +103,11 @@ private extension PostView {
                 }
             }
             
-            AsyncButton(
-                action: { await viewModel.onTapLoadReplies(comment: comment)},
-                label: { Text(viewModel.loadButtonText(for: comment)) },
-                showProgressView: .constant(false)
-            )
+            AsyncButton(showProgressView: .constant(false)) {
+                await viewModel.onTapLoadReplies(comment: comment)
+            } label: {
+                Text(viewModel.loadButtonText(for: comment))
+            }
             .buttonStyle(TertiaryButtonStyle())
             .padding(.vertical, theme.sizeConstants.smallElementSpacing)
         }

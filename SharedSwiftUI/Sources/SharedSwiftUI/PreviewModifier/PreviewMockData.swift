@@ -24,7 +24,7 @@ import SwiftUI
 //    static var mockPreviewData: Self = .modifier(MockPreviewData())
 //}
 
-struct StandardPreviewModifier: PreviewModifier {
+fileprivate struct StandardPreviewModifier: PreviewModifier {
     func body(content: Content, context: Void) -> some View {
         @Environment(\.theme) var theme: Theme
         
@@ -38,7 +38,7 @@ struct StandardPreviewModifier: PreviewModifier {
     }
 }
 
-extension PreviewTrait where T == Preview.ViewTraits {
+public extension PreviewTrait where T == Preview.ViewTraits {
     static var standardPreviewModifier: Self = .modifier(StandardPreviewModifier())
 }
 

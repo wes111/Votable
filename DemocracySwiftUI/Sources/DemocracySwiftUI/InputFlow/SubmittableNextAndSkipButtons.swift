@@ -34,20 +34,18 @@ public struct SubmittableNextAndSkipButtons<ViewModel: InputFlowViewModel>: View
     }
     
     func skipButton(action: @escaping () async -> Void) -> some View {
-        AsyncButton(
-            action: action,
-            label: {
-                Label("Skip", systemImage: SystemImage.arrowRight.rawValue)
-                    .labelStyle(ReversedLabelStyle())
-            },
-            showProgressView: $viewModel.isShowingProgress
-        )
+        AsyncButton(showProgressView: $viewModel.isShowingProgress) {
+            await action()
+        } label: {
+            Label("Skip", systemImage: SystemImage.arrowRight.rawValue)
+                .labelStyle(ReversedLabelStyle())
+        }
         .disabled(viewModel.isShowingProgress)
         .buttonStyle(SecondaryButtonStyle())
     }
 }
 
 // MARK: - Preview
-#Preview {
+#Preview(traits: .standardPreviewModifier) {
     SubmittableNextAndSkipButtons(viewModel: MockSubmittableViewModel())
 }

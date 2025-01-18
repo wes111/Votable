@@ -60,3 +60,11 @@ struct CategoryView<T: SelectableItem>: View {
         }
     }
 }
+
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    CategoryView(
+        category: SelectableItemMock.mock,
+        tapAction: .none
+    )
+}

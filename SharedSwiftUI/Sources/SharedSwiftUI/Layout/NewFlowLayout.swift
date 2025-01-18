@@ -142,15 +142,22 @@ private extension VerticalAlignment {
 }
 
 // MARK: - Preview
-#Preview {
-    // TODO: Use a better (dynamic tags array) example here.
-    let tags = ["Cat", "Dog", "Turkey", "Goose", "Elephant", "Monkey", "Lion"]
-    return NewFlowLayout(alignment: .leading) {
-        ForEach(tags, id: \.self) { tag in
-            Text(tag)
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @Environment(\.theme) var theme: Theme
+    
+    ScrollView {
+        NewFlowLayout(alignment: .leading) {
+            ForEach(String.mockArray, id: \.self) { tag in
+                Text(tag)
+                    .padding(theme.sizeConstants.smallInnerBorder)
+                    .background(theme.primaryColorScheme.tertiaryBackground)
+                    .cornerRadius(theme.sizeConstants.cornerRadius)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: theme.sizeConstants.cornerRadius)
+                            .stroke(theme.primaryColorScheme.secondaryText)
+                    )
+            }
         }
     }
-    .frame(maxWidth: .infinity)
-    .border(Color.blue)
-    .padding(10)
+    .padding(theme.sizeConstants.screenPadding)
 }

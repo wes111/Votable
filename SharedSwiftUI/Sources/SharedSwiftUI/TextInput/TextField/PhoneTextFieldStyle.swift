@@ -48,20 +48,14 @@ public extension View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = "123-456-7890"
     @Previewable @FocusState var focusedField: MockSelectable?
     
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        
-        TextField("Phone", text: .constant("Phone"),
-                  prompt: Text("Phone").foregroundColor(theme.primaryColorScheme.tertiaryBackground)
-        )
+    TextField("Phone", text: $text)
         .phoneTextFieldStyle(
-            phone: .constant("123-456-7890"),
+            phone: $text,
             focusedField: $focusedField,
             focusedFieldValue: .mockTwo
         )
-    }
 }

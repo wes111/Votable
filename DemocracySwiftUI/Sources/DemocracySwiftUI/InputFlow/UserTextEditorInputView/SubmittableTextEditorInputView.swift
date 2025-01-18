@@ -86,12 +86,13 @@ private extension SubmittableTextEditorInputView {
 }
 
 // MARK: - Preview
-#Preview {
+#Preview(traits: .standardPreviewModifier) {
     @Previewable @FocusState var focusedField: MockSubmittableViewModel.CoordinatorViewModel.Flow?
     
-    NavigationStack {
-        SubmittableTextEditorInputView(viewModel: MockSubmittableViewModel(), focusedField: $focusedField) {
-            EmptyView()
-        }
+    SubmittableTextEditorInputView(
+        viewModel: MockSubmittableViewModel(),
+        focusedField: $focusedField
+    ) {
+        EmptyView()
     }
 }

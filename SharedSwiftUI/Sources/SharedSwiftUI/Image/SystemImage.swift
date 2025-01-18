@@ -1,5 +1,9 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+//
+//  SystemImage.swift
+//  Votable
+//
+//  Created by Wesley Luntsford on 11/30/23.
+//
 
 import SwiftUI
 

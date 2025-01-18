@@ -5,6 +5,7 @@
 //  Created by Wesley Luntsford on 6/18/24.
 //
 
+import SharedSwift
 import SwiftUI
 
 // MARK: - https://stackoverflow.com/questions/62832809/list-or-outlinegroup-expanded-by-default-in-swiftui
@@ -49,8 +50,12 @@ public struct NodeOutlineGroup<Node, Content>: View where Node: Hashable, Node: 
 }
 
 // MARK: - Preview
-// TODO: ...
-#Preview {
-    EmptyView()
-    // NodeOutlineGroup()
+#Preview(traits: .standardPreviewModifier) {
+    ScrollView {
+        ForEach(MockNode.mockArray) { node in
+            NodeOutlineGroup(node: node, childKeyPath: \.childMockNodes ) { childNode in
+                Text(childNode.value)
+            }
+        }
+    }
 }

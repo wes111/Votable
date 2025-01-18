@@ -34,7 +34,7 @@ public struct ExpandableTextView: View {
                 isExpanded.toggle()
             } label: {
                 Label {
-                    Text(isExpanded ? "Less" :"More")
+                    Text(isExpanded ? "Less" : "More")
                 } icon: {
                     Image(systemName: isExpanded ? SystemImage.chevronUp.rawValue : SystemImage.chevronDown.rawValue)
                 }
@@ -46,8 +46,6 @@ public struct ExpandableTextView: View {
 }
 
 // MARK: - Preview
-//#Preview {
-//    @Previewable @Environment(\.theme) var theme: Theme
-//    ExpandableTextView(text: Candidate.preview.summary)
-//        .background(theme.primaryColorScheme.primaryBackground, ignoresSafeAreaEdges: .all)
-//}
+#Preview(traits: .standardPreviewModifier) {
+    ExpandableTextView(text: String.mock)
+}

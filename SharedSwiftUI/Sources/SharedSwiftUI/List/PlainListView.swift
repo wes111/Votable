@@ -25,8 +25,8 @@ public struct PlainListView<ItemView: View, Item: Identifiable>: View {
     }
     
     public var body: some View {
-        List(items) { post in
-            content(post)
+        List(items) { item in
+            content(item)
                 .listRowInsets(.init(
                     top: 0,
                     leading: 0,
@@ -61,7 +61,7 @@ struct PlainListModifier: ViewModifier {
     }
 }
 
-// MARK: View Extension
+// MARK: - View Extension
 public extension View {
     func plainListModifier() -> some View {
         modifier(PlainListModifier())
@@ -69,14 +69,10 @@ public extension View {
 }
 
 // MARK: - Preview
-//#Preview {
-//    ZStack {
-//        Color.primaryBackground.ignoresSafeArea(.all)
-//        
-//        PlainListView(
-//            items: Post.previewArray.map { $0.toViewModel(coordinator: nil) },
-//            content: { post in
-//                PostCardView(viewModel: post)
-//            })
-//    }
-//}
+#Preview(traits: .standardPreviewModifier) {
+    PlainListView(
+        items: IdentifiableItem.mockArray,
+        content: { item in
+            Text(item.id.uuidString)
+        })
+}

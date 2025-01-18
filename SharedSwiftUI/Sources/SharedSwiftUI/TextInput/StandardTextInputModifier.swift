@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// Standard shared appearance of TextFields and TextEditors.
-struct StandardTextInputModifier<FocusedField: Hashable, Field: InputField>: ViewModifier {
+fileprivate struct StandardTextInputModifier<FocusedField: Hashable, Field: InputField>: ViewModifier {
     @Environment(\.theme) var theme: Theme
     @Binding var text: String
     @FocusState.Binding var focusedField: FocusedField?
@@ -70,4 +70,18 @@ public extension View {
             fieldType: fieldType
         ))
     }
+}
+
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @FocusState var focusedField: MockSelectable?
+    @Previewable @State var text: String = "Mock Text"
+    
+    TextEditor(text: $text)
+        .standardTextInputAppearance(
+            text: $text,
+            focusedField: $focusedField,
+            focusedFieldValue: MockSelectable.mockOne,
+            fieldType: DefaultField.self
+        )
 }

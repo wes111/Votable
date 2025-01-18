@@ -15,6 +15,7 @@ final class AccountPasswordViewModel: TextInputFlowViewModel {
     var text: String = ""
     let skipAction: SkipAction = .nonSkippable
     let focusedField = AccountFlow.password
+    var shouldPerformOnSubmit: Bool = false
     
     init(flowCoordinator: AccountInputFlowViewModel) {
         self.flowCoordinator = flowCoordinator

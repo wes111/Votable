@@ -64,8 +64,7 @@ private extension InputFlowView {
 #Preview {
     NavigationStack {
         InputFlowView(viewModel: MockInputFlowCoordinator()) {
-            Text("Hello World")
-            //PostTitleView(viewModel: .preview)
+            EmptyView()
         }
     }
 }

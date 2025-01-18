@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-public struct ButtonInfo {
-    public let title: String
-    public let action: () -> Void
-    
-    public init(title: String, action: @escaping () -> Void) {
-        self.title = title
-        self.action = action
-    }
-}
-
 // Generic success view.
 @MainActor
 public struct SuccessView<ViewModel: SuccessViewModel>: View {

@@ -74,7 +74,5 @@ private extension UserFormInputView {
 #Preview {
     UserFormInputView(title: "Form Input View", alertModel: .constant(nil)) {
         EmptyView()
-    } closeAction: {
-        return
-    }
+    } closeAction: {}
 }

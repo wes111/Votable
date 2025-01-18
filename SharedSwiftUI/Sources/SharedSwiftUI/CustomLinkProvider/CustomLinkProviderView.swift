@@ -119,19 +119,15 @@ private extension CustomLinkProviderView {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
+#Preview(traits: .standardPreviewModifier) {
+    
+    VStack(spacing: 25) {
+        CustomLinkProviderView(viewModel: .preview)
+            .frame(maxHeight: 100)
         
-        VStack(spacing: 25) {
-            CustomLinkProviderView(viewModel: .preview)
-                .frame(maxHeight: 100)
-            
-            CustomLinkProviderView(viewModel: .preview)
-                .frame(maxHeight: 150)
-            
-            CustomLinkProviderView(viewModel: .preview)
-        }
+        CustomLinkProviderView(viewModel: .preview)
+            .frame(maxHeight: 150)
+        
+        CustomLinkProviderView(viewModel: .preview)
     }
 }

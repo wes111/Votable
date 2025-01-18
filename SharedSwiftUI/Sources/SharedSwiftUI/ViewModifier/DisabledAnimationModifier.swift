@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct DisabledAnimationModifier: ViewModifier {
+fileprivate struct DisabledAnimationModifier: ViewModifier {
     @State private var isDisabledAnimated: Bool = true
     var isDisabled: Bool
     

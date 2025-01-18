@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StandardScreenTitleModifier: ViewModifier {
+fileprivate struct StandardScreenTitleModifier: ViewModifier {
     @Environment(\.theme) var theme: Theme
     
     func body(content: Content) -> some View {
@@ -25,12 +25,8 @@ public extension Text {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
+#Preview(traits: .standardPreviewModifier) {
     
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        Text("Hello World")
-            .standardScreenTitle()
-    }
+    Text("Hello World")
+        .standardScreenTitle()
 }

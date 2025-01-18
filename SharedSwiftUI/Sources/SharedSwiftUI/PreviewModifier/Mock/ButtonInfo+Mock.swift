@@ -7,6 +7,6 @@
 
 import Foundation
 
-extension ButtonInfo {
-    @MainActor static let preview = ButtonInfo(title: "Preview Button Info", action: {})
+public extension ButtonInfo {
+    static let preview = ButtonInfo(title: "Preview Button Info", action: {})
 }

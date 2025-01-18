@@ -20,7 +20,7 @@ public struct ReversedLabelStyle: LabelStyle {
 }
 
 // MARK: - Preview
-#Preview {
+#Preview(traits: .standardPreviewModifier) {
     Label("Label Title", systemImage: "chevron.right")
         .labelStyle(ReversedLabelStyle())
 }

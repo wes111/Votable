@@ -15,6 +15,7 @@ final class CommunityTaglineViewModel: TextInputFlowViewModel {
     var text: String = ""
     let skipAction: SkipAction = .nonSkippable
     let focusedField = CommunityFlow.tagline
+    var shouldPerformOnSubmit: Bool = false
     
     init(flowCoordinator: CommunityInputFlowViewModel) {
         self.flowCoordinator = flowCoordinator

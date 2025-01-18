@@ -15,6 +15,7 @@ final class AccountEmailViewModel: TextInputFlowViewModel {
     var text: String = ""
     let skipAction: SkipAction = .nonSkippable
     let focusedField = AccountFlow.email
+    var shouldPerformOnSubmit: Bool = false
     
     init(flowCoordinator: AccountInputFlowViewModel) {
         self.flowCoordinator = flowCoordinator

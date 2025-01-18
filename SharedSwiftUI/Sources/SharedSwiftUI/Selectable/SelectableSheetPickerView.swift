@@ -26,14 +26,10 @@ public struct SelectableSheetPickerView<T: Selectable>: View {
 }
 
 // MARK: - Preview
-#Preview {
+#Preview(traits: .standardPreviewModifier) {
     @Previewable @State var mockSelectable: MockSelectable = .mockOne
     @Previewable @Environment(\.theme) var theme: Theme
     
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        
-        SelectableSheetPickerView(selection: $mockSelectable)
-            .padding()
-    }
+    SelectableSheetPickerView(selection: $mockSelectable)
+        .padding()
 }

@@ -68,15 +68,10 @@ private extension VoteButtons {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        
-        VoteButtons(
-            didTapVoteButton: { _ in print("Did Tap Vote Button") },
-            upVoteCount: 5,
-            downVoteCount: 10
-        )
-    }
+#Preview(traits: .standardPreviewModifier) {
+    VoteButtons(
+        didTapVoteButton: { _ in },
+        upVoteCount: 5,
+        downVoteCount: 10
+    )
 }

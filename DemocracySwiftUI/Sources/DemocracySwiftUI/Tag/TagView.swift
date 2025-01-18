@@ -47,3 +47,8 @@ public struct TagView<T: SelectableItem>: View {
         return false
     }
 }
+
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    TagView(tag: SelectableItemMock.mock, tagAction: .none)
+}

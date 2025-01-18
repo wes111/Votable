@@ -16,6 +16,7 @@ final class CommunityDescriptionViewModel: SubmittableTextEditorInputViewModelPr
     let skipAction: SkipAction = .nonSkippable
     let focusedField = CommunityFlow.description
     var selectedTab: PostBodyTab = .editor
+    var shouldPerformOnSubmit: Bool = false
     
     init(flowCoordinator: CommunityInputFlowViewModel) {
         self.flowCoordinator = flowCoordinator

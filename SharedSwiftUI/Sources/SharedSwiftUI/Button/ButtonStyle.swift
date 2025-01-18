@@ -52,7 +52,7 @@ public struct SmallSecondaryButtonStyle: ButtonStyle {
                         theme.primaryColorScheme.tertiaryText,
                         style: StrokeStyle(lineWidth: 1)
                     )
-             )
+            )
             .contentShape(Capsule())
             .opacity(configuration.isPressed || !isEnabled ? 0.5 : 1.0)
     }
@@ -76,7 +76,7 @@ public struct SecondaryButtonStyle: ButtonStyle {
                         theme.primaryColorScheme.tertiaryText,
                         style: StrokeStyle(lineWidth: 1)
                     )
-             )
+            )
             .contentShape(Capsule())
             .opacity(configuration.isPressed ? 0.3 : 1.0)
     }
@@ -146,53 +146,47 @@ public struct TertiaryButtonStyle: ButtonStyle {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
+#Preview(traits: .standardPreviewModifier) {
     
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        
-        VStack(spacing: 25) {
-            Button {
-                print()
-            } label: {
-                Text("Submit")
-            }
-            .buttonStyle(PrimaryButtonStyle())
-            
-            Button {
-                print()
-            } label: {
-                Text("Submit")
-            }
-            .buttonStyle(SecondaryButtonStyle())
-            
-            Button {
-                print()
-            } label: {
-                Text("Join")
-            }
-            .buttonStyle(SmallSecondaryButtonStyle())
-            
-            Button {
-                print()
-            } label: {
-                Text("Join")
-            }
-            .buttonStyle(ExtraSmallSecondaryButtonStyle())
-            
-            Button(action: {}) {
-                Image(systemName: SystemImage.plus.rawValue)
-            }
-            .buttonStyle(SmallImageButtonStyle())
-            
-            Button {
-                print()
-            } label: {
-                Text("Load Replies")
-            }
-            .buttonStyle(TertiaryButtonStyle())
+    VStack(spacing: 25) {
+        Button {
+            print()
+        } label: {
+            Text("Submit")
         }
+        .buttonStyle(PrimaryButtonStyle())
+        
+        Button {
+            print()
+        } label: {
+            Text("Submit")
+        }
+        .buttonStyle(SecondaryButtonStyle())
+        
+        Button {
+            print()
+        } label: {
+            Text("Join")
+        }
+        .buttonStyle(SmallSecondaryButtonStyle())
+        
+        Button {
+            print()
+        } label: {
+            Text("Join")
+        }
+        .buttonStyle(ExtraSmallSecondaryButtonStyle())
+        
+        Button(action: {}) {
+            Image(systemName: SystemImage.plus.rawValue)
+        }
+        .buttonStyle(SmallImageButtonStyle())
+        
+        Button {
+            print()
+        } label: {
+            Text("Load Replies")
+        }
+        .buttonStyle(TertiaryButtonStyle())
     }
-    .ignoresSafeArea()
 }

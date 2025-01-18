@@ -25,5 +25,4 @@ public struct WebView: UIViewRepresentable {
         let request = URLRequest(url: url)
         webView.load(request)
     }
-
 }

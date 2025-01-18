@@ -45,6 +45,7 @@ final class LoginViewModel: ObservableObject {
     @Published var email = ""
     @Published var alert: NewAlertModel?
     @Published var isShowingProgress = false
+    @Published var shouldLogin: Bool = false
     
     init(coordinator: LoginCoordinatorDelegate) {
         self.coordinator = coordinator
@@ -67,6 +68,7 @@ extension LoginViewModel {
     //@StorageActor
     func login() async {
         do {
+            isShowingProgress = true
             try await Task.sleep(nanoseconds: 2_000_000_000)
             let validatedEmail = try Email(value: email)
             let validatedPassword = try Password(value: password)
@@ -75,5 +77,7 @@ extension LoginViewModel {
             print(error.localizedDescription)
             alert = LoginAlert.loginError.toNewAlertModel()
         }
+        isShowingProgress = false
+        shouldLogin = false
     }
 }

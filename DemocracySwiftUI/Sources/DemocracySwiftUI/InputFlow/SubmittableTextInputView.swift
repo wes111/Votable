@@ -30,35 +30,38 @@ public struct SubmittableTextInputView<ViewModel: TextInputFlowViewModel, Conten
             SubmittableNextAndSkipButtons(viewModel: viewModel)
         }
         .onSubmit {
-            performAsnycTask(
-                action: {
-                    viewModel.text = viewModel.text.trimmingCharacters(in: .whitespacesAndNewlines)
-                    await viewModel.onSubmit()
-                },
-                isShowingProgress: $viewModel.isShowingProgress
-            )
+            viewModel.shouldPerformOnSubmit = true
         }
         .onAppear {
             focusedField = viewModel.focusedField
             viewModel.setUserInput()
         }
         .dismissKeyboardOnDrag()
+        .task(id: viewModel.shouldPerformOnSubmit) {
+            guard viewModel.shouldPerformOnSubmit else {
+                return
+            }
+            viewModel.isShowingProgress = true
+            viewModel.text = viewModel.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            await viewModel.onSubmit()
+            viewModel.isShowingProgress = false
+            viewModel.shouldPerformOnSubmit = false
+        }
     }
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = "Mock Text"
     @Previewable @FocusState var focusedField: MockSubmittableViewModel.CoordinatorViewModel.Flow?
     
     SubmittableTextInputView(viewModel: MockSubmittableViewModel(), focusedField: $focusedField) {
         TextField(
             "Field Title",
-            text: .constant("Hello World"),
-            prompt: Text("Field Title").foregroundColor(theme.primaryColorScheme.tertiaryBackground)
+            text: $text
         )
         .emailTextFieldStyle(
-            email: .constant("Email Text"),
+            email: $text,
             focusedField: $focusedField,
             field: .mockOne
         )

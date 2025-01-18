@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 public struct TappableListItem: View {
     @Environment(\.theme) var theme: Theme
     @ScaledMetric(relativeTo: .title3) var imageSize = 25.0
@@ -65,17 +64,12 @@ public struct TappableListItem: View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        
-        TappableListItem(
-            title: "Tappable Title",
-            subtitle: "Tappable Subtitle",
-            image: .arrowRight,
-            tapAction: {}
-        )
-        .padding()
-    }
+#Preview (traits: .standardPreviewModifier){
+    
+    TappableListItem(
+        title: "Tappable Title",
+        subtitle: "Tappable Subtitle",
+        image: .arrowRight,
+        tapAction: {}
+    )
 }

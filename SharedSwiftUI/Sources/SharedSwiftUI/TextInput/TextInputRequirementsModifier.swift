@@ -19,7 +19,7 @@ public extension View {
 }
 
 // Adds requirements directly below a text input element (field or editor).
-struct TextInputRequirementsModifier<Validator: InputValidator>: ViewModifier {
+fileprivate struct TextInputRequirementsModifier<Validator: InputValidator>: ViewModifier {
     @Binding var text: String
     @State private var textErrors: [InputValidationRule] = []
     
@@ -43,22 +43,18 @@ struct TextInputRequirementsModifier<Validator: InputValidator>: ViewModifier {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = "Mock Text"
     @Previewable @FocusState var focusedField: MockSelectable?
     
-    ZStack {
-        theme.primaryColorScheme.tertiaryBackground.ignoresSafeArea()
-        
-        TextField("TextField", text: .constant("Hello World"))
-            .emailTextFieldStyle(
-                email: .constant("Hello World"),
-                focusedField: $focusedField,
-                field: MockSelectable.mockFour
-            )
-            .requirements(
-                text: .constant("Hello World!"),
-                validatorType: LinkInputValidator.self
-            )
-    }
+    TextField("TextField", text: $text)
+        .emailTextFieldStyle(
+            email: $text,
+            focusedField: $focusedField,
+            field: MockSelectable.mockFour
+        )
+        .requirements(
+            text: $text,
+            validatorType: LinkInputValidator.self
+        )
 }

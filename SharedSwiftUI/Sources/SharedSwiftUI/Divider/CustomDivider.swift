@@ -19,6 +19,6 @@ public struct CustomDivider: View {
 }
 
 // MARK: - Preview
-#Preview {
+#Preview(traits: .standardPreviewModifier) {
     CustomDivider()
 }

@@ -14,7 +14,7 @@ public extension View {
     }
 }
 
-public struct TrimWhiteSpaceCharactersModifier: ViewModifier {
+fileprivate struct TrimWhiteSpaceCharactersModifier: ViewModifier {
     @Binding var text: String
     
     public init(text: Binding<String>) {
@@ -27,4 +27,12 @@ public struct TrimWhiteSpaceCharactersModifier: ViewModifier {
                 text = text.trimmingCharacters(in: .whitespacesAndNewlines)
             })
     }
+}
+
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = "Mock Text"
+    
+    TextField("TextField", text: $text)
+        .trimWhiteSpace(text: $text)
 }

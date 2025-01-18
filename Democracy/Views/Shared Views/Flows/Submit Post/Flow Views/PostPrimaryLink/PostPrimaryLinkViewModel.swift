@@ -14,6 +14,7 @@ final class PostPrimaryLinkViewModel: TextInputFlowViewModel {
     let flowCoordinator: PostInputFlowViewModel
     var text: String = ""
     let focusedField = PostFlow.primaryLink
+    var shouldPerformOnSubmit: Bool = false
     
     init(flowCoordinator: PostInputFlowViewModel) {
         self.flowCoordinator = flowCoordinator

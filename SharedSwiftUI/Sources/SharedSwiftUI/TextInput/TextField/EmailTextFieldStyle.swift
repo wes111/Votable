@@ -43,22 +43,14 @@ public extension View {
 }
 
 // MARK: - Preview
-#Preview {
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = "name@gmail.com"
     @Previewable @FocusState var focusedField: MockSelectable?
-    @Previewable @Environment(\.theme) var theme: Theme
     
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        
-        TextField(
-            "Email",
-            text: .constant("Password"),
-            prompt: Text("Email").foregroundColor(theme.primaryColorScheme.tertiaryBackground)
-        )
+    TextField("Email", text: $text)
         .emailTextFieldStyle(
             email: .constant("Email"),
             focusedField: $focusedField,
             field: .mockOne
         )
-    }
 }

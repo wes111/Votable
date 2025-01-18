@@ -12,6 +12,7 @@ import SwiftUI
 public protocol TextInputFlowViewModel: InputFlowViewModel {
     var text: String { get set }
     var focusedField: CoordinatorViewModel.Flow { get }
+    var shouldPerformOnSubmit: Bool { get set }
     
     func onSubmit() async // Called when a user taps "enter."
 }

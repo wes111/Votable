@@ -15,6 +15,7 @@ final class CommunityCategoriesViewModel: TextInputFlowViewModel {
     var text: String = ""
     let skipAction: SkipAction = .nonSkippable
     let focusedField = CommunityFlow.categories
+    var shouldPerformOnSubmit: Bool = false
     
     init(flowCoordinator: CommunityInputFlowViewModel) {
         self.flowCoordinator = flowCoordinator

@@ -85,18 +85,13 @@ public extension View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = "Mock Title"
     @Previewable @FocusState var focusedField: MockSelectable?
-    
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
         
-        TextField("Title", text: .constant("Title"),
-                  prompt: Text("Title").foregroundColor(theme.primaryColorScheme.tertiaryBackground)
-        )
+        TextField("Title", text: $text)
         .standardTextFieldStyle(
-            text: .constant("Title"),
+            text: $text,
             focusedField: $focusedField,
             focusedFieldValue: .mockOne,
             fieldType: DefaultField.self,
@@ -106,6 +101,4 @@ public extension View {
                 isDisabled: false
             )
         )
-        .padding()
-    }
 }

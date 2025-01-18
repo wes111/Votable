@@ -11,6 +11,7 @@ import SharedSwiftUI
 // This should be used for internal previews only. Hence, this is not marked `public`.
 @MainActor
 final class MockSubmittableViewModel: SubmittableTextEditorInputViewModelProtocol {
+    var shouldPerformOnSubmit: Bool = false
     var focusedField: MockUserInputFlow = .mockOne
     var selectedTab = MockSelectable.mockOne
     let flowCoordinator = MockInputFlowCoordinator()

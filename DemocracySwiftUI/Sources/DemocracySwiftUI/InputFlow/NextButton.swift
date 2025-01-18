@@ -32,18 +32,18 @@ struct NextButton: View {
     var isDisabled: Bool
     
     var body: some View {
-        AsyncButton(
-            action: { await nextAction() },
-            label: { Text("Next") },
-            showProgressView: $isShowingProgress
-        )
+        AsyncButton(showProgressView: $isShowingProgress) {
+            await nextAction()
+        } label: {
+            Text("Next")
+        }
         .buttonStyle(PrimaryButtonStyle())
         .isDisabledWithAnimation(isDisabled: isDisabled)
     }
 }
 
 // MARK: - Preview
-#Preview {
+#Preview(traits: .standardPreviewModifier) {
     NextButton(
         isShowingProgress: .constant(false),
         nextAction: {},

@@ -41,3 +41,12 @@ public struct CategoriesVStack<T: SelectableItem>: View {
         .scrollBounceBehavior(.basedOnSize, axes: [.vertical])
     }
 }
+
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    CategoriesVStack(
+        selectedCategories: [],
+        categories: SelectableItemMock.mockArray,
+        action: .none
+    )
+}

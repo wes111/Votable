@@ -43,20 +43,14 @@ public extension View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = "User123"
     @Previewable @FocusState var focusedField: MockSelectable?
     
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        
-        TextField("Username", text: .constant("Username"),
-                  prompt: Text("Username").foregroundColor(theme.primaryColorScheme.tertiaryBackground)
-        )
+    TextField("Username", text: $text)
         .usernameTextFieldStyle(
-            username: .constant("Username"),
+            username: $text,
             focusedField: $focusedField,
             field: .mockOne
         )
-    }
 }

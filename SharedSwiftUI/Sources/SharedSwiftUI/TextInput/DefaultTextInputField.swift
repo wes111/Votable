@@ -29,15 +29,10 @@ public struct DefaultTextInputField<Field: InputField>: View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        
-        DefaultTextInputField(
-            text: .constant("Hello World!"),
-            fieldType: DefaultField.self
-        )
-    }
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = "Mock Text"
+    DefaultTextInputField(
+        text: $text,
+        fieldType: DefaultField.self
+    )
 }

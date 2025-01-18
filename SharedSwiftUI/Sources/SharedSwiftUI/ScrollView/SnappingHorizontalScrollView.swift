@@ -48,20 +48,13 @@ public struct SnappingHorizontalScrollView<T: Hashable, Content: View>: View {
 }
 
 // MARK: - Preview
-//#Preview {
-//    @Previewable @Environment(\.theme) var theme: Theme
-//    
-//    ZStack {
-//        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-//        SnappingHorizontalScrollView(scrollContent: Community.preview.rules) { rule in
-//            Text(rule.title)
-////            MenuCard(
-////                title: rule.title,
-////                description: rule.description
-////            ) {
-////                Button("Delete") { }
-////                Button("Edit") { }
-////            }
-//        }
-//    }
-//}
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @Environment(\.theme) var theme: Theme
+    
+    SnappingHorizontalScrollView(scrollContent: String.mockArray) { string in
+        Text(string)
+            .foregroundStyle(theme.primaryColorScheme.primaryText)
+            .frame(width: 150, height: 50)
+            .background(theme.primaryColorScheme.secondaryBackground)
+    }
+}

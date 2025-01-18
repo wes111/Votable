@@ -15,7 +15,7 @@ public extension View {
     }
 }
 
-struct CharacterLimiterModifier: ViewModifier {
+fileprivate struct CharacterLimiterModifier: ViewModifier {
     @Binding var text: String
     let limit: Int
     
@@ -31,13 +31,10 @@ struct CharacterLimiterModifier: ViewModifier {
     }
 }
 
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = "Preview Text"
     
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        
-        TextField("Preview", text: .constant("BadTest"))
-            .limitCharacters(text: .constant("Bad"), count: 25)
-    }
+    TextField("Preview", text: $text)
+        .limitCharacters(text: $text, count: 25)
 }

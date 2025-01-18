@@ -64,5 +64,39 @@ extension Color {
     static var onBackground: Color {
         Color.white.opacity(0.1)
     }
+}
+
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    return ScrollView {
+        VStack(spacing: 10) {
+            colorItem(name: "Primary Background", color: .primaryBackground)
+            colorItem(name: "Secondary Background", color: .secondaryBackground)
+            colorItem(name: "Tertiary Background", color: .tertiaryBackground)
+            colorItem(name: "Quad Background", color: .quadBackground)
+            colorItem(name: "Primary Text", color: .primaryText)
+            colorItem(name: "Secondary Text", color: .secondaryText)
+            colorItem(name: "Tertiary Text", color: .tertiaryText)
+            colorItem(name: "Other Red", color: .otherRed)
+            colorItem(name: "Primary Accent", color: .primaryAccent)
+            colorItem(name: "Secondary Accent", color: .secondaryAccent)
+            colorItem(name: "On Background", color: .onBackground)
+        }
+        .padding()
+    }
     
+    func colorItem(name: String, color: Color) -> some View {
+        HStack {
+            Circle()
+                .fill(color)
+                .frame(width: 50, height: 50)
+            Text(name)
+                .font(.headline)
+                .foregroundColor(.primaryText)
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.secondaryBackground)
+        .cornerRadius(10)
+    }
 }

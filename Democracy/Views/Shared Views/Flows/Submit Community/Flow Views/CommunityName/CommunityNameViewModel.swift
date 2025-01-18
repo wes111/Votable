@@ -15,6 +15,7 @@ final class CommunityNameViewModel: TextInputFlowViewModel {
     var text: String = ""
     let skipAction: SkipAction = .nonSkippable
     let focusedField = CommunityFlow.name
+    var shouldPerformOnSubmit: Bool = false
 
     init(flowCoordinator: CommunityInputFlowViewModel) {
         self.flowCoordinator = flowCoordinator

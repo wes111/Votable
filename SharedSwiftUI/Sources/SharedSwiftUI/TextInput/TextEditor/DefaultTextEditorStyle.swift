@@ -38,3 +38,16 @@ public extension TextEditor {
         }
     }
 }
+
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var text: String = ""
+    @Previewable @FocusState var focusedField: MockSelectable?
+    
+    TextEditor(text: $text)
+        .defaultStyle(
+            focusedFieldValue: MockSelectable.mockFour,
+            text: $text,
+            focusedField: $focusedField,
+            fieldType: DefaultField.self)
+}

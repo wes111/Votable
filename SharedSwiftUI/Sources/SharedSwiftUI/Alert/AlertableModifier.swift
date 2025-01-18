@@ -35,9 +35,12 @@ public extension View {
 
 // MARK: - Preview
 #Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var alertModel: NewAlertModel?
+    
     Button {
-        print("sdff")
+        alertModel = alertModel == nil ? .mock : nil
     } label: {
-        Text("Press Me!")
+        Text("Show Alert")
     }
+    .alertableModifier(alertModel: $alertModel)
 }

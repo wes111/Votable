@@ -29,11 +29,8 @@ public extension View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        Text("Tag")
-            .tagModifier()
-    }
+#Preview(traits: .standardPreviewModifier) {
+    
+    Text("Tag")
+        .tagModifier()
 }

@@ -32,16 +32,11 @@ public extension ToggleStyle where Self == CheckboxToggleStyle {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
+#Preview(traits: .standardPreviewModifier) {
     @Previewable @State var isChecked = true
     
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        
-        Toggle(isOn: $isChecked) {
-            Text("Toggle Example")
-        }
-        .toggleStyle(.iOSCheckbox)
+    Toggle(isOn: $isChecked) {
+        Text("Toggle Example")
     }
+    .toggleStyle(.iOSCheckbox)
 }

@@ -38,12 +38,8 @@ public struct HorizontalSelectableList<T: Selectable>: View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @State var category: MockSelectable = .mockFour //SelectableResourceCategory = .init(.book)
-    @Previewable @Environment(\.theme) var theme: Theme
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var category: MockSelectable = .mockFour
     
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        HorizontalSelectableList(selection: $category)
-    }
+    HorizontalSelectableList(selection: $category)
 }

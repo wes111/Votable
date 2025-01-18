@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension LinkProviderViewModel {
+public extension LinkProviderViewModel {
     static let preview = LinkProviderViewModel(
         URL(string: "https://www.nytimes.com/2024/06/27/us/oklahoma-public-schools-bible.html")!
     )

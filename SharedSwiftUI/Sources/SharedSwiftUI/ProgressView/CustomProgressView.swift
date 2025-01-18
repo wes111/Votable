@@ -20,6 +20,6 @@ public struct CustomProgressView: View {
 }
 
 // MARK: - Preview
-#Preview {
+#Preview(traits: .standardPreviewModifier) {
     CustomProgressView()
 }

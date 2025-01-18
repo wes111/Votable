@@ -15,6 +15,7 @@ final class PostTitleViewModel: TextInputFlowViewModel {
     var text: String = ""
     let skipAction: SkipAction = .nonSkippable
     let focusedField = PostFlow.title
+    var shouldPerformOnSubmit: Bool = false
     
     init(flowCoordinator: PostInputFlowViewModel) {
         self.flowCoordinator = flowCoordinator

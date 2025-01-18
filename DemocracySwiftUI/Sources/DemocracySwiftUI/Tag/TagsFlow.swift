@@ -39,3 +39,13 @@ public struct TagsFlow<T: SelectableItem>: View {
         .scrollBounceBehavior(.basedOnSize, axes: [.vertical])
     }
 }
+
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    
+    TagsFlow(
+        selectedItems: [],
+        items: SelectableItemMock.mockArray,
+        tagAction: .none
+    )
+}

@@ -7,62 +7,55 @@
 
 import SwiftUI
 
-// TODO: Read this article for interesting info about common bug with loading indicators!
-// https://www.swiftbysundell.com/articles/building-an-async-swiftui-button/
-
 public struct AsyncButton<Label: View>: View {
+    @State private var shouldStartAsyncTask: Bool = false
     @ViewBuilder var label: () -> Label
-    @State private var isDisabled: Bool = false
     @Binding var showProgressView: Bool
     var action: () async -> Void
     
     public init(
+        showProgressView: Binding<Bool>,
         action: @escaping () async -> Void,
-        label: @escaping () -> Label,
-        showProgressView: Binding<Bool>
+        label: @escaping () -> Label
     ) {
+        self._showProgressView = showProgressView
         self.action = action
         self.label = label
-        self._showProgressView = showProgressView
     }
 
     public var body: some View {
-        Button(
-            action: {
-                isDisabled = true
-                
-                Task {
-                    var progressViewTask: Task<Void, Error>?
-                    
-                    progressViewTask = Task {
-                        try await Task.sleep(nanoseconds: 150_000_000)
-                        showProgressView = true
-                    }
-                    
-                    await action()
-                    progressViewTask?.cancel()
-                    Task { // Fixes bug where progressView is not dismissed.
-                        try await Task.sleep(nanoseconds: 150_000)
-                        withAnimation {
-                            isDisabled = false
-                            showProgressView = false
-                        }
-                    }
-                }
-            },
-            label: {
-                label()
+        Button {
+            shouldStartAsyncTask = true
+        } label: {
+            label()
+        }
+        .isDisabledWithAnimation(isDisabled: showProgressView)
+        .task(id: shouldStartAsyncTask) {
+            guard shouldStartAsyncTask else {
+                return
             }
-        )
-        .isDisabledWithAnimation(isDisabled: isDisabled || showProgressView)
+            showProgressView = true
+            await action()
+            shouldStartAsyncTask = false
+            showProgressView = false
+        }
     }
 }
 
 // MARK: - Preview
-#Preview {
-    AsyncButton(
-        action: { {}() },
-        label: { Text("Hello") },
-        showProgressView: .constant(true)
-    )
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var showProgress = false
+    
+    VStack {
+        AsyncButton(showProgressView: $showProgress) {
+            try? await Task.sleep(nanoseconds: 5_000_000_000)
+        } label: {
+            Text("Start Async Task")
+        }
+        
+        if showProgress {
+            CustomProgressView()
+        }
+    }
+
 }

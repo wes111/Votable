@@ -5,6 +5,7 @@
 //  Created by Wesley Luntsford on 5/11/24.
 //
 
+import SharedSwift
 import SharedSwiftUI
 import SwiftUI
 
@@ -43,4 +44,23 @@ public struct CommentDisclosureGroupStyle: DisclosureGroupStyle {
                 .disclosureGroupStyle(self)
         }
     }
+}
+
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    List {
+        ForEach(MockNode.mockArray) { node in
+            NodeOutlineGroup(node: node, childKeyPath: \.childMockNodes ) { childNode in
+                Text(childNode.value)
+                    .frame(height: 100)
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    .listRowBackground(Color.black)
+                    .listRowSeparator(.hidden)
+            }
+        }
+    }
+    .safeAreaPadding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+    .listStyle(.plain)
+    .clipped()
+    .disclosureGroupStyle(CommentDisclosureGroupStyle())
 }

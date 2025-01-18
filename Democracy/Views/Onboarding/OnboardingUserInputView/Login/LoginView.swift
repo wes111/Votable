@@ -34,6 +34,12 @@ struct LoginView: View {
             .onReceive(keyboardPublisher) { isVisible in
                 startKeyboardVisibilityDidChangeTask(isVisible: isVisible)
             }
+            .task(id: viewModel.shouldLogin) {
+                guard viewModel.shouldLogin else {
+                    return
+                }
+                await viewModel.login()
+            }
     }
 }
 
@@ -112,24 +118,17 @@ extension LoginView {
         .focused($focusedField, equals: .password)
         .submitLabel(.go)
         .onSubmit {
-            performAsnycTask(
-                action: viewModel.login,
-                isShowingProgress: $viewModel.isShowingProgress
-            )
+            viewModel.shouldLogin = true
         }
     }
     
     var loginButton: some View {
-        AsyncButton(
-            action: {
-                focusedField = nil
-                await viewModel.login()
-            },
-            label: {
-                Text("Login")
-            },
-            showProgressView: $viewModel.isShowingProgress
-        )
+        AsyncButton(showProgressView: $viewModel.isShowingProgress) {
+            focusedField = nil
+            await viewModel.login()
+        } label: {
+            Text("Login")
+        }
         .buttonStyle(PrimaryButtonStyle())
         .isDisabledWithAnimation(isDisabled: viewModel.isShowingProgress)
     }

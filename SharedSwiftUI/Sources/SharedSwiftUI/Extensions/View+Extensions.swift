@@ -28,31 +28,6 @@ public extension View {
     }
 }
 
-public extension View {
-    
-    // See 'AsyncButton' for similar functionality.
-    @MainActor
-    func performAsnycTask(action: @escaping () async -> Void, isShowingProgress: Binding<Bool>) {
-        Task {
-            var progressViewTask: Task<Void, Error>?
-            
-            progressViewTask = Task {
-                try await Task.sleep(nanoseconds: 150_000_000)
-                withAnimation {
-                    isShowingProgress.wrappedValue = true
-                }
-                
-            }
-            
-            await action()
-            progressViewTask?.cancel()
-            withAnimation {
-                isShowingProgress.wrappedValue = false
-            }
-        }
-    }
-}
-
 public extension View { // TODO: This should be a view modifier, not an extension of view...
     func titledElement(title: String, theme: Theme) -> some View {
         return VStack(alignment: .leading, spacing: theme.sizeConstants.smallElementSpacing) {

@@ -18,6 +18,7 @@ final class AccountUsernameViewModel: TextInputFlowViewModel {
     var text: String = ""
     let skipAction: SkipAction = .nonSkippable
     let focusedField = AccountFlow.username
+    var shouldPerformOnSubmit: Bool = false
     
     init(flowCoordinator: AccountInputFlowViewModel) {
         self.flowCoordinator = flowCoordinator

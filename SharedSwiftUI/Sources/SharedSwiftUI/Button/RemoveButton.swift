@@ -35,3 +35,21 @@ public struct RemoveButton<T: SelectableItem>: View {
         }
     }
 }
+
+// MARK: - Preview
+#Preview(traits: .standardPreviewModifier) {
+    @Previewable @State var showSelectableItem: Bool = true
+    
+    RemoveButton(item: SelectableItemMock()) { _ in
+        showSelectableItem = false
+    }
+    .opacity(showSelectableItem ? 1.0 : 0.0)
+    .task(id: showSelectableItem) {
+        guard !showSelectableItem else {
+            return
+        }
+        print("hello world")
+        try? await Task.sleep(nanoseconds: 2_000_000_000)
+        showSelectableItem = true
+    }
+}

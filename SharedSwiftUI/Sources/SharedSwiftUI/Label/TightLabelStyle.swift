@@ -21,7 +21,7 @@ public struct TightLabelStyle: LabelStyle {
 }
 
 // MARK: - Preview
-#Preview {
+#Preview(traits: .standardPreviewModifier) {
     Label("11", systemImage: "arrow.down")
         .labelStyle(TightLabelStyle())
 }

@@ -64,15 +64,10 @@ private extension FieldRequirementsView {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
+#Preview(traits: .standardPreviewModifier) {
     
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        FieldRequirementsView<EmailInputValidator>(
-            text: "Hello World",
-            currentInputErrors: [.beginsWithAlphanumeric, .maxLength(25)]
-        )
-    }
-
+    FieldRequirementsView<EmailInputValidator>(
+        text: "Hello World",
+        currentInputErrors: [.beginsWithAlphanumeric, .maxLength(25)]
+    )
 }

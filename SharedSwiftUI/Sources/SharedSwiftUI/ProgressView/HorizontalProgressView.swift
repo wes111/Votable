@@ -30,12 +30,7 @@ public struct HorizontalProgressView: View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        HorizontalProgressView(totalProgress: 5, currentProgress: 2)
-            .padding()
-    }
+#Preview(traits: .standardPreviewModifier) {
+    HorizontalProgressView(totalProgress: 5, currentProgress: 2)
+        .padding()
 }
