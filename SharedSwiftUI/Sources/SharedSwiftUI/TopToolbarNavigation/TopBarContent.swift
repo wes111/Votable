@@ -8,7 +8,7 @@
 import Foundation
 
 public enum TopBarContent: Identifiable {
-    public typealias Action = @MainActor () -> Void
+    public typealias Action = () -> Void
     
     case title(String, size: NavigationTitleSize)
     case back(Action)

@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+public enum TextInputPadding {
+    case standardTextEditor
+    case standardTextField
+    case smallTextInput
+}
+
 public struct SizeConstants: Sendable {
     // Element Spacing
     public let extraSmallElementSpacing: CGFloat
@@ -25,9 +31,17 @@ public struct SizeConstants: Sendable {
     public let extraSmallInnerBorder: CGFloat
     
     // Text (field or editor) padding
-    public let textFieldPadding: CGFloat
-    public let textEditorPadding: CGFloat
-    public let smallTextInputPadding: CGFloat
+    private let textFieldPadding: CGFloat
+    private let textEditorPadding: CGFloat
+    private let smallTextInputPadding: CGFloat
+    
+    public func textInputPadding(_ textInputPadding: TextInputPadding) -> CGFloat {
+        switch textInputPadding {
+        case .standardTextEditor: textEditorPadding
+        case .standardTextField: textFieldPadding
+        case .smallTextInput: smallTextInputPadding
+        }
+    }
     
     // Animation Constants
     public let animationLength: Double

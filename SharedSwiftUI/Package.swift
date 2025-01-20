@@ -14,11 +14,19 @@ let package = Package(
             name: "SharedSwiftUI",
             targets: ["SharedSwiftUI"]),
     ],
+    dependencies: [
+        // Declare local package dependencies
+        .package(name: "SharedSwift", path: "Democracy/SharedSwift")
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "SharedSwiftUI"),
+            name: "SharedSwiftUI",
+            dependencies: [
+                "SharedSwift"
+            ]
+        ),
         .testTarget(
             name: "SharedSwiftUITests",
             dependencies: ["SharedSwiftUI"]

@@ -5,11 +5,13 @@
 //  Created by Wesley Luntsford on 3/7/23.
 //
 
+import DemocracySwiftUI
 import SharedSwiftUI
 import SwiftUI
 
 @MainActor
 struct PostView: View {
+    @Environment(\.theme) var theme: Theme
     @State private var viewModel: PostViewModel
     @FocusState private var isAddCommentFieldFocused: Bool?
     
@@ -22,7 +24,8 @@ struct PostView: View {
             .toolbarNavigation(
                 leadingContent: viewModel.leadingContent,
                 centerContent: viewModel.centerContent,
-                trailingContent: viewModel.trailingContent
+                trailingContent: viewModel.trailingContent,
+                theme: theme
             )
             .alertableModifier(alertModel: $viewModel.alertModel)
             .onChange(of: viewModel.replyingToComment) { _, newValue in
@@ -43,7 +46,7 @@ struct PostView: View {
 private extension PostView {
     var content: some View {
         commentList
-            .background(Color.primaryBackground, ignoresSafeAreaEdges: .all)
+            .background(theme.primaryColorScheme.primaryBackground, ignoresSafeAreaEdges: .all)
             .dismissKeyboardOnDrag()
     }
     
@@ -56,7 +59,7 @@ private extension PostView {
             }
         }
         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-        .listRowBackground(Color.primaryBackground)
+        .listRowBackground(theme.primaryColorScheme.primaryBackground)
         .listRowSeparator(.hidden)
     }
     
@@ -64,7 +67,7 @@ private extension PostView {
         List {
             PostHeaderView(viewModel: viewModel.postHeaderViewModel)
                 .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                .listRowBackground(Color.primaryBackground)
+                .listRowBackground(theme.primaryColorScheme.primaryBackground)
                 .listRowSeparator(.hidden)
             
             ForEach(viewModel.comments) { commentNode in
@@ -84,8 +87,11 @@ private extension PostView {
     }
     
     func commentView(_ commentNode: CommentNode) -> some View {
-        CommentView(viewModel: .init(comment: commentNode, delegate: viewModel))
-            .padding(.horizontal, ViewConstants.screenPadding)
+        CommentView(viewModel: .init(
+            comment: commentNode,
+            delegate: viewModel)
+        )
+        .padding(.horizontal, theme.sizeConstants.screenPadding)
     }
     
     func loadRepliesButton(for comment: CommentNode?) -> some View {
@@ -93,19 +99,19 @@ private extension PostView {
             if let comment {
                 ForEach(0...comment.depth, id: \.self) { _ in
                     CustomDivider()
-                        .padding(.trailing, ViewConstants.smallInnerBorder)
+                        .padding(.trailing, theme.sizeConstants.smallInnerBorder)
                 }
             }
             
-            AsyncButton(
-                action: { await viewModel.onTapLoadReplies(comment: comment)},
-                label: { Text(viewModel.loadButtonText(for: comment)) },
-                showProgressView: .constant(false)
-            )
+            AsyncButton(showProgressView: .constant(false)) {
+                await viewModel.onTapLoadReplies(comment: comment)
+            } label: {
+                Text(viewModel.loadButtonText(for: comment))
+            }
             .buttonStyle(TertiaryButtonStyle())
-            .padding(.vertical, ViewConstants.smallElementSpacing)
+            .padding(.vertical, theme.sizeConstants.smallElementSpacing)
         }
-        .padding(.horizontal, ViewConstants.screenPadding)
+        .padding(.horizontal, theme.sizeConstants.screenPadding)
     }
 }
 

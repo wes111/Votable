@@ -5,11 +5,15 @@
 //  Created by Wesley Luntsford on 7/21/24.
 //
 
+import DemocracySwiftUI
 import Foundation
 import SharedResourcesClientAndServer
 
 extension FilterPostsViewModel {
     static var preview: FilterPostsViewModel {
-        .init(communityTags: Community.preview.tags, postFilters: .preview, onUpdateFilters: { _ in })
+        .init(
+            communityTags: Community.preview.tags.map { SelectableCommunityTag($0) },
+            postFilters: .preview, onUpdateFilters: { _ in }
+        )
     }
 }

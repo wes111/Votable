@@ -8,7 +8,7 @@
 import Foundation
 
 extension EventsTabCoordinator {
-    @MainActor static let preview = EventsTabCoordinator(viewModel: .preview)
+    static let preview = EventsTabCoordinator(viewModel: .preview)
 }
 extension EventsTabCoordinatorViewModel {
     static let preview = EventsTabCoordinatorViewModel()

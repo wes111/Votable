@@ -12,6 +12,7 @@ import SwiftUI
 @MainActor
 struct CommunityView: View {
     @State private var viewModel: CommunityViewModel
+    @Environment(\.theme) var theme: Theme
     
     init(viewModel: CommunityViewModel) {
         self.viewModel = viewModel
@@ -19,11 +20,12 @@ struct CommunityView: View {
     
     var body: some View {
         content
-            .background(Color.primaryBackground, ignoresSafeAreaEdges: .all)
+            .background(theme.primaryColorScheme.primaryBackground, ignoresSafeAreaEdges: .all)
             .toolbarNavigation(
                 leadingContent: viewModel.leadingContent,
                 centerContent: viewModel.centerContent,
-                trailingContent: viewModel.trailingContent
+                trailingContent: viewModel.trailingContent,
+                theme: theme
             )
     }
 }
@@ -43,14 +45,14 @@ private extension CommunityView {
     }
     
     var headerButtons: some View {
-        VStack(spacing: ViewConstants.smallInnerBorder) {
+        VStack(spacing: theme.sizeConstants.smallInnerBorder) {
             HorizontalSelectableList(
                 selection: Binding(
                     get: { SelectableCommunityTab(viewModel.selectedTab) },
                     set: { viewModel.selectedTab = $0.communityTab }
                 )
             )
-            .padding(.horizontal, ViewConstants.screenPadding)
+            .padding(.horizontal, theme.sizeConstants.screenPadding)
             .font(.callout)
             
             CustomDivider()
@@ -59,13 +61,11 @@ private extension CommunityView {
     }
     
     var joinLeaveButton: some View {
-        AsyncButton(
-            action: viewModel.toggleCommunityMembership,
-            label: {
-                Text(viewModel.membershipButtonTitle)
-            },
-            showProgressView: $viewModel.isShowingProgress
-        )
+        AsyncButton(showProgressView: $viewModel.isShowingProgress) {
+            await viewModel.toggleCommunityMembership()
+        } label: {
+            Text(viewModel.membershipButtonTitle)
+        }
         .buttonStyle(SmallSecondaryButtonStyle())
         .disabled(false)
     }
@@ -95,20 +95,20 @@ private extension CommunityView {
             HStack(alignment: .top) {
                 Circle()
                     .frame(width: 50, height: 50)
-                    .foregroundStyle(Color.secondaryText)
+                    .foregroundStyle(theme.primaryColorScheme.secondaryText)
                 
-                VStack(alignment: .leading, spacing: ViewConstants.extraSmallElementSpacing) {
+                VStack(alignment: .leading, spacing: theme.sizeConstants.extraSmallElementSpacing) {
                     Text(viewModel.community.name)
-                        .foregroundStyle(Color.secondaryText)
+                        .foregroundStyle(theme.primaryColorScheme.secondaryText)
                         .font(.headline)
                         .fontWeight(.bold)
                     
                     Text(viewModel.foundedText)
-                        .foregroundStyle(Color.secondaryText)
+                        .foregroundStyle(theme.primaryColorScheme.secondaryText)
                         .font(.caption2)
                     
                     Text(viewModel.membersText)
-                        .foregroundStyle(Color.secondaryText)
+                        .foregroundStyle(theme.primaryColorScheme.secondaryText)
                         .font(.caption2)
                 }
                 
@@ -118,10 +118,10 @@ private extension CommunityView {
             }
             
             Text(viewModel.community.tagline)
-                .foregroundStyle(Color.secondaryText)
+                .foregroundStyle(theme.primaryColorScheme.secondaryText)
                 .font(.footnote)
         }
-        .padding(.horizontal, ViewConstants.screenPadding)
+        .padding(.horizontal, theme.sizeConstants.screenPadding)
     }
 }
 

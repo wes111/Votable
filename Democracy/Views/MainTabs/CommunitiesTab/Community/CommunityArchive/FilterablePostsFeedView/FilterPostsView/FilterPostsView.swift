@@ -20,6 +20,7 @@ enum FilterPostsPath {
 struct FilterPostsView: View {
     @Bindable var viewModel: FilterPostsViewModel
     @Environment(\.dismiss) var dismiss
+    @Environment(\.theme) var theme: Theme
     @State private var height: CGFloat = .zero
     
     var body: some View {
@@ -31,48 +32,49 @@ struct FilterPostsView: View {
 private extension FilterPostsView {
     
     var content: some View {
-        VStack(alignment: .leading, spacing: ViewConstants.elementSpacing) {
+        VStack(alignment: .leading, spacing: theme.sizeConstants.elementSpacing) {
             selectablePickerViews
             applyButton
         }
         .frame(maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.secondaryBackground, ignoresSafeAreaEdges: .all)
+        .background(theme.primaryColorScheme.secondaryBackground, ignoresSafeAreaEdges: .all)
         .toolbarNavigation(
             leadingContent: leadingToolbarContent,
-            trailingContent: trailingToolbarContent
+            trailingContent: trailingToolbarContent,
+            theme: theme
         )
     }
     
     var title: some View {
         Text("Filter and Sort Posts")
+            .standardScreenTitle()
             .multilineTextAlignment(.leading)
-            .primaryTitle()
     }
     
     var selectablePickerViews: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: ViewConstants.largeElementSpacing) {
+            VStack(alignment: .leading, spacing: theme.sizeConstants.largeElementSpacing) {
                 CustomDivider()
                 
                 tappableItem(selection: viewModel.selectableSortOrder, path: .sortOrder)
-                    .padding(.horizontal, ViewConstants.screenPadding)
+                    .padding(.horizontal, theme.sizeConstants.screenPadding)
                 
                 CustomDivider()
                 
                 tappableItem(selection: viewModel.selectableDateFilter, path: .dateFilter)
-                    .padding(.horizontal, ViewConstants.screenPadding)
+                    .padding(.horizontal, theme.sizeConstants.screenPadding)
                 
                 CustomDivider()
                 
                 TappableListItem(title: "Tags Filter", subtitle: viewModel.categoriesSubtitle, image: .tag) {
                     viewModel.navigateToPath(.categoriesFilter)
                 }
-                .padding(.horizontal, ViewConstants.screenPadding)
+                .padding(.horizontal, theme.sizeConstants.screenPadding)
                 
                 CustomDivider()
             }
         }
-        .contentMargins(.top, ViewConstants.scrollViewTopContentMargin)
+        .contentMargins(.top, theme.sizeConstants.scrollViewTopContentMargin)
         .scrollBounceBehavior(.basedOnSize, axes: [.vertical])
     }
     
@@ -89,7 +91,7 @@ private extension FilterPostsView {
             Text("Apply")
         }
         .buttonStyle(PrimaryButtonStyle())
-        .padding(ViewConstants.screenPadding)
+        .padding(theme.sizeConstants.screenPadding)
     }
 }
 
@@ -136,7 +138,12 @@ private extension FilterPostsView {
             )
             
         case .categoriesFilter:
-            TagsPickerNavigationView(viewModel: viewModel)
+            TagsPickerNavigationView(
+                backAction: viewModel.backAction,
+                toggleTagAction: viewModel.toggleTag,
+                availableTags: viewModel.communityTags,
+                selectedTags: viewModel.selectedTags
+            )
         }
     }
 }

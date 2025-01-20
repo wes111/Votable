@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-@MainActor
 public struct ToolbarNavigationModifier: ViewModifier {
-    @Environment(\.theme) var theme: Theme
+    private let theme: Theme
     let leadingContent: [TopBarContent]
     let centerContent: [TopBarContent]
     let trailingContent: [TopBarContent]
@@ -17,11 +16,13 @@ public struct ToolbarNavigationModifier: ViewModifier {
     public init(
         leadingContent: [TopBarContent],
         centerContent: [TopBarContent],
-        trailingContent: [TopBarContent]
+        trailingContent: [TopBarContent],
+        theme: Theme
     ) {
         self.leadingContent = leadingContent
         self.centerContent = centerContent
         self.trailingContent = trailingContent
+        self.theme = theme
         
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
@@ -78,9 +79,7 @@ private extension ToolbarNavigationModifier {
                         
                     case .large:
                         Text(title)
-                            //.primaryTitle()
-                            .font(.system(.title, weight: .semibold))
-                            .foregroundColor(theme.primaryColorScheme.primaryText)
+                            .standardScreenTitle()
                     }
                     
                 case .close(let action):
@@ -102,7 +101,7 @@ private extension ToolbarNavigationModifier {
 
 // MARK: Buttons
 private extension ToolbarNavigationModifier {
-    func backButton(action: @MainActor @escaping () -> Void) -> some View {
+    func backButton(action: @escaping () -> Void) -> some View {
         Button {
             action()
         } label: {
@@ -111,7 +110,7 @@ private extension ToolbarNavigationModifier {
         }
     }
     
-    func closeButton(action: @MainActor @escaping () -> Void) -> some View {
+    func closeButton(action: @escaping () -> Void) -> some View {
         Button {
             action()
         } label: {
@@ -120,7 +119,7 @@ private extension ToolbarNavigationModifier {
         }
     }
     
-    func searchButton(action: @MainActor @escaping () -> Void) -> some View {
+    func searchButton(action: @escaping () -> Void) -> some View {
         Button {
             action()
         } label: {
@@ -129,7 +128,7 @@ private extension ToolbarNavigationModifier {
         }
     }
     
-    func filterButton(action: @MainActor @escaping () -> Void) -> some View {
+    func filterButton(action: @escaping () -> Void) -> some View {
         Button {
             action()
         } label: {
@@ -155,12 +154,14 @@ public extension View {
     func toolbarNavigation(
         leadingContent: [TopBarContent] = [],
         centerContent: [TopBarContent] = [],
-        trailingContent: [TopBarContent] = []
+        trailingContent: [TopBarContent] = [],
+        theme: Theme
     ) -> some View {
-        modifier(ToolbarNavigationModifier(
+        return modifier(ToolbarNavigationModifier(
             leadingContent: leadingContent,
             centerContent: centerContent,
-            trailingContent: trailingContent
+            trailingContent: trailingContent,
+            theme: theme
         ))
     }
 }

@@ -5,8 +5,8 @@
 //  Created by Wesley Luntsford on 7/31/23.
 //
 
-import Factory
 import Foundation
+import SharedSwiftUI
 
 @MainActor @Observable
 final class UpdatesTabCoordinatorViewModel {

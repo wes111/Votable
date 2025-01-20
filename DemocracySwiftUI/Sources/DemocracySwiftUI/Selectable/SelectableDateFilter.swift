@@ -5,6 +5,7 @@
 //  Created by Wesley Luntsford on 12/30/24.
 //
 
+import Foundation
 import SharedResourcesClientAndServer
 import SharedSwiftUI
 

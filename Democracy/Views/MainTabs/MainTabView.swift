@@ -5,6 +5,7 @@
 //  Created by Wesley Luntsford on 2/19/23.
 //
 
+import SharedSwiftUI
 import SwiftUI
 
 enum MainTab {
@@ -22,22 +23,23 @@ final class MainTabViewModel: ObservableObject {
 }
 
 struct MainTabView: View {
-    
     @StateObject private var viewModel: MainTabViewModel
+    private let theme: Theme
     
-    init(viewModel: MainTabViewModel) {
+    init(viewModel: MainTabViewModel, theme: Theme) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.theme = theme
         
         // TODO: Below has been moved to ToolBarNavigationModifier, but the same logic is needed
         // for the bottom bar. Move out of this view and abstract away...
-        UITabBar.appearance().unselectedItemTintColor = UIColor(Color.tertiaryBackground)
+        UITabBar.appearance().unselectedItemTintColor = UIColor(theme.primaryColorScheme.tertiaryBackground)
         
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor(.primaryText)
+            NSAttributedString.Key.foregroundColor: UIColor(theme.primaryColorScheme.primaryText)
         ]
-        navigationBarAppearance.backgroundColor = UIColor(.primaryBackground)
+        navigationBarAppearance.backgroundColor = UIColor(theme.primaryColorScheme.primaryBackground)
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().compactAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
@@ -45,7 +47,7 @@ struct MainTabView: View {
         
         let tabBarApperance = UITabBarAppearance()
         tabBarApperance.configureWithOpaqueBackground()
-        tabBarApperance.backgroundColor = UIColor(.primaryBackground)
+        tabBarApperance.backgroundColor = UIColor(theme.primaryColorScheme.primaryBackground)
         UITabBar.appearance().scrollEdgeAppearance = tabBarApperance
         UITabBar.appearance().standardAppearance = tabBarApperance
     }
@@ -55,7 +57,7 @@ struct MainTabView: View {
             VotingTabCoordinator(viewModel: viewModel.votingTabCoordinator)
                 .tabItem {
                     Label("Voting", systemImage: "checklist")
-                        .foregroundColor(.primaryText)
+                        .foregroundColor(theme.primaryColorScheme.primaryText)
                 }
                 .tag(MainTab.voting)
             
@@ -84,7 +86,7 @@ struct MainTabView: View {
                 .tag(MainTab.history)
         }
         .navigationBarBackButtonHidden()
-        .accentColor(.secondaryText)
+        .accentColor(theme.primaryColorScheme.secondaryText)
     }
     
 }
@@ -92,5 +94,5 @@ struct MainTabView: View {
 // MARK: - Preview
 #Preview {
     let viewModel = MainTabViewModel()
-    return MainTabView(viewModel: viewModel)
+    MainTabView(viewModel: viewModel, theme: Theme.defaultTheme)
 }

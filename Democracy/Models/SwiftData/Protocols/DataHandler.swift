@@ -25,11 +25,11 @@ extension DataHandler {
 //        return try modelContext.fetch(fetchDescriptor).first
 //    }
     
-    func fetchIdentifier(id: String) throws -> PersistentIdentifier? {
-        let id = id
-        let fetchDescriptor = FetchDescriptor<DataModel>(predicate: #Predicate { $0.remoteId == id })
-        return try modelContext.fetch(fetchDescriptor).first?.persistentModelID
-    }
+//    func fetchIdentifier(id: String) throws -> PersistentIdentifier? {
+//        let id = id
+//        let fetchDescriptor = FetchDescriptor<DataModel>(predicate: #Predicate { $0.remoteId == id })
+//        return try modelContext.fetch(fetchDescriptor).first?.persistentModelID
+//    }
     
     // Fetch all instances of DataModel, with no filtering or sorting applied.
     func fetchAll() throws -> [DataModel] {

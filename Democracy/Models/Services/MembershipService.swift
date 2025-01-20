@@ -8,6 +8,7 @@
 import Factory
 import Foundation
 import SharedResourcesClientAndServer
+import SharedSwift
 
 @StorageActor
 protocol MembershipService: Sendable {

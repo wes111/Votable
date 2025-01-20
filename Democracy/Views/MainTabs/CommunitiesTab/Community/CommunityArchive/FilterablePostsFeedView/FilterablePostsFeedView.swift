@@ -11,6 +11,7 @@ import SwiftUI
 @MainActor
 struct FilterablePostsFeedView: View {
     @State private var viewModel: PostsFeedViewModel
+    @Environment(\.theme) var theme: Theme
     
     init(viewModel: PostsFeedViewModel) {
         self.viewModel = viewModel
@@ -18,16 +19,17 @@ struct FilterablePostsFeedView: View {
     
     var body: some View {
         content
-            .background(Color.primaryBackground, ignoresSafeAreaEdges: .all)
+            .background(theme.primaryColorScheme.primaryBackground, ignoresSafeAreaEdges: .all)
             .toolbarNavigation(
                 leadingContent: leadingBarContent,
                 centerContent: centerToolbarContent,
-                trailingContent: trailingToolbarContent
+                trailingContent: trailingToolbarContent,
+                theme: theme
             )
             .dynamicHeightSheet(isShowingSheet: $viewModel.isShowingFilters) {
                 FilterPostsView(viewModel: viewModel.filterPostsViewModel)
                     .presentationDragIndicator(.visible)
-                    .background(Color.secondaryBackground, ignoresSafeAreaEdges: .all)
+                    .background(theme.primaryColorScheme.secondaryBackground, ignoresSafeAreaEdges: .all)
                     .interactiveDismissDisabled()
             }
     }

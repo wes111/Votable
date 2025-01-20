@@ -6,6 +6,7 @@
 //
 
 import Combine
+import DemocracySwiftUI
 import Foundation
 import Factory
 import SharedResourcesClientAndServer
@@ -48,7 +49,7 @@ extension PostsFeedViewModel {
     
     var filterPostsViewModel: FilterPostsViewModel {
         .init(
-            communityTags: community.tags,
+            communityTags: community.tags.map { SelectableCommunityTag($0) },
             postFilters: postFilters,
             onUpdateFilters: onUpdatePostFilters(_:)
         )

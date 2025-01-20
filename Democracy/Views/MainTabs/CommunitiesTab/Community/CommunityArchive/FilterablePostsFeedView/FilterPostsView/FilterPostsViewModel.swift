@@ -8,16 +8,17 @@
 import DemocracySwiftUI
 import Foundation
 import SharedResourcesClientAndServer
+import SharedSwiftUI
 
 @MainActor @Observable
 final class FilterPostsViewModel {
-    let communityTags: [CommunityTag]
+    let communityTags: [SelectableCommunityTag]
     let onUpdateFilters: (PostFilters) -> Void
     var router = Router()
     var postFilters: PostFilters
     
     init(
-        communityTags: [CommunityTag],
+        communityTags: [SelectableCommunityTag],
         postFilters: PostFilters,
         onUpdateFilters: @escaping (PostFilters) -> Void
     ) {
@@ -45,6 +46,10 @@ extension FilterPostsViewModel {
             postFilters.tagsFilter.map { $0.name }.sorted().joined(separator: ", ")
         }
     }
+    
+    var selectedTags: [SelectableCommunityTag] {
+        postFilters.tagsFilter.map{ SelectableCommunityTag($0) }
+    }
 }
 
 // MARK: - Methods
@@ -58,11 +63,11 @@ extension FilterPostsViewModel  {
         router.pop()
     }
     
-    func toggleTag(_ tag: CommunityTag) {
-        if postFilters.tagsFilter.contains(tag) {
-            postFilters.tagsFilter.removeAll(where: { $0 == tag })
+    func toggleTag(_ tag: SelectableCommunityTag) {
+        if postFilters.tagsFilter.map({ SelectableCommunityTag($0) }).contains(tag) {
+            postFilters.tagsFilter.removeAll(where: { $0 == tag.communityTag })
         } else {
-            postFilters.tagsFilter.append(tag)
+            postFilters.tagsFilter.append(tag.communityTag)
         }
     }
     

@@ -5,6 +5,7 @@
 //  Created by Wesley Luntsford on 2/24/23.
 //
 
+import SharedSwiftUI
 import SwiftUI
 
 enum SettingsPath: Hashable {

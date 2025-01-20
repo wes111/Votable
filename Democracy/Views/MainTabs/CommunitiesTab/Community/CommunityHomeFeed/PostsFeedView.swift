@@ -5,12 +5,14 @@
 //  Created by Wesley Luntsford on 3/7/23.
 //
 
+import SharedSwiftUI
 import SwiftUI
 import SharedResourcesClientAndServer
 
 // Shows post from last 24 sorted by upvotes? Or let the community decide the sort time (24 hours, week, etc).
 @MainActor
 struct PostsFeedView: View {
+    @Environment(\.theme) var theme: Theme
     @State private var viewModel: PostsFeedViewModel
     
     init(viewModel: PostsFeedViewModel) {
@@ -34,7 +36,7 @@ private extension PostsFeedView {
                 loadablePost(post)
             }
         }
-        .background(Color.primaryBackground, ignoresSafeAreaEdges: .all)
+        .background(theme.primaryColorScheme.primaryBackground, ignoresSafeAreaEdges: .all)
     }
     
     func loadablePost(_ post: Post) -> some View {
@@ -57,7 +59,7 @@ private extension PostsFeedView {
             .controlSize(.large)
             .opacity(isVisible ? 1.0 : 0.0)
             .frame(height: isVisible ? 20 : 0.0)
-            .padding(isVisible ? ViewConstants.sectionSpacing : 0)
+            .padding(isVisible ? theme.sizeConstants.sectionSpacing : 0)
     }
 }
 

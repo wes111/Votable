@@ -10,6 +10,7 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject private var viewModel: LoginViewModel
+    @Environment(\.theme) var theme: Theme
     @FocusState private var focusedField: LoginField?
     @State private var isKeyboardVisible = false
     @State private var keyboardVisibilityChangedTask: Task<Void, Error>?
@@ -33,6 +34,12 @@ struct LoginView: View {
             .onReceive(keyboardPublisher) { isVisible in
                 startKeyboardVisibilityDidChangeTask(isVisible: isVisible)
             }
+            .task(id: viewModel.shouldLogin) {
+                guard viewModel.shouldLogin else {
+                    return
+                }
+                await viewModel.login()
+            }
     }
 }
 
@@ -42,7 +49,7 @@ extension LoginView {
     var mainContent: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
-                Color.primaryBackground.ignoresSafeArea()
+                theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
                 VStack(spacing: isKeyboardVisible ? 20 : 50) {
                     logoView
                     VStack(spacing: 20) {
@@ -84,7 +91,7 @@ extension LoginView {
         TextField(
             "Email",
             text: $viewModel.email,
-            prompt: Text("Email").foregroundColor(.tertiaryBackground)
+            prompt: Text("Email").foregroundColor(theme.primaryColorScheme.tertiaryBackground)
         )
         .emailTextFieldStyle(
             email: $viewModel.email,
@@ -111,24 +118,17 @@ extension LoginView {
         .focused($focusedField, equals: .password)
         .submitLabel(.go)
         .onSubmit {
-            performAsnycTask(
-                action: viewModel.login,
-                isShowingProgress: $viewModel.isShowingProgress
-            )
+            viewModel.shouldLogin = true
         }
     }
     
     var loginButton: some View {
-        AsyncButton(
-            action: {
-                focusedField = nil
-                await viewModel.login()
-            },
-            label: {
-                Text("Login")
-            },
-            showProgressView: $viewModel.isShowingProgress
-        )
+        AsyncButton(showProgressView: $viewModel.isShowingProgress) {
+            focusedField = nil
+            await viewModel.login()
+        } label: {
+            Text("Login")
+        }
         .buttonStyle(PrimaryButtonStyle())
         .isDisabledWithAnimation(isDisabled: viewModel.isShowingProgress)
     }
@@ -139,7 +139,7 @@ extension LoginView {
         } label: {
             Text("Forgot Password?")
                 .font(.callout)
-                .foregroundStyle(Color.secondaryText)
+                .foregroundStyle(theme.primaryColorScheme.secondaryText)
         }
     }
     
@@ -175,12 +175,12 @@ private extension LoginView {
 
 // MARK: - Preview
 #Preview {
+    @Previewable @Environment(\.theme) var theme: Theme
     let coordinator = RootCoordinator()
     let viewModel = LoginViewModel(coordinator: coordinator)
     
-    return ZStack {
-        Color.primaryBackground
-            .ignoresSafeArea()
+    ZStack {
+        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
         LoginView(viewModel: viewModel)
     }
 }

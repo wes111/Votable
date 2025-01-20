@@ -5,6 +5,7 @@
 //  Created by Wesley Luntsford on 2/25/23.
 //
 
+import SharedSwiftUI
 import SwiftUI
 
 struct UpdatesTabMainView<ViewModel: UpdatesTabMainViewModelProtocol>: View {
@@ -16,11 +17,11 @@ struct UpdatesTabMainView<ViewModel: UpdatesTabMainViewModelProtocol>: View {
     }
     
     var body: some View {
-        AsyncButton(
-            action: { await viewModel.logout() },
-            label: { Text("Updates. Logout") },
-            showProgressView: $viewModel.isShowingProgress
-        )
+        AsyncButton(showProgressView: $viewModel.isShowingProgress) {
+            await viewModel.logout()
+        } label: {
+            Text("Updates. Logout")
+        }
     }
 }
 

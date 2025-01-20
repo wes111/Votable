@@ -5,11 +5,13 @@
 //  Created by Wesley Luntsford on 3/8/23.
 //
 
+import DemocracySwiftUI
 import SharedSwiftUI
 import SwiftUI
 
 @MainActor
 struct PostCardView: View {
+    @Environment(\.theme) var theme: Theme
     @State private var viewModel: PostCardViewModel
     
     init(viewModel: PostCardViewModel) {
@@ -28,7 +30,7 @@ private extension PostCardView {
         Button {
             viewModel.goToPostView()
         } label: {
-            VStack(alignment: .leading, spacing: ViewConstants.smallElementSpacing) {
+            VStack(alignment: .leading, spacing: theme.sizeConstants.smallElementSpacing) {
                 header
                 title
                 if let linkProviderViewModel = viewModel.linkProviderViewModel {
@@ -36,8 +38,8 @@ private extension PostCardView {
                 }
                 bottomButtonsRow
             }
-            .padding(.horizontal, ViewConstants.screenPadding)
-            .padding(.vertical, ViewConstants.largeElementSpacing)
+            .padding(.horizontal, theme.sizeConstants.screenPadding)
+            .padding(.vertical, theme.sizeConstants.largeElementSpacing)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
@@ -45,7 +47,7 @@ private extension PostCardView {
     
     var title: some View {
         Text(viewModel.post.title)
-            .foregroundStyle(Color.secondaryText)
+            .foregroundStyle(theme.primaryColorScheme.secondaryText)
             .font(.headline)
             .fontWeight(.semibold)
     }
@@ -69,7 +71,7 @@ private extension PostCardView {
     }
     
     var header: some View {
-        HStack(alignment: .center, spacing: ViewConstants.smallElementSpacing) {
+        HStack(alignment: .center, spacing: theme.sizeConstants.smallElementSpacing) {
            userIcon
             
             VStack(alignment: .leading, spacing: 0) {
@@ -80,29 +82,29 @@ private extension PostCardView {
     }
     
     var headerTopLine: some View {
-        HStack(spacing: ViewConstants.elementSpacing) {
+        HStack(spacing: theme.sizeConstants.elementSpacing) {
             Text(viewModel.username)
             Spacer()
             menuButton
         }
-        .foregroundStyle(Color.secondaryText)
+        .foregroundStyle(theme.primaryColorScheme.secondaryText)
         .font(.caption2)
     }
     
     var headerBottomLine: some View {
-        HStack(alignment: .center, spacing: ViewConstants.extraSmallElementSpacing) {
+        HStack(alignment: .center, spacing: theme.sizeConstants.extraSmallElementSpacing) {
             Text(viewModel.userTagline)
             Text("•")
             Text(viewModel.date)
         }
-        .foregroundStyle(Color.secondaryText)
+        .foregroundStyle(theme.primaryColorScheme.secondaryText)
         .font(.caption2)
     }
     
     var userIcon: some View {
         Circle()
             .frame(width: 25, height: 25)
-            .foregroundStyle(Color.secondaryText)
+            .foregroundStyle(theme.primaryColorScheme.secondaryText)
     }
     
     var menuButton: some View {
@@ -117,15 +119,16 @@ private extension PostCardView {
     var commentsCount: some View {
         Label(viewModel.commentsText, systemImage: SystemImage.bubble.rawValue)
             .font(.footnote)
-            .foregroundStyle(Color.secondaryText)
+            .foregroundStyle(theme.primaryColorScheme.secondaryText)
             .labelStyle(TightLabelStyle())
     }
 }
 
 // MARK: - Preview
 #Preview {
+    @Previewable @Environment(\.theme) var theme: Theme
     ZStack {
-        Color.primaryBackground
+        theme.primaryColorScheme.primaryBackground
         PostCardView(viewModel: PostCardViewModel.preview)
     }
 }

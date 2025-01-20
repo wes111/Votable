@@ -7,6 +7,7 @@
 
 import Factory
 import Foundation
+import SharedSwift
 
 @MainActor
 protocol UpdatesTabMainCoordinatorDelegate: AnyObject {

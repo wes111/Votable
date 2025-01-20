@@ -20,6 +20,14 @@ public struct ColorScheme: Sendable {
     public let primaryAccent: Color
     public let secondaryAccent: Color
     
+    func inputValidationStatusColor(_ inputStatus: InputValidationRuleStatus) -> Color {
+        switch inputStatus {
+        case .incomplete: primaryText
+        case .error: .yellow
+        case .satisfied: .green
+        }
+    }
+    
     public init(
         primaryBackground: Color,
         secondaryBackground: Color,
