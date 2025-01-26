@@ -12,20 +12,14 @@ import SharedResourcesClientAndServer
 final class CommunityArchiveViewModel {
     
     let community: Community
-    private weak var coordinator: CommunitiesCoordinatorDelegate?
     
-    init(community: Community, coordinator: CommunitiesCoordinatorDelegate?) {
+    init(community: Community) {
         self.community = community
-        self.coordinator = coordinator
     }
 }
 
 // MARK: - Methods
 extension CommunityArchiveViewModel {
-    func goToCommunityPostCategory(category: PostCategory?) {
-        coordinator?.goToCommunityPostCategory(category: category, community: community)
-    }
-    
     func postCountStringForCategory(_ category: PostCategory?) -> String {
         "\(category?.postCount ?? allPostsCount) Posts"
     }

@@ -9,8 +9,5 @@ import Foundation
 import SharedResourcesClientAndServer
 
 extension CommunityCardViewModel {
-    static let preview: CommunityCardViewModel = .init(
-        community: .preview,
-        coordinator: CommunitiesCoordinator.preview
-    )
+    static let preview: CommunityCardViewModel = .init(community: .preview)
 }

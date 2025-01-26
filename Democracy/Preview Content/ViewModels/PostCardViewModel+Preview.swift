@@ -10,7 +10,7 @@ import Foundation
 import SharedResourcesClientAndServer
 
 extension PostCardViewModel {
-    static let preview = PostCardViewModel(coordinator: CommunitiesCoordinator.preview, post: Post.preview)
+    static let preview = PostCardViewModel(post: .preview)
     
     static let previewArray: [PostCardViewModel] = [
         preview, preview, preview, preview, preview

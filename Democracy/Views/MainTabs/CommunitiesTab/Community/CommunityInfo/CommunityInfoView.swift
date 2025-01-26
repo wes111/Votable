@@ -6,18 +6,19 @@
 //
 
 import DemocracySwiftUI
+import Navigator
 import SwiftUI
 import SharedResourcesClientAndServer
 import SharedSwiftUI
 
-@MainActor
 struct CommunityInfoView: View {
     @State private var viewModel: CommunityInfoViewModel
     @Environment(\.theme) var theme: Theme
     @Environment(\.openURL) var openURL
+    @Environment(\.navigator) var navigator: Navigator
     
-    init(viewModel: CommunityInfoViewModel) {
-        self.viewModel = viewModel
+    init(community: Community) {
+        viewModel = .init(community: community)
     }
     
     var body: some View {
@@ -81,7 +82,7 @@ private extension CommunityInfoView {
                 .clipShape(Circle())
                 .frame(width: 70, height: 70)
                 .onTapGesture {
-                    viewModel.onTapLeader(id: "")
+                    navigator.navigate(to: CommunityDestination.communityCandidate(.preview)) // TODO: ...
                 }
             
             VStack(spacing: 0) {
@@ -100,7 +101,7 @@ private extension CommunityInfoView {
     var alliedCommunitiesSection: some View {
         VStack(alignment: .leading, spacing: theme.sizeConstants.elementSpacing) {
             ForEach(viewModel.alliedCommunities) { community in
-                CommunityCard(viewModel: .init(community: community, coordinator: viewModel.coordinator))
+                CommunityCard(community: community)
             }
             .padding(.horizontal, theme.sizeConstants.screenPadding)
             
@@ -222,7 +223,7 @@ extension View {
 #Preview {
     @Previewable @Environment(\.theme) var theme: Theme
     ScrollView {
-        CommunityInfoView(viewModel: CommunityInfoViewModel.preview)
+        CommunityInfoView(community: .preview)
             .background(theme.primaryColorScheme.primaryBackground)
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 extension AccountInputFlowViewModel {
-    static let preview = AccountInputFlowViewModel(coordinator: .preview)
+    static let preview = AccountInputFlowViewModel()
 }
 
 extension AccountUsernameViewModel {

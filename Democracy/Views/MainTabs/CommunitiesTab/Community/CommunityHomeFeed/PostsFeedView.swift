@@ -15,8 +15,8 @@ struct PostsFeedView: View {
     @Environment(\.theme) var theme: Theme
     @State private var viewModel: PostsFeedViewModel
     
-    init(viewModel: PostsFeedViewModel) {
-        self.viewModel = viewModel
+    init(community: Community, postFilters: PostFilters = .init()) {
+        viewModel = PostsFeedViewModel(community: community, postFilters: postFilters)
     }
     
     var body: some View {
@@ -43,7 +43,7 @@ private extension PostsFeedView {
         VStack(alignment: .center, spacing: 0) {
             scrollProgresssView(isVisible: viewModel.postShouldShowTopProgress(post))
             
-            PostCardView(viewModel: viewModel.getPostCardViewModel(post: post))
+            PostCardView(post: post)
                 .task {
                     await viewModel.onAppear(post)
                 }
@@ -65,5 +65,5 @@ private extension PostsFeedView {
 
 // MARK: - Preview
 #Preview {
-    PostsFeedView(viewModel: PostsFeedViewModel.preview)
+    PostsFeedView(community: .preview)
 }

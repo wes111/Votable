@@ -10,7 +10,7 @@ import SharedResourcesClientAndServer
 
 extension PostInputFlowViewModel {
     static func preview(flowPath: PostFlow = .title) -> PostInputFlowViewModel {
-        PostInputFlowViewModel(coordinator: .preview, community: .preview, flowPath: flowPath)
+        PostInputFlowViewModel(community: .preview, flowPath: flowPath)
     }
 }
 

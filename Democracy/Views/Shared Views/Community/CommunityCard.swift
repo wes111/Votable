@@ -5,16 +5,18 @@
 //  Created by Wesley Luntsford on 7/3/24.
 //
 
+import Navigator
+import SharedResourcesClientAndServer
 import SharedSwiftUI
 import SwiftUI
 
-@MainActor
 struct CommunityCard: View {
     @State private var viewModel: CommunityCardViewModel
     @Environment(\.theme) var theme: Theme
+    @Environment(\.navigator) var navigator: Navigator
     
-    init(viewModel: CommunityCardViewModel) {
-        self.viewModel = viewModel
+    init(community: Community) {
+        viewModel = .init(community: community)
     }
     
     var body: some View {
@@ -27,7 +29,7 @@ private extension CommunityCard {
     
     var content: some View {
         Button {
-            viewModel.onTap()
+            navigator.navigate(to: CommunityDestination.communityHome(viewModel.community))
         } label: {
             buttonContent
         }
@@ -80,10 +82,6 @@ private extension CommunityCard {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea(.all)
-        CommunityCard(viewModel: CommunityCardViewModel.preview)
-    }
+#Preview(traits: .standardPreviewModifier) {
+    CommunityCard(community: .preview)
 }

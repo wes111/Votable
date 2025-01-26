@@ -8,15 +8,14 @@
 import Foundation
 import SharedResourcesClientAndServer
 
-protocol CandidateViewModelProtocol: ObservableObject {
-    var candidate: Candidate { get }
-}
+//protocol CandidateViewModelProtocol: ObservableObject {
+//    var candidate: Candidate { get }
+//}
 
 @MainActor
-final class CandidateViewModel: CandidateViewModelProtocol {
+final class CandidateViewModel {
     
     let candidate: Candidate
-    private weak var coordinator: CommunitiesCoordinatorDelegate?
     
     lazy var candidateBadges: [CandidateBadge] = {
         candidate.badges
@@ -27,13 +26,10 @@ final class CandidateViewModel: CandidateViewModelProtocol {
     }()
     
     lazy var candidatePosts: [PostCardViewModel] = {
-        Post.previewArray.map { $0.toViewModel(coordinator: self.coordinator) }
+        Post.previewArray.map { $0.toViewModel() }
     }()
     
-    init(coordinator: CommunitiesCoordinatorDelegate,
-         candidate: Candidate
-    ) {
-        self.coordinator = coordinator
+    init(candidate: Candidate) {
         self.candidate = candidate
     }
 }
@@ -41,7 +37,7 @@ final class CandidateViewModel: CandidateViewModelProtocol {
 extension Post {
     // TODO: Remove
     @MainActor
-    func toViewModel(coordinator: CommunitiesCoordinatorDelegate?) -> PostCardViewModel {
-        .init(coordinator: coordinator, post: self)
+    func toViewModel() -> PostCardViewModel {
+        .init(post: self)
     }
 }

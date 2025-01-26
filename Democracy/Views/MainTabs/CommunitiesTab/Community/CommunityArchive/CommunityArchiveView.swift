@@ -5,23 +5,18 @@
 //  Created by Wesley Luntsford on 3/7/23.
 //
 
+import Navigator
 import SharedSwiftUI
 import SwiftUI
 import SharedResourcesClientAndServer
 
 struct CommunityArchiveFeedView: View {
+    @Environment(\.navigator) var navigator: Navigator
     @Environment(\.theme) var theme: Theme
     @State private var viewModel: CommunityArchiveViewModel
     
-    private var gridItemLayout: [GridItem] {
-        Array(
-            repeating: .init(.flexible(), spacing: theme.sizeConstants.elementSpacing),
-            count: 2
-        )
-    }
-    
-    init(viewModel: CommunityArchiveViewModel) {
-        self.viewModel = viewModel
+    init(community: Community) {
+        viewModel = .init(community: community)
     }
     
     var body: some View {
@@ -32,6 +27,13 @@ struct CommunityArchiveFeedView: View {
 
 // MARK: - Subviews
 private extension CommunityArchiveFeedView {
+    
+    var gridItemLayout: [GridItem] {
+        Array(
+            repeating: .init(.flexible(), spacing: theme.sizeConstants.elementSpacing),
+            count: 2
+        )
+    }
     
     var content: some View {
         LazyVGrid(columns: gridItemLayout, alignment: .center, spacing: theme.sizeConstants.elementSpacing) {
@@ -48,7 +50,7 @@ private extension CommunityArchiveFeedView {
     
     func communityCategory(_ category: PostCategory?) -> some View {
         Button {
-            viewModel.goToCommunityPostCategory(category: category)
+            navigator.navigate(to: CommunityDestination.communityPostCategory(filters: .init(categoriesFilter: category), community: viewModel.community))
         } label: {
             VStack(alignment: .leading, spacing: theme.sizeConstants.smallElementSpacing) {
                 Image("BMW")
@@ -87,11 +89,6 @@ private extension CommunityArchiveFeedView {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    // PreviewService.registerMocks()
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea(.all)
-        CommunityArchiveFeedView(viewModel: .preview)
-    }
+#Preview(traits: .standardPreviewModifier) {
+    CommunityArchiveFeedView(community: .preview)
 }

@@ -9,8 +9,5 @@ import Foundation
 import SharedResourcesClientAndServer
 
 extension CandidateViewModel {
-    @MainActor static let preview = CandidateViewModel(
-        coordinator: CommunitiesCoordinator.preview,
-        candidate: Candidate.preview
-    )
+    @MainActor static let preview = CandidateViewModel(candidate: .preview)
 }

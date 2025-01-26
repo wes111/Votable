@@ -36,10 +36,10 @@ public protocol InputFlowCoordinatorViewModel: Observable, AnyObject {
     var viewTitle: String { get }
     var viewSubtitle: String { get }
     var leadingButtons: [TopBarContent] { get }
-    var trailingButtons: [TopBarContent] { get }
+    //var trailingButtons: [TopBarContent] { get }
     
     func didCompleteFlowSuccessfully()
-    func close()
+    //func close()
     func handleError(_ error: CreationRequestBuilderError<Flow>)
 }
 
@@ -60,9 +60,9 @@ public extension InputFlowCoordinatorViewModel {
         flowPath.subtitle
     }
     
-    var trailingButtons: [TopBarContent] {
-        [.close(close)]
-    }
+//    var trailingButtons: [TopBarContent] {
+//        [.close(close)]
+//    }
     
     var leadingButtons: [TopBarContent] {
         flowPath.canGoBack ? [.back(back)] : []

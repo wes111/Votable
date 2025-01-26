@@ -6,16 +6,18 @@
 //
 
 import DemocracySwiftUI
+import Navigator
+import SharedResourcesClientAndServer
 import SharedSwiftUI
 import SwiftUI
 
-@MainActor
 struct PostCardView: View {
     @Environment(\.theme) var theme: Theme
+    @Environment(\.navigator) var navigator: Navigator
     @State private var viewModel: PostCardViewModel
     
-    init(viewModel: PostCardViewModel) {
-        self.viewModel = viewModel
+    init(post: Post) {
+        viewModel = .init(post: post)
     }
     
     var body: some View {
@@ -28,7 +30,7 @@ private extension PostCardView {
     
     var content: some View {
         Button {
-            viewModel.goToPostView()
+            navigator.navigate(to: CommunityDestination.communityPost(viewModel.post.toPost()))
         } label: {
             VStack(alignment: .leading, spacing: theme.sizeConstants.smallElementSpacing) {
                 header
@@ -125,10 +127,6 @@ private extension PostCardView {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    ZStack {
-        theme.primaryColorScheme.primaryBackground
-        PostCardView(viewModel: PostCardViewModel.preview)
-    }
+#Preview(traits: .standardPreviewModifier) {
+    PostCardView(post: .preview)
 }

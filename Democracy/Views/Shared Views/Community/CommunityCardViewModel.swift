@@ -11,13 +11,11 @@ import SharedResourcesClientAndServer
 
 @MainActor @Observable
 final class CommunityCardViewModel {
-    private let community: Community
+    let community: Community
     @ObservationIgnored @Injected(\.membershipService) private var membershipService
-    private weak var coordinator: CommunitiesCoordinatorDelegate?
     
-    init(community: Community, coordinator: CommunitiesCoordinatorDelegate?) {
+    init(community: Community) {
         self.community = community
-        self.coordinator = coordinator
     }
 }
 
@@ -40,10 +38,6 @@ extension CommunityCardViewModel {
 
 // MARK: - Methods
 extension CommunityCardViewModel {
-    
-    func onTap() {
-        coordinator?.goToCommunity(community: community)
-    }
     
     func toggleCommunityMembership() async {
         try? await Task.sleep(nanoseconds: 150_000_000)

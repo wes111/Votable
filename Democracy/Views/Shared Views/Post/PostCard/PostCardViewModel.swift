@@ -19,11 +19,9 @@ protocol PostCardViewCoordinatorDelegate: AnyObject {
 @MainActor @Observable
 final class PostCardViewModel {
     var linkProviderViewModel: LinkProviderViewModel?
-    private weak var coordinator: PostCardViewCoordinatorDelegate?
     let post: ObservablePost
     
-    init(coordinator: PostCardViewCoordinatorDelegate?, post: Post) {
-        self.coordinator = coordinator
+    init(post: Post) {
         self.post = post.toObservablePost()
         
         if let url = post.link {
@@ -62,9 +60,9 @@ extension PostCardViewModel {
 // MARK: - Methods
 extension PostCardViewModel {
     
-    func goToPostView() {
-        coordinator?.goToPostView(post.toPost())
-    }
+//    func goToPostView() {
+//        coordinator?.goToPostView(post.toPost())
+//    }
     
     func onTapVoteButton(_ vote: VoteType) {
 //        Task {

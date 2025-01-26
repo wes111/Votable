@@ -8,13 +8,9 @@
 import SharedSwiftUI
 import SwiftUI
 
-struct UpdatesTabMainView<ViewModel: UpdatesTabMainViewModelProtocol>: View {
+struct UpdatesTabMainView: View {
     
-    @StateObject var viewModel: ViewModel
-    
-    init(viewModel: ViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    @State private var viewModel: UpdatesTabMainViewModel = .init()
     
     var body: some View {
         AsyncButton(showProgressView: $viewModel.isShowingProgress) {
@@ -27,5 +23,5 @@ struct UpdatesTabMainView<ViewModel: UpdatesTabMainViewModelProtocol>: View {
 
 // MARK: - Preview
 #Preview {
-    UpdatesTabMainView(viewModel: UpdatesTabMainViewModel.preview)
+    UpdatesTabMainView()
 }

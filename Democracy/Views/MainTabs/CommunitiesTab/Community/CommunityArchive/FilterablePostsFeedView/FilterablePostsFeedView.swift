@@ -5,16 +5,18 @@
 //  Created by Wesley Luntsford on 7/15/24.
 //
 
+import Navigator
+import SharedResourcesClientAndServer
 import SharedSwiftUI
 import SwiftUI
 
-@MainActor
 struct FilterablePostsFeedView: View {
     @State private var viewModel: PostsFeedViewModel
     @Environment(\.theme) var theme: Theme
+    @Environment(\.navigator) var navigator: Navigator
     
-    init(viewModel: PostsFeedViewModel) {
-        self.viewModel = viewModel
+    init(community: Community, filters: PostFilters) {
+        viewModel = .init(community: community, postFilters: filters)
     }
     
     var body: some View {
@@ -41,14 +43,14 @@ private extension FilterablePostsFeedView {
     var content: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                PostsFeedView(viewModel: viewModel)
+                PostsFeedView(community: viewModel.community)
             }
         }
         .clipped()
     }
     
     var leadingBarContent: [TopBarContent] {
-        [.back(viewModel.goBack)]
+        [.back({ navigator.pop() })]
     }
     
     var centerToolbarContent: [TopBarContent] {
@@ -63,6 +65,6 @@ private extension FilterablePostsFeedView {
 // MARK: - Preview
 #Preview {
     NavigationStack {
-        FilterablePostsFeedView(viewModel: .preview)
+        FilterablePostsFeedView(community: .preview, filters: .preview)
     }
 }

@@ -25,7 +25,7 @@ struct RootCoordinatorView: View {
             }
         }
         .popover(isPresented: $viewModel.isShowingOnboardingFlow) {
-            CreateAccountCoordinatorView(coordinator: viewModel.createAccountCoordinator())
+            CreateAccountNavigationStack()
         }
         .task { await viewModel.startSessionTask() }
         .task { await viewModel.setupUserService() }
@@ -38,15 +38,6 @@ struct RootCoordinatorView: View {
 //        .fullScreenCover(isPresented: $viewModel.isShowingOnboardingFlow) {
 //            OnboardingCoordinatorView(viewModel: viewModel.onboardingCoordinator())
 //        }
-    }
-    
-    @ViewBuilder
-    func createViewFromPath(_ path: RootPath) -> some View {
-        switch path {
-            // TODO: ...
-        default:
-            EmptyView()
-        }
     }
 }
 
