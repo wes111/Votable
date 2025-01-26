@@ -39,15 +39,6 @@ struct RootCoordinatorView: View {
 //            OnboardingCoordinatorView(viewModel: viewModel.onboardingCoordinator())
 //        }
     }
-    
-    @ViewBuilder
-    func createViewFromPath(_ path: RootPath) -> some View {
-        switch path {
-            // TODO: ...
-        default:
-            EmptyView()
-        }
-    }
 }
 
 // MARK: - Preview

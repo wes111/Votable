@@ -133,7 +133,6 @@
 		EE9760162AD09F67003069CF /* CreateAccountSuccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9760152AD09F67003069CF /* CreateAccountSuccessViewModel.swift */; };
 		EE9760192AD0B066003069CF /* AccountAcceptTermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9760182AD0B066003069CF /* AccountAcceptTermsView.swift */; };
 		EE97601E2AD767EF003069CF /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97601D2AD767EF003069CF /* RootCoordinator.swift */; };
-		EE9760202AD76800003069CF /* RootPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97601F2AD76800003069CF /* RootPath.swift */; };
 		EE9760242AD76849003069CF /* RootCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9760232AD76849003069CF /* RootCoordinatorView.swift */; };
 		EE9C4B052C583809004B2CE7 /* FilterPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9C4B042C583809004B2CE7 /* FilterPostsViewModel.swift */; };
 		EEA2B41C2B67167C00063211 /* LoginField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA2B41B2B67167C00063211 /* LoginField.swift */; };
@@ -157,9 +156,6 @@
 		EECA51922C4C44EF00BD8F59 /* PreviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECA51912C4C44EF00BD8F59 /* PreviewService.swift */; };
 		EECA51A02C4D922B00BD8F59 /* FilterPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECA519F2C4D922B00BD8F59 /* FilterPostsView.swift */; };
 		EECA51A62C4DE3F100BD8F59 /* FilterPostsViewModel+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECA51A52C4DE3F100BD8F59 /* FilterPostsViewModel+Preview.swift */; };
-		EED47ED5299F169000FEFC6E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED47ED4299F169000FEFC6E /* SettingsView.swift */; };
-		EED47EDF299F186D00FEFC6E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED47EDE299F186D00FEFC6E /* SettingsViewModel.swift */; };
-		EED4A4EC29A9984200DDCCDA /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED4A4EB29A9984200DDCCDA /* SettingsCoordinator.swift */; };
 		EED4A4F929AA855900DDCCDA /* EventsTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED4A4F829AA855900DDCCDA /* EventsTabCoordinator.swift */; };
 		EED4A4FB29AA857000DDCCDA /* VotingTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED4A4FA29AA857000DDCCDA /* VotingTabCoordinator.swift */; };
 		EED4A4FD29AA857B00DDCCDA /* CommunitiesTabCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED4A4FC29AA857B00DDCCDA /* CommunitiesTabCoordinatorView.swift */; };
@@ -342,7 +338,6 @@
 		EE9760152AD09F67003069CF /* CreateAccountSuccessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountSuccessViewModel.swift; sourceTree = "<group>"; };
 		EE9760182AD0B066003069CF /* AccountAcceptTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAcceptTermsView.swift; sourceTree = "<group>"; };
 		EE97601D2AD767EF003069CF /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
-		EE97601F2AD76800003069CF /* RootPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPath.swift; sourceTree = "<group>"; };
 		EE9760232AD76849003069CF /* RootCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinatorView.swift; sourceTree = "<group>"; };
 		EE9C4B042C583809004B2CE7 /* FilterPostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPostsViewModel.swift; sourceTree = "<group>"; };
 		EE9C4B0F2C5DCBDB004B2CE7 /* SharedResourcesClientAndServer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SharedResourcesClientAndServer; path = ../SharedResourcesClientAndServer; sourceTree = "<group>"; };
@@ -368,9 +363,6 @@
 		EECA51912C4C44EF00BD8F59 /* PreviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewService.swift; sourceTree = "<group>"; };
 		EECA519F2C4D922B00BD8F59 /* FilterPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPostsView.swift; sourceTree = "<group>"; };
 		EECA51A52C4DE3F100BD8F59 /* FilterPostsViewModel+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterPostsViewModel+Preview.swift"; sourceTree = "<group>"; };
-		EED47ED4299F169000FEFC6E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		EED47EDE299F186D00FEFC6E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		EED4A4EB29A9984200DDCCDA /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		EED4A4F829AA855900DDCCDA /* EventsTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTabCoordinator.swift; sourceTree = "<group>"; };
 		EED4A4FA29AA857000DDCCDA /* VotingTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingTabCoordinator.swift; sourceTree = "<group>"; };
 		EED4A4FC29AA857B00DDCCDA /* CommunitiesTabCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesTabCoordinatorView.swift; sourceTree = "<group>"; };
@@ -986,7 +978,6 @@
 			isa = PBXGroup;
 			children = (
 				EE97601D2AD767EF003069CF /* RootCoordinator.swift */,
-				EE97601F2AD76800003069CF /* RootPath.swift */,
 				EE9760232AD76849003069CF /* RootCoordinatorView.swift */,
 			);
 			path = Navigation;
@@ -1050,16 +1041,6 @@
 			path = FilterPostsView;
 			sourceTree = "<group>";
 		};
-		EED4A4EA29A997AB00DDCCDA /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				EED47ED4299F169000FEFC6E /* SettingsView.swift */,
-				EED47EDE299F186D00FEFC6E /* SettingsViewModel.swift */,
-				EED4A4EB29A9984200DDCCDA /* SettingsCoordinator.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		EED4A4F229AA7FC600DDCCDA /* MainTabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1079,7 +1060,6 @@
 				EED4A50A29AB18D400DDCCDA /* UpdatesTabMainView.swift */,
 				EED4A50C29AB18E400DDCCDA /* UpdatesTabMainViewModel.swift */,
 				EE936CA52A789DCB00D49271 /* Navigation */,
-				EED4A4EA29A997AB00DDCCDA /* Settings */,
 			);
 			path = UpdatesTab;
 			sourceTree = "<group>";
@@ -1536,7 +1516,6 @@
 				EE2A89182CC7475800198479 /* AsyncStreamYielding.swift in Sources */,
 				EE936CAD2A789F9D00D49271 /* EventsTabDestination.swift in Sources */,
 				EE2A891C2CC7489700198479 /* AsyncStreamManager.swift in Sources */,
-				EED47ED5299F169000FEFC6E /* SettingsView.swift in Sources */,
 				EEB5AF912B017F0900310408 /* UserDefaultStorage.swift in Sources */,
 				EEFFC8F92CF6A84900F3D579 /* CommunityDescriptionViewModel.swift in Sources */,
 				EEFFC8FF2CFB85A600F3D579 /* CommunityNameViewModel.swift in Sources */,
@@ -1639,7 +1618,6 @@
 				EE2477D22BBCD95000661A0A /* CurrentScheme.swift in Sources */,
 				EEFFC8E82CE568B300F3D579 /* SessionServiceMock.swift in Sources */,
 				EE7EC2732B614CB000F62E90 /* CommunitySettingsView.swift in Sources */,
-				EED4A4EC29A9984200DDCCDA /* SettingsCoordinator.swift in Sources */,
 				EE412B432B79A9E20007632B /* AddResourceView.swift in Sources */,
 				EE5A8C952D26D17A005C6277 /* AddCommentView.swift in Sources */,
 				EE412B542B8D84A90007632B /* AddRuleView.swift in Sources */,
@@ -1696,7 +1674,6 @@
 				EE80D8D429BC15FC0000F8EF /* EventsTabMainViewModel+Preview.swift in Sources */,
 				EE412BA12B9F3DD40007632B /* AccountInputFlowView.swift in Sources */,
 				EEC61B5F2B40F43400F73509 /* PostCategoryView.swift in Sources */,
-				EE9760202AD76800003069CF /* RootPath.swift in Sources */,
 				EEFFC9172CFBA8E100F3D579 /* AccountEmailViewModel.swift in Sources */,
 				EED4A53E29B971B700DDCCDA /* PostsFeedViewModel.swift in Sources */,
 				EE8752DC2D0FBC88007BB647 /* RuleInput.swift in Sources */,
@@ -1709,7 +1686,6 @@
 				EE36FF8F2B1E14E3009E8F86 /* AccountUsernameView.swift in Sources */,
 				EED4A50729AA8BAE00DDCCDA /* EventsTabMainView.swift in Sources */,
 				EE80D8ED29BD180E0000F8EF /* Container+Extensions.swift in Sources */,
-				EED47EDF299F186D00FEFC6E /* SettingsViewModel.swift in Sources */,
 				EECA51702C45EE7100BD8F59 /* FilterablePostsFeedView.swift in Sources */,
 				EE80D92029C938320000F8EF /* CandidatesViewModel+Preview.swift in Sources */,
 				EE4987DB2B2F917500AB7522 /* PostBodyView.swift in Sources */,
