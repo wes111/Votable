@@ -25,7 +25,7 @@ struct RootCoordinatorView: View {
             }
         }
         .popover(isPresented: $viewModel.isShowingOnboardingFlow) {
-            CreateAccountCoordinatorView(coordinator: viewModel.createAccountCoordinator())
+            CreateAccountNavigationStack()
         }
         .task { await viewModel.startSessionTask() }
         .task { await viewModel.setupUserService() }

@@ -5,26 +5,28 @@
 //  Created by Wesley Luntsford on 2/26/23.
 //
 
+import SharedResourcesClientAndServer
 import DemocracySwiftUI
+import Navigator
 import SharedSwiftUI
 import SwiftUI
 
-@MainActor
 struct CommunityView: View {
     @State private var viewModel: CommunityViewModel
     @Environment(\.theme) var theme: Theme
+    @Environment(\.navigator) var navigator: Navigator
     
-    init(viewModel: CommunityViewModel) {
-        self.viewModel = viewModel
+    init(community: Community) {
+        viewModel = .init(community: community)
     }
     
     var body: some View {
         content
             .background(theme.primaryColorScheme.primaryBackground, ignoresSafeAreaEdges: .all)
             .toolbarNavigation(
-                leadingContent: viewModel.leadingContent,
-                centerContent: viewModel.centerContent,
-                trailingContent: viewModel.trailingContent,
+                leadingContent: leadingContent,
+                centerContent: centerContent,
+                trailingContent: trailingContent,
                 theme: theme
             )
     }
@@ -74,13 +76,13 @@ private extension CommunityView {
     var communitySection: some View {
         switch viewModel.selectedTab {
         case .feed:
-            PostsFeedView(viewModel: viewModel.communityHomeFeedViewModel())
+            PostsFeedView(community: viewModel.community)
             
         case .info:
-            CommunityInfoView(viewModel: viewModel.communityInfoViewModel())
+            CommunityInfoView(community: viewModel.community)
             
         case .archive:
-            CommunityArchiveFeedView(viewModel: viewModel.communityArchiveViewModel())
+            CommunityArchiveFeedView(community: viewModel.community)
             
         case .vote:
             EmptyView() // TODO: ...
@@ -123,11 +125,25 @@ private extension CommunityView {
         }
         .padding(.horizontal, theme.sizeConstants.screenPadding)
     }
+    
+    var leadingContent: [TopBarContent] {
+        [.back({ navigator.pop() })]
+    }
+    
+    var centerContent: [TopBarContent] {
+       [] // [.title(community.name, size: .large)]
+    }
+    
+    var trailingContent: [TopBarContent] {
+        [.menu([
+            .init(title: "Create Post", action: { navigator.navigate(to: CommunityDestination.createPost(community: viewModel.community)) })
+        ])]
+    }
 }
 
 // MARK: - Preview
 #Preview {
     NavigationStack {
-        CommunityView(viewModel: CommunityViewModel.preview)
+        CommunityView(community: .preview)
     }
 }

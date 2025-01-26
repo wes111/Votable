@@ -10,11 +10,11 @@ import SwiftUI
 import SharedResourcesClientAndServer
 
 struct CandidateView: View {
-    @StateObject private var viewModel: CandidateViewModel
+    @State private var viewModel: CandidateViewModel
     @Environment(\.theme) var theme: Theme
     
-    init(viewModel: CandidateViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+    init(candidate: Candidate) {
+        viewModel = .init(candidate: candidate)
     }
     
     var body: some View {
@@ -129,10 +129,6 @@ struct CandidateCard: View {
 }
 
 // MARK: - Preview
-#Preview {
-    @Previewable @Environment(\.theme) var theme: Theme
-    ZStack {
-        theme.primaryColorScheme.primaryBackground.ignoresSafeArea()
-        CandidateView(viewModel: CandidateViewModel.preview)
-    }
+#Preview(traits: .standardPreviewModifier) {
+    CandidateView(candidate: .preview)
 }

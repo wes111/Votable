@@ -8,14 +8,15 @@
 import DemocracySwiftUI
 import SharedSwiftUI
 import SwiftUI
+import Navigator
 
-@MainActor
 struct CommunitiesTabMainView: View {
     @Environment(\.theme) var theme: Theme
-    @Bindable var viewModel: CommunitiesTabMainViewModel
+    @Environment(\.navigator) var navigator: Navigator
+    @State private var viewModel: CommunitiesTabMainViewModel
     
-    init(viewModel: CommunitiesTabMainViewModel) {
-        self.viewModel = viewModel
+    init() {
+        viewModel = .init()
     }
     
     var body: some View {
@@ -43,7 +44,9 @@ struct CommunitiesTabMainView: View {
 private extension CommunitiesTabMainView {
     
     var menuOptions: [MenuButtonOption] {
-        [.init(title: "Create Community", action: viewModel.showCreateCommunityView)]
+        [.init(
+            title: "Create Community",
+            action: { navigator.navigate(to: CommunityDestination.createCommunity) })]
     }
     
     var trailingButtons: [TopBarContent] {
@@ -70,7 +73,7 @@ private extension CommunitiesTabMainView {
     var communityList: some View {
         PlainListView(items: viewModel.allCommunities) { community in
             TappableListItem(title: community.name, subtitle: community.tagline) {
-                viewModel.goToCommunity(community)
+                navigator.navigate(to: CommunityDestination.communityHome(community))
             }
         }
     }
@@ -79,6 +82,6 @@ private extension CommunitiesTabMainView {
 // MARK: - Preview
 #Preview {
     NavigationStack {
-        CommunitiesTabMainView(viewModel: CommunitiesTabMainViewModel.preview)
+        CommunitiesTabMainView()
     }
 }

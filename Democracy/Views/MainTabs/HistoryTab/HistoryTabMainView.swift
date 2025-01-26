@@ -7,13 +7,11 @@
 
 import SwiftUI
 
-struct HistoryTabMainView<ViewModel: HistoryTabMainViewModelProtocol>: View {
+struct HistoryTabMainView: View {
     
-    @StateObject var viewModel: ViewModel
+    @State private var viewModel = HistoryTabMainViewModel()
     
-    init(viewModel: ViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    init() {}
     
     var body: some View {
         Text("History")
@@ -22,5 +20,5 @@ struct HistoryTabMainView<ViewModel: HistoryTabMainViewModelProtocol>: View {
 
 // MARK: - Preview
 #Preview {
-    HistoryTabMainView(viewModel: HistoryTabMainViewModel.preview)
+    HistoryTabMainView()
 }

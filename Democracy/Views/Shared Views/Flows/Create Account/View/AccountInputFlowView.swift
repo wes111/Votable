@@ -6,14 +6,15 @@
 //
 
 import DemocracySwiftUI
+import Navigator
 import SwiftUI
 
-@MainActor
 struct AccountInputFlowView: View {
-    @Bindable var viewModel: AccountInputFlowViewModel
+    @State private var viewModel: AccountInputFlowViewModel
+    @Environment(\.navigator) var navigator: Navigator
     
-    init(viewModel: AccountInputFlowViewModel) {
-        self.viewModel = viewModel
+    init() {
+        viewModel = .init()
     }
     
     var body: some View {
@@ -21,6 +22,13 @@ struct AccountInputFlowView: View {
             .animation(.easeInOut, value: viewModel.flowPath)
             .progressModifier(isShowingProgess: $viewModel.isShowingProgress)
             .alertableModifier(alertModel: $viewModel.alertModel)
+            .onChange(of: viewModel.didCompleteSuccessfully) { _, didCompleteSuccessfully in
+                guard didCompleteSuccessfully else {
+                    return
+                }
+                // TODO: ...
+                //navigator.navigate(to: CreateAccountDestination.goToSuccess(username: <#T##String#>, closeAction: <#T##() -> Void#>, continueAction: <#T##() -> Void#>))
+            }
     }
 }
 
@@ -48,6 +56,6 @@ private extension AccountInputFlowView {
 // MARK: - Preview
 #Preview {
     NavigationStack {
-        AccountInputFlowView(viewModel: .preview)
+        AccountInputFlowView()
     }
 }

@@ -6,25 +6,27 @@
 //
 
 import DemocracySwiftUI
+import Navigator
+import SharedResourcesClientAndServer
 import SharedSwiftUI
 import SwiftUI
 
-@MainActor
 struct PostView: View {
     @Environment(\.theme) var theme: Theme
+    @Environment(\.navigator) var navigator: Navigator
     @State private var viewModel: PostViewModel
     @FocusState private var isAddCommentFieldFocused: Bool?
     
-    init(viewModel: PostViewModel) {
-        self.viewModel = viewModel
+    init(post: Post) {
+        self.viewModel = .init(post: post, commentsManager: CommentsManager(post: post))
     }
     
     var body: some View {
         content
             .toolbarNavigation(
-                leadingContent: viewModel.leadingContent,
-                centerContent: viewModel.centerContent,
-                trailingContent: viewModel.trailingContent,
+                leadingContent: leadingContent,
+                centerContent: centerContent,
+                trailingContent: trailingContent,
                 theme: theme
             )
             .alertableModifier(alertModel: $viewModel.alertModel)
@@ -113,11 +115,23 @@ private extension PostView {
         }
         .padding(.horizontal, theme.sizeConstants.screenPadding)
     }
+    
+    var leadingContent: [TopBarContent] {
+        [.back({ navigator.pop() })]
+    }
+    
+    var centerContent: [TopBarContent] {
+        [.title(viewModel.post.communityId, size: .small)]
+    }
+    
+    var trailingContent: [TopBarContent] {
+        [.menu([])]
+    }
 }
 
 // MARK: - Preview
 #Preview {
     NavigationStack {
-        PostView(viewModel: PostViewModel.preview)
+        PostView(post: .preview)
     }
 }

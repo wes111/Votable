@@ -5,6 +5,7 @@
 //  Created by Wesley Luntsford on 3/27/23.
 //
 
+import Navigator
 import SwiftUI
 import SharedResourcesClientAndServer
 
@@ -13,7 +14,7 @@ enum CreateCandidateField {
 }
 
 struct CreateCandidateView<ViewModel: CreateCandidateViewModelProtocol>: View {
-    
+    @Environment(\.navigator) var navigator: Navigator
     @StateObject private var viewModel: ViewModel
     @FocusState private var focusedField: CreateCandidateField?
     
@@ -24,7 +25,7 @@ struct CreateCandidateView<ViewModel: CreateCandidateViewModelProtocol>: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Button {
-                viewModel.close()
+                navigator.dismiss()
             } label: {
                 Image(systemName: "xmark")
             }

@@ -17,7 +17,7 @@ protocol CreateCandidateViewModelProtocol: ObservableObject {
     var alert: CreateCandidateAlert? { get set }
     var isLoading: Bool { get set }
     
-    @MainActor func close()
+    //@MainActor func close()
     func submitCandidate()
 }
 
@@ -30,16 +30,13 @@ final class CreateCandidateViewModel: CreateCandidateViewModelProtocol {
     @Published var alert: CreateCandidateAlert?
     @Published var isLoading: Bool = false
     
-    weak var coordinator: CommunitiesCoordinatorDelegate?
-    
-    init(coordinator: CommunitiesCoordinatorDelegate?) {
-        self.coordinator = coordinator
+    init() {
     }
     
-    @MainActor
-    func close() {
-        coordinator?.closeCreateCandidateView()
-    }
+//    @MainActor
+//    func close() {
+//        coordinator?.closeCreateCandidateView()
+//    }
     
     func submitCandidate() {
 //        isLoading = true

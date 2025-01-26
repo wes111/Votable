@@ -9,7 +9,7 @@ import Foundation
 
 extension CommunityInputFlowViewModel {
     static func preview(flowPath: CommunityFlow = .name) -> CommunityInputFlowViewModel {
-        CommunityInputFlowViewModel(coordinator: .preview, flowPath: flowPath, input: .preview)
+        CommunityInputFlowViewModel(flowPath: flowPath, input: .preview)
     }
 }
 

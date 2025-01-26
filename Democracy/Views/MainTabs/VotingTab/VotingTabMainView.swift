@@ -9,11 +9,9 @@ import SwiftUI
 
 struct VotingTabMainView: View {
     
-    @StateObject var viewModel: VotingTabMainViewModel
+    @State private var viewModel = VotingTabMainViewModel()
     
-    init(viewModel: VotingTabMainViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    init() {}
     
     var body: some View {
         Text("Voting")
@@ -22,6 +20,5 @@ struct VotingTabMainView: View {
 
 // MARK: - Preview
 #Preview {
-    EmptyView()
-    // VotingTabMainView(viewModel: VotingTabMainViewModel.preview)
+    VotingTabMainView()
 }

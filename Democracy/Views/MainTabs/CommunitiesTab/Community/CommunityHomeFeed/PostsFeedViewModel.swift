@@ -20,7 +20,6 @@ class PostsFeedViewModel {
     @ObservationIgnored private var refreshPostsTask: Task<Void, Never>?
     
     @ObservationIgnored @Injected(\.postService) private var postService
-    @ObservationIgnored private weak var coordinator: CommunitiesCoordinatorDelegate?
     
     // We use these variables to determine if the last/first post in the database is in memory.
     // If it is, then we do not need to try to fetch any more posts from the database.
@@ -33,10 +32,9 @@ class PostsFeedViewModel {
     var isShowingFilters: Bool = false
     var postFilters: PostFilters
     
-    init(community: Community, postFilters: PostFilters, coordinator: CommunitiesCoordinatorDelegate?) {
+    init(community: Community, postFilters: PostFilters) {
         self.postFilters = postFilters
         self.community = community
-        self.coordinator = coordinator
     }
     
     deinit {
@@ -101,24 +99,12 @@ extension PostsFeedViewModel {
         }
     }
     
-    func goBack() {
-        coordinator?.goBack()
-    }
-    
     func postShouldShowBottomProgress(_ post: Post) -> Bool {
         isShowingBottomProgress && (post == posts.last)
     }
     
     func postShouldShowTopProgress(_ post: Post) -> Bool {
         isShowingTopProgress && (post == posts.first)
-    }
-    
-    func getPostCardViewModel(post: Post) -> PostCardViewModel {
-        PostCardViewModel(coordinator: coordinator, post: post)
-    }
-    
-    func goToPost() {
-        coordinator?.goToPostView(Post.preview)
     }
     
     func fetchNextPage() async {

@@ -13,13 +13,10 @@ import SharedResourcesClientAndServer
 final class CommunityInfoViewModel {
     let community: Community
     var isShowingProgress: Bool = false
-    weak var coordinator: CommunitiesCoordinatorDelegate?
     
-    init(coordinator: CommunitiesCoordinatorDelegate?, community: Community) {
-        self.coordinator = coordinator
+    init(community: Community) {
         self.community = community
     }
-    
 }
 
 // MARK: - Computed Properties
@@ -47,31 +44,4 @@ extension CommunityInfoViewModel {
 //    var leaders: [Leader] {
 //        [] // TODO: ...
 //    }
-}
-
-// MARK: - Methods
-extension CommunityInfoViewModel {
-    
-    func showCandidates() {
-        coordinator?.showCandidates()
-    }
-    
-    func onTapCommunityCard(_ community: Community) {
-        coordinator?.goToCommunity(community: community)
-    }
-    
-    func onTapCandidateCard(candidateID: String) {
-        coordinator?.goToCandidateView(candidateId: candidateID)
-    }
-    
-    func openResourceURL(urlString: String) {
-        guard let url = URL(string: urlString) else {
-            return print("Failed to create URL from urlString.")
-        }
-        coordinator?.openResourceURL(url)
-    }
-    
-    func onTapLeader(id: String) {
-        coordinator?.goToCandidateView(candidateId: id)
-    }
 }

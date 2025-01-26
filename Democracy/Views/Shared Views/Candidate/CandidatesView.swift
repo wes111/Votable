@@ -5,14 +5,15 @@
 //  Created by Wesley Luntsford on 3/20/23.
 //
 
+import Navigator
 import SwiftUI
 
-struct CandidatesView<ViewModel: CandidatesViewModelProtocol>: View {
+struct CandidatesView: View {
+    @Environment(\.navigator) var navigator: Navigator
+    @State private var viewModel: CandidatesViewModel
     
-    @StateObject private var viewModel: ViewModel
-    
-    init(viewModel: ViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+    init() {
+        viewModel = .init()
     }
     
     var body: some View {
@@ -58,7 +59,7 @@ struct CandidatesView<ViewModel: CandidatesViewModelProtocol>: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    viewModel.openCreateCandidateView()
+                    navigator.navigate(to: CommunityDestination.createCandidate)
                 } label: {
                     Image(systemName: "plus")
                 }
@@ -69,5 +70,5 @@ struct CandidatesView<ViewModel: CandidatesViewModelProtocol>: View {
 
 // MARK: - Preview
 #Preview {
-    CandidatesView(viewModel: CandidatesViewModel.preview)
+    CandidatesView()
 }

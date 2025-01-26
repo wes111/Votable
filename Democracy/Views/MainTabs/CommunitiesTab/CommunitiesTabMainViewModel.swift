@@ -21,24 +21,13 @@ final class CommunitiesTabMainViewModel {
     var isShowingProgress: Bool = true
     var fetchCommunitiesTask: Task<Void, Never>?
     
-    private weak var coordinator: CommunitiesCoordinatorDelegate?
-    
-    init(coordinator: CommunitiesCoordinatorDelegate?) {
-        self.coordinator = coordinator
+    init() {
         startMembershipsTask() // TODO: Should be in task modifier...
     }
 }
 
 // MARK: - Methods
 extension CommunitiesTabMainViewModel {
-    
-    func goToCommunity(_ community: Community) {
-        coordinator?.goToCommunity(community: community)
-    }
-    
-    func showCreateCommunityView() {
-        coordinator?.showCreateCommunityView()
-    }
     
     func onAppear() {
         fetchCommunitiesByCategory(category)

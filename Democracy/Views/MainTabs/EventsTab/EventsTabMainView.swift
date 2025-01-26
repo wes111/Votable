@@ -7,13 +7,9 @@
 
 import SwiftUI
 
-struct EventsTabMainView<ViewModel: EventsTabMainViewModelProtocol>: View {
+struct EventsTabMainView: View {
     
-    @StateObject var viewModel: ViewModel
-    
-    init(viewModel: ViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    @State private var viewModel = EventsTabMainViewModel()
     
     var body: some View {
         Text("Events")
@@ -22,5 +18,5 @@ struct EventsTabMainView<ViewModel: EventsTabMainViewModelProtocol>: View {
 
 // MARK: - Preview
 #Preview {
-    EventsTabMainView(viewModel: EventsTabMainViewModel.preview)
+    EventsTabMainView()
 }

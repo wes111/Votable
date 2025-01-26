@@ -13,18 +13,15 @@ import SharedResourcesClientAndServer
 
 @MainActor @Observable
 final class CommunityViewModel {
-
     var isShowingProgress: Bool = false
     var membership: Membership?
     var selectedTab: CommunityTab = .feed
-    private weak var coordinator: CommunitiesCoordinatorDelegate?
     let community: Community
     
     @ObservationIgnored @Injected(\.membershipService) private var membershipService
     @ObservationIgnored @Injected(\.membershipAsyncStreamManager) private var membershipStreamManager
     
-    init(coordinator: CommunitiesCoordinatorDelegate, community: Community) {
-        self.coordinator = coordinator
+    init(community: Community) {
         self.community = community
         
         startMembershipsTask()
@@ -33,20 +30,6 @@ final class CommunityViewModel {
 
 // MARK: - Computed Properties
 extension CommunityViewModel {
-    
-    var leadingContent: [TopBarContent] {
-        [.back(goBack)]
-    }
-    
-    var centerContent: [TopBarContent] {
-       [] // [.title(community.name, size: .large)]
-    }
-    
-    var trailingContent: [TopBarContent] {
-        [.menu([
-            .init(title: "Create Post", action: showCreatePostView)
-        ])]
-    }
     
     var membershipButtonTitle: String {
         membership == nil ? "Join" : "Leave"
@@ -75,26 +58,6 @@ extension CommunityViewModel {
         } catch {
             print(error.localizedDescription)
         }
-    }
-    
-    func showCreatePostView() {
-        coordinator?.showCreatePostView(for: community)
-    }
-    
-    func communityHomeFeedViewModel() -> PostsFeedViewModel {
-        PostsFeedViewModel(community: community, postFilters: .init(), coordinator: coordinator)
-    }
-    
-    func communityInfoViewModel() -> CommunityInfoViewModel {
-        CommunityInfoViewModel(coordinator: coordinator, community: community)
-    }
-    
-    func communityArchiveViewModel() -> CommunityArchiveViewModel {
-        .init(community: community, coordinator: coordinator)
-    }
-    
-    func goBack() {
-        coordinator?.goBack()
     }
 }
 

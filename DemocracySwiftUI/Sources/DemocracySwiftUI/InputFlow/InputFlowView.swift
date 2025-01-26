@@ -5,6 +5,7 @@
 //  Created by Wesley Luntsford on 3/9/24.
 //
 
+import Navigator
 import SharedSwiftUI
 import SwiftUI
 
@@ -12,6 +13,7 @@ import SwiftUI
 @MainActor
 public struct InputFlowView<ViewModel:  InputFlowCoordinatorViewModel, FlowContent: View>: View {
     @Environment(\.theme) var theme: Theme
+    @Environment(\.navigator) var navigator: Navigator
     @Bindable var viewModel: ViewModel
     @ViewBuilder let content: FlowContent
     
@@ -24,7 +26,7 @@ public struct InputFlowView<ViewModel:  InputFlowCoordinatorViewModel, FlowConte
         primaryContent
             .toolbarNavigation(
                 leadingContent: viewModel.leadingButtons,
-                trailingContent: viewModel.trailingButtons,
+                trailingContent: [.close({ navigator.dismiss() })],
                 theme: theme
             )
             //.task { viewModel.setUserInput() }

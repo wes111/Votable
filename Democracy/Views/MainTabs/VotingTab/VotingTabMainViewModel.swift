@@ -7,26 +7,12 @@
 
 import Foundation
 
-@MainActor
-protocol VotingTabMainCoordinatorDelegate: AnyObject {
-    func tappedNav()
-}
-
-@MainActor
-protocol VotingTabMainViewModelProtocol: ObservableObject {
-    func tappedNav()
-}
-
-final class VotingTabMainViewModel: VotingTabMainViewModelProtocol {
+@Observable @MainActor
+final class VotingTabMainViewModel {
     
-    private weak var coordinator: VotingTabMainCoordinatorDelegate?
+    init() {}
     
-    init(coordinator: VotingTabMainCoordinatorDelegate?) {
-        self.coordinator = coordinator
-    }
-    
-    @MainActor
     func tappedNav() {
-        coordinator?.tappedNav()
+        print()
     }
 }

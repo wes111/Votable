@@ -15,11 +15,6 @@ enum MainTab {
 @MainActor
 final class MainTabViewModel: ObservableObject {
     @Published var selectedTab: MainTab = .updates
-    
-    let votingTabCoordinator = VotingTabCoordinatorViewModel()
-    let eventsTabCoordinator = EventsTabCoordinatorViewModel()
-    let updatesTabCoordinator = UpdatesTabCoordinatorViewModel()
-    let historyTabCoordinator = HistoryTabCoordinatorViewModel()
 }
 
 struct MainTabView: View {
@@ -54,20 +49,20 @@ struct MainTabView: View {
     
     var body: some View {
         TabView(selection: $viewModel.selectedTab) {
-            VotingTabCoordinator(viewModel: viewModel.votingTabCoordinator)
+            VotingTabCoordinator()
                 .tabItem {
                     Label("Voting", systemImage: "checklist")
                         .foregroundColor(theme.primaryColorScheme.primaryText)
                 }
                 .tag(MainTab.voting)
             
-            EventsTabCoordinator(viewModel: viewModel.eventsTabCoordinator)
+            EventsTabCoordinator()
                 .tabItem {
                     Label("Events", systemImage: "calendar")
                 }
                 .tag(MainTab.events)
             
-            UpdatesTabCoordinator(viewModel: viewModel.updatesTabCoordinator)
+            UpdatesTabCoordinator()
                 .tabItem {
                     Label("Updates", systemImage: "newspaper.fill")
                 }
@@ -79,7 +74,7 @@ struct MainTabView: View {
                 }
                 .tag(MainTab.communities)
             
-            HistoryTabCoordinator(viewModel: viewModel.historyTabCoordinator)
+            HistoryTabCoordinator()
                 .tabItem {
                     Label("History", systemImage: "books.vertical.fill")
                 }

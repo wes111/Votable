@@ -18,11 +18,9 @@ final class AccountInputFlowViewModel: InputFlowCoordinatorViewModel {
     var alertModel: NewAlertModel?
     var isShowingProgress: Bool = false
     let input = AccountCreationRequestBuilder()
-    private weak var coordinator: CreateAccountCoordinator?
+    var didCompleteSuccessfully: Bool = false
     
-    init(coordinator: CreateAccountCoordinator?) {
-        self.coordinator = coordinator
-    }
+    init() {}
 }
 
 
@@ -30,10 +28,7 @@ final class AccountInputFlowViewModel: InputFlowCoordinatorViewModel {
 extension AccountInputFlowViewModel {
     
     func didCompleteFlowSuccessfully() {
-        coordinator?.goToSuccess()
-    }
-    
-    func close() {
-        coordinator?.close()
+        didCompleteSuccessfully = true
+        //coordinator?.goToSuccess()
     }
 }

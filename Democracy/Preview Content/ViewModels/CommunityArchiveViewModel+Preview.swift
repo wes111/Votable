@@ -9,8 +9,5 @@ import Foundation
 import SharedResourcesClientAndServer
 
 extension CommunityArchiveViewModel {
-    static let preview = CommunityArchiveViewModel(
-        community: .preview,
-        coordinator: CommunitiesCoordinator.preview
-    )
+    static let preview = CommunityArchiveViewModel(community: .preview)
 }

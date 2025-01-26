@@ -20,10 +20,6 @@ final class RootCoordinator {
     
     let mainTabViewModel = MainTabViewModel()
     
-    func createAccountCoordinator() -> CreateAccountCoordinator {
-        .init(parentCoordinator: self)
-    }
-    
     @StorageActor
     func setupUserService() async {
         do {
@@ -55,12 +51,6 @@ extension RootCoordinator {
 extension RootCoordinator: LoginCoordinatorDelegate {
     func goToCreateAccount() {
         isShowingOnboardingFlow = true
-    }
-}
-
-extension RootCoordinator: CreateAccountCoordinatorParent {
-    func dismiss() {
-        isShowingOnboardingFlow = false
     }
 }
 

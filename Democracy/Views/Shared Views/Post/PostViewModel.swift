@@ -23,14 +23,11 @@ final class PostViewModel {
     var alertModel: NewAlertModel?
     var replyingToComment: CommentNode?
     var commentText: String = ""
-    
-    private weak var coordinator: PostCoordinatorDelegate?
-    private let post: Post
+    let post: Post
     private let commentsManager: CommentsManagerProtocol
     let postHeaderViewModel: PostHeaderViewModel
     
-    init(coordinator: PostCoordinatorDelegate?, post: Post, commentsManager: CommentsManagerProtocol) {
-        self.coordinator = coordinator
+    init(post: Post, commentsManager: CommentsManagerProtocol) {
         self.post = post
         self.commentsManager = commentsManager
         postHeaderViewModel = PostHeaderViewModel(post: post)
@@ -39,18 +36,6 @@ final class PostViewModel {
 
 // MARK: - Computed Properties
 extension PostViewModel {
-    
-    var leadingContent: [TopBarContent] {
-        [.back(goBack)]
-    }
-    
-    var centerContent: [TopBarContent] {
-        [.title(post.communityId, size: .small)]
-    }
-    
-    var trailingContent: [TopBarContent] {
-        [.menu([])]
-    }
     
     var replyText: String {
         if let replyingToComment {
@@ -101,11 +86,6 @@ extension PostViewModel {
 }
 
 private extension PostViewModel {
-    
-    func goBack() {
-        coordinator?.goBack()
-    }
-    
     var remainingTopLevelRepliesToLoadCount: Int {
         post.commentCount - comments.count
     }

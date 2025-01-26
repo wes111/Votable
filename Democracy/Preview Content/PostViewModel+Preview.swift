@@ -11,7 +11,6 @@ import SharedResourcesClientAndServer
 
 extension PostViewModel {
     static let preview = PostViewModel(
-        coordinator: CommunitiesCoordinator.preview,
         post: Post.preview,
         commentsManager: CommentsManagerMock()
     )
